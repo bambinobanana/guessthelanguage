@@ -1158,7 +1158,7 @@ function Done({results,total,max,onRestart,leaderboard,setLeaderboard,level}) {
   const pct=Math.round((total/max)*100);
   const label=pct===100?"Polyglot legend":pct>=70?"Language lover":pct>=40?"Decent detective":"Keep exploring!";
   const gameUrl="https://languageguessr.com/";
-  const shareText=`LanguageGuessr — ${total}/${max} pts · ${label}\n${results.map((r,i)=>`Q${i+1}: ${r.guessed===r.lang.name?"✅":"❌"} (${r.score}/13)`).join("\n")}\nTry to beat me: ${gameUrl}`;
+  const shareText=`LanguageGuessr: can you recognize all the languages? — ${total}/${max} pts · ${label}\n${results.map((r,i)=>`Q${i+1}: ${r.guessed===r.lang.name?"✅":"❌"} (${r.score}/13)`).join("\n")}\nTry to beat me: ${gameUrl}`;
 
   function submitScore() {
     if(!nickname.trim()) return;
