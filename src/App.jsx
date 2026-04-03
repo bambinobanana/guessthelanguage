@@ -16,6 +16,25 @@ const FAMILY_COLOR = {
   "Indo-European (isolate)":"#A090C0",
 };
 
+const LANG_FLAGS = {
+  "French":"🇫🇷","Spanish":"🇪🇸","Portuguese":"🇧🇷","Italian":"🇮🇹","Romanian":"🇷🇴",
+  "German":"🇩🇪","Dutch":"🇳🇱","Swedish":"🇸🇪","Norwegian":"🇳🇴","Russian":"🇷🇺",
+  "Ukrainian":"🇺🇦","Bulgarian":"🇧🇬","Serbian":"🇷🇸","Mongolian":"🇲🇳","Arabic":"🇸🇦",
+  "Persian (Farsi)":"🇮🇷","Urdu":"🇵🇰","Hebrew":"🇮🇱","Amharic":"🇪🇹","Mandarin Chinese":"🇨🇳",
+  "Cantonese":"🇭🇰","Japanese":"🇯🇵","Korean":"🇰🇷","Vietnamese":"🇻🇳","Thai":"🇹🇭",
+  "Khmer":"🇰🇭","Myanmar (Burmese)":"🇲🇲","Hindi":"🇮🇳","Nepali":"🇳🇵","Bengali":"🇧🇩",
+  "Tamil":"🇱🇰","Kannada":"🇮🇳","Telugu":"🇮🇳","Turkish":"🇹🇷","Swahili":"🇰🇪",
+  "Yoruba":"🇳🇬","Zulu":"🇿🇦","Greek":"🇬🇷","Georgian":"🇬🇪","Armenian":"🇦🇲",
+  "Finnish":"🇫🇮","Hungarian":"🇭🇺","Hmong":"🌏","Quechua":"🇵🇪","Nahuatl":"🇲🇽",
+  "Guaraní":"🇵🇾","Maya (Yucatec)":"🇲🇽","Navajo":"🇺🇸","Hawaiian":"🇺🇸","Māori":"🇳🇿",
+  "Tibetan":"🏔️","Wolof":"🇸🇳","Tigrinya":"🇪🇷",
+};
+
+const CONGRATS = [
+  "Nailed it! 🎯","You legend! 🌟","Spot on! ✨","Impressive! 🔥","Brilliant! 💡",
+  "Outstanding! 🏆","Sharp eye! 👁️","Polyglot vibes! 🌍","That's the one! 💪","Unstoppable! 🚀",
+];
+
 const LANGUAGES = [
   { name:"French", family:"Romance", region:"Europe", script:"Latin", speakers:"~310M", tip:"Look for accented vowels like é, è, ê, and the cedilla ç. The combination 'eau' and frequent apostrophes are very French.", confusables:["Italian","Spanish","Portuguese","Romanian","Catalan"], quotes:[{s:"La seule façon de faire du bon travail est d'aimer ce que vous faites.",t:"The only way to do great work is to love what you do."},{s:"La vie est ce qui se passe pendant qu'on fait d'autres projets.",t:"Life is what happens while you're busy making other plans."},{s:"Soyez le changement que vous voulez voir dans le monde.",t:"Be the change you wish to see in the world."}]},
   { name:"Spanish", family:"Romance", region:"Europe / Americas", script:"Latin", speakers:"~500M", tip:"Spot the inverted ¿ and ¡ at sentence starts. The letter ñ and ll/rr combinations are distinctively Spanish.", confusables:["Portuguese","Italian","French","Romanian","Catalan"], quotes:[{s:"No importa cuán lento vayas, siempre y cuando no te detengas.",t:"It doesn't matter how slowly you go, as long as you don't stop."},{s:"La vida es sueño, y los sueños, sueños son.",t:"Life is a dream, and dreams are just dreams."},{s:"Dime con quién andas y te diré quién eres.",t:"Tell me who you walk with and I'll tell you who you are."}]},
@@ -28,11 +47,11 @@ const LANGUAGES = [
   { name:"Norwegian", family:"Germanic", region:"Europe", script:"Latin", speakers:"~5M", tip:"Norwegian shares å, æ, ø with Danish. Very similar to Swedish but uses 'ikke' (not) differently. Look for words ending in -ig, -lig.", confusables:["Swedish","Danish","Dutch","German","Faroese"], quotes:[{s:"Det er ikke fjellene foran deg som sliter deg ut, men steinen i skoen din.",t:"It is not the mountains ahead that wear you out, but the pebble in your shoe."},{s:"Den som ler sist, ler best.",t:"He who laughs last, laughs best."},{s:"Veien blir til mens du går.",t:"The road is made by walking."}]},
   { name:"Russian", family:"Slavic", region:"Europe / Asia", script:"Cyrillic", speakers:"~258M", tip:"Russian Cyrillic has Ж, Щ, Ъ, Ы, Э. Look for the hard sign ъ and the letter ы — unique to Russian.", confusables:["Ukrainian","Bulgarian","Serbian","Macedonian","Mongolian"], quotes:[{s:"Не тот велик, кто никогда не падал, а тот велик, кто падал и вставал.",t:"Not the one who never fell is great, but the one who fell and rose again."},{s:"Терпение и труд всё перетрут.",t:"Patience and hard work will overcome everything."},{s:"Без труда не выловишь и рыбку из пруда.",t:"Without effort, you can't even pull a fish from a pond."}]},
   { name:"Ukrainian", family:"Slavic", region:"Europe", script:"Cyrillic", speakers:"~40M", tip:"Ukrainian has unique letters І, Ї, Є, and Ґ not found in Russian. It also lacks the Russian Ъ and Ы.", confusables:["Russian","Bulgarian","Serbian","Macedonian","Belarusian"], quotes:[{s:"Де є воля, там є і шлях.",t:"Where there is a will, there is a way."},{s:"Не май сто рублів, а май сто друзів.",t:"Don't have a hundred rubles, have a hundred friends."},{s:"Хто рано встає, тому Бог дає.",t:"God gives to those who rise early."}]},
-  { name:"Bulgarian", family:"Slavic", region:"Europe", script:"Cyrillic", speakers:"~8M", tip:"Bulgarian Cyrillic looks similar to Russian but uses Ъ frequently as a vowel (meaning 'uh'). It has no ы, ё, or э like Russian.", confusables:["Russian","Ukrainian","Macedonian","Serbian","Mongolian"], quotes:[{s:"Търпението е горчиво, но плодовете му са сладки.",t:"Patience is bitter, but its fruits are sweet."},{s:"Каквото посееш, това ще пожънеш.",t:"You reap what you sow."},{s:"Без мъка няма наука.",t:"No pain, no gain."}]},
-  { name:"Serbian", family:"Slavic", region:"Europe", script:"Cyrillic", speakers:"~12M", tip:"Serbian Cyrillic includes Љ, Њ, Џ — letters not in Russian or Ukrainian. These represent sounds lj, nj, dz unique to South Slavic.", confusables:["Russian","Bulgarian","Ukrainian","Macedonian","Mongolian"], quotes:[{s:"Дунав пролази кроз многе земље Европе и носи са собом историју векова.",t:"The Danube flows through many lands, carrying the history of centuries."},{s:"Ко рано рани, две среће граби.",t:"He who rises early catches two fortunes."},{s:"Слога и мала сила надвладава велику.",t:"Unity makes even a small force overcome a great one."}]},
-  { name:"Mongolian", family:"Mongolic", region:"East Asia", script:"Cyrillic", speakers:"~6M", tip:"Mongolian Cyrillic looks like Russian but uses Ү, Ө not in standard Russian. Words are longer and vocabulary is completely unlike Slavic.", confusables:["Russian","Bulgarian","Ukrainian","Kazakh","Serbian"], quotes:[{s:"Эрдэм мэдлэг — далай, тэвчээр — онгоц.",t:"Knowledge is the ocean, patience is the boat."},{s:"Номын хүч — зэвсгийн хүчнээс хүчтэй.",t:"The power of books is stronger than the power of weapons."},{s:"Өнөөдрийн ажлыг маргааш болдоггүй.",t:"Don't put off today's work until tomorrow."}]},
+  { name:"Bulgarian", family:"Slavic", region:"Europe", script:"Cyrillic", speakers:"~8M", tip:"Bulgarian Cyrillic looks similar to Russian but uses Ъ frequently as a vowel. It has no ы, ё, or э like Russian.", confusables:["Russian","Ukrainian","Macedonian","Serbian","Mongolian"], quotes:[{s:"Търпението е горчиво, но плодовете му са сладки.",t:"Patience is bitter, but its fruits are sweet."},{s:"Каквото посееш, това ще пожънеш.",t:"You reap what you sow."},{s:"Без мъка няма наука.",t:"No pain, no gain."}]},
+  { name:"Serbian", family:"Slavic", region:"Europe", script:"Cyrillic", speakers:"~12M", tip:"Serbian Cyrillic includes Љ, Њ, Џ — not in Russian or Ukrainian. These represent lj, nj, dz sounds unique to South Slavic.", confusables:["Russian","Bulgarian","Ukrainian","Macedonian","Mongolian"], quotes:[{s:"Дунав пролази кроз многе земље Европе и носи са собом историју векова.",t:"The Danube flows through many lands, carrying the history of centuries."},{s:"Ко рано рани, две среће граби.",t:"He who rises early catches two fortunes."},{s:"Слога и мала сила надвладава велику.",t:"Unity makes even a small force overcome a great one."}]},
+  { name:"Mongolian", family:"Mongolic", region:"East Asia", script:"Cyrillic", speakers:"~6M", tip:"Mongolian Cyrillic looks like Russian but uses Ү, Ө not in standard Russian. Words are longer and vocabulary is unlike Slavic.", confusables:["Russian","Bulgarian","Ukrainian","Kazakh","Serbian"], quotes:[{s:"Эрдэм мэдлэг — далай, тэвчээр — онгоц.",t:"Knowledge is the ocean, patience is the boat."},{s:"Номын хүч — зэвсгийн хүчнээс хүчтэй.",t:"The power of books is stronger than the power of weapons."},{s:"Өнөөдрийн ажлыг маргааш болдоггүй.",t:"Don't put off today's work until tomorrow."}]},
   { name:"Arabic", family:"Semitic", region:"Middle East / Africa", script:"Arabic", speakers:"~422M", tip:"Arabic is right-to-left, letters connect cursively. Dots above/below letters are key. No short vowels are written.", confusables:["Persian (Farsi)","Urdu","Pashto","Uyghur","Kurdish"], quotes:[{s:"من لم يعرف كيف يقف على المرتفعات لم يعش.",t:"He who has not learned to stand on the heights has not truly lived."},{s:"العلم في الصغر كالنقش على الحجر.",t:"Learning in youth is like engraving on stone."},{s:"اطلبوا العلم من المهد إلى اللحد.",t:"Seek knowledge from the cradle to the grave."}]},
-  { name:"Persian (Farsi)", family:"Indo-Iranian", region:"Middle East", script:"Perso-Arabic", speakers:"~110M", tip:"Persian uses Arabic script but has 4 extra letters: پ, چ, ژ, گ. It looks rounder and more flowing than Arabic.", confusables:["Arabic","Urdu","Pashto","Kurdish","Dari"], quotes:[{s:"هر که طاووس خواهد جور هندوستان کشد.",t:"Whoever wants the peacock must endure the thorns of Hindustan."},{s:"قطره قطره جمع گردد وانگهی دریا شود.",t:"Drop by drop gathers, and then becomes a sea."},{s:"آدم باید از خطاهای خود درس بگیرد.",t:"A person must learn from their mistakes."}]},
+  { name:"Persian (Farsi)", family:"Indo-Iranian", region:"Middle East", script:"Perso-Arabic", speakers:"~110M", tip:"Persian uses Arabic script but has 4 extra letters: پ, چ, ژ, گ. Looks rounder and more flowing than Arabic.", confusables:["Arabic","Urdu","Pashto","Kurdish","Dari"], quotes:[{s:"هر که طاووس خواهد جور هندوستان کشد.",t:"Whoever wants the peacock must endure the thorns of Hindustan."},{s:"قطره قطره جمع گردد وانگهی دریا شود.",t:"Drop by drop gathers, and then becomes a sea."},{s:"آدم باید از خطاهای خود درس بگیرد.",t:"A person must learn from their mistakes."}]},
   { name:"Urdu", family:"Indo-Iranian", region:"South Asia", script:"Perso-Arabic", speakers:"~230M", tip:"Urdu looks like Persian/Arabic but has unique letters ٹ, ڈ, ڑ for retroflex sounds specific to South Asia.", confusables:["Arabic","Persian (Farsi)","Pashto","Sindhi","Uyghur"], quotes:[{s:"ہر مشکل کے بعد آسانی ہے۔",t:"After every hardship comes ease."},{s:"عقلمند وہ ہے جو اپنی غلطیوں سے سیکھے۔",t:"The wise one is he who learns from his mistakes."},{s:"محنت کا پھل میٹھا ہوتا ہے۔",t:"The fruit of hard work is sweet."}]},
   { name:"Hebrew", family:"Semitic", region:"Middle East", script:"Hebrew", speakers:"~9M", tip:"Hebrew is right-to-left with a block-like 22-letter alphabet. Unlike Arabic it's not cursively connected — look for square letterforms.", confusables:["Arabic","Yiddish","Aramaic","Amharic","Maltese"], quotes:[{s:"אם תרצו, אין זו אגדה.",t:"If you will it, it is no dream."},{s:"כל הדרכים ארוכות לאדם עייף.",t:"All roads are long to a tired person."},{s:"מי שמחפש חבר בלי פגמים נשאר בלי חברים.",t:"He who seeks a friend without faults remains without friends."}]},
   { name:"Amharic", family:"Semitic", region:"Africa", script:"Ethiopic", speakers:"~57M", tip:"Amharic uses the Ethiopic (Ge'ez) script — round, circular characters unlike any other writing system. Each symbol is a consonant+vowel syllable.", confusables:["Tigrinya","Tigre","Hebrew","Georgian","Sinhala"], quotes:[{s:"ብዙ ሲሄዱ ይደርሳሉ፤ ጥቂት ሲሄዱ ይቀራሉ።",t:"Those who keep going will arrive; those who give up will remain behind."},{s:"ዕውቀት ሲጨምር ትዕቢት ይቀንሳል።",t:"As knowledge increases, arrogance decreases."},{s:"ፍቅር ተራራን ያንቀሳቅሳል።",t:"Love moves mountains."}]},
@@ -43,13 +62,13 @@ const LANGUAGES = [
   { name:"Vietnamese", family:"Austroasiatic", region:"Southeast Asia", script:"Latin (tonal)", speakers:"~96M", tip:"Vietnamese uses Latin with an extraordinary number of stacked diacritical marks like ộ, ẫ, ướ. No other Latin-script language looks like this.", confusables:["Hmong","Thai","Tagalog","Malay","Indonesian"], quotes:[{s:"Có công mài sắt, có ngày nên kim.",t:"With enough perseverance, iron can be ground into a needle."},{s:"Học thầy không tày học bạn.",t:"Learning from a teacher is not as good as learning from friends."},{s:"Lời nói không mất tiền mua.",t:"Words cost nothing."}]},
   { name:"Thai", family:"Kra-Dai", region:"Southeast Asia", script:"Thai", speakers:"~61M", tip:"Thai has rounded characters with small circles and loops, no spaces between words, and vowels that appear above, below, or around consonants.", confusables:["Khmer","Lao","Myanmar (Burmese)","Kannada","Sinhala"], quotes:[{s:"ทางไกลเริ่มต้นด้วยก้าวแรก",t:"A long road begins with the first step."},{s:"น้ำขึ้นให้รีบตัก",t:"When the water rises, hurry to fetch it — seize the moment."},{s:"ความพยายามอยู่ที่ไหน ความสำเร็จอยู่ที่นั่น",t:"Where there is perseverance, there is success."}]},
   { name:"Khmer", family:"Austroasiatic", region:"Southeast Asia", script:"Khmer", speakers:"~18M", tip:"Khmer has many circular/looping shapes like Thai but more angular and elaborate. Distinctive 'subscript' consonant forms appear below the main line.", confusables:["Thai","Myanmar (Burmese)","Kannada","Telugu","Sinhala"], quotes:[{s:"បើចង់ឆ្ងាញ់ ត្រូវអត់ធ្មត់រង់ចាំ។",t:"If you want something good, you must be patient and wait."},{s:"ដើរម្តងមួយជំហាន ក៏ដល់ផង។",t:"Walk one step at a time, and you will still arrive."}]},
-  { name:"Myanmar (Burmese)", family:"Tibeto-Burman", region:"Southeast Asia", script:"Myanmar", speakers:"~43M", tip:"Myanmar script is made of circles and rounded strokes — very similar to Khmer but rounder and more uniform. Perfectly circular letters ၀, ဝ are a giveaway.", confusables:["Khmer","Thai","Sinhala","Kannada","Telugu"], quotes:[{s:"ကြိုးစားသမျှ အောင်မြင်မည်။",t:"Whatever you strive for, you will achieve."},{s:"ပညာသည် ချမ်းသာကြွယ်ဝမှုထက် တန်ဖိုးကြီးသည်။",t:"Knowledge is more valuable than wealth."}]},
+  { name:"Myanmar (Burmese)", family:"Tibeto-Burman", region:"Southeast Asia", script:"Myanmar", speakers:"~43M", tip:"Myanmar script is made of circles and rounded strokes — similar to Khmer but rounder. Perfectly circular letters ၀, ဝ are a giveaway.", confusables:["Khmer","Thai","Sinhala","Kannada","Telugu"], quotes:[{s:"ကြိုးစားသမျှ အောင်မြင်မည်။",t:"Whatever you strive for, you will achieve."},{s:"ပညာသည် ချမ်းသာကြွယ်ဝမှုထက် တန်ဖိုးကြီးသည်။",t:"Knowledge is more valuable than wealth."}]},
   { name:"Hindi", family:"Indo-Iranian", region:"South Asia", script:"Devanagari", speakers:"~600M", tip:"Hindi uses Devanagari — characters hang from a horizontal line at the top. The continuous top bar connecting letters is the key visual identifier.", confusables:["Marathi","Nepali","Sanskrit","Bengali","Gujarati"], quotes:[{s:"जब तक आप अपने आप पर विश्वास नहीं करते, तब तक आप भगवान पर विश्वास नहीं कर सकते।",t:"Until you believe in yourself, you cannot believe in God."},{s:"कर्म करो, फल की चिंता मत करो।",t:"Do your work, don't worry about the results."},{s:"जो बीत गई सो बात गई।",t:"What has passed has passed."}]},
   { name:"Nepali", family:"Indo-Iranian", region:"South Asia", script:"Devanagari", speakers:"~17M", tip:"Nepali also uses Devanagari like Hindi and looks nearly identical. Key difference: Nepali uses the word 'छ' (cha) very frequently.", confusables:["Hindi","Marathi","Sanskrit","Bengali","Gujarati"], quotes:[{s:"हार मान्नु भनेको मृत्यु हो।",t:"To accept defeat is to die."},{s:"परिश्रम नै सफलताको सिँढी हो।",t:"Hard work is the staircase to success."}]},
   { name:"Bengali", family:"Indo-Iranian", region:"South Asia", script:"Bengali", speakers:"~230M", tip:"Bengali script resembles Devanagari but the top line is broken, not continuous. Letters have a distinctive drooping quality.", confusables:["Assamese","Manipuri","Odia","Maithili","Sylheti"], quotes:[{s:"যে সহে সে রহে।",t:"He who endures, remains."},{s:"পরিশ্রমই সাফল্যের চাবিকাঠি।",t:"Hard work is the key to success."},{s:"সত্য কথা বলা সাহসের কাজ।",t:"Speaking the truth is an act of courage."}]},
   { name:"Tamil", family:"Dravidian", region:"South Asia / SE Asia", script:"Tamil", speakers:"~87M", tip:"Tamil script is very rounded and curvy with lots of loops. Every letter curves — no straight lines. More decorative than Devanagari.", confusables:["Kannada","Telugu","Malayalam","Sinhala","Khmer"], quotes:[{s:"கற்றது கைமண் அளவு, கல்லாதது உலகளவு.",t:"What we have learned is a handful; what we have yet to learn is the world."},{s:"அன்பே தெய்வம்.",t:"Love is God."}]},
-  { name:"Kannada", family:"Dravidian", region:"South Asia", script:"Kannada", speakers:"~56M", tip:"Kannada script has rounded letters with small 'fish-hook' serifs. Similar to Telugu but Kannada letters are rounder with more circular loops at the top.", confusables:["Telugu","Tamil","Malayalam","Khmer","Myanmar (Burmese)"], quotes:[{s:"ಕಲಿಯುವವನು ಎಂದೂ ಸೋಲುವುದಿಲ್ಲ.",t:"One who keeps learning never truly loses."},{s:"ಮಾತು ಬೆಳ್ಳಿ, ಮೌನ ಬಂಗಾರ.",t:"Speech is silver, silence is gold."}]},
-  { name:"Telugu", family:"Dravidian", region:"South Asia", script:"Telugu", speakers:"~96M", tip:"Telugu script is rounder than Kannada with more circular shapes. Letters often end in a curling tail — the combination of circles with hanging curves is distinctive.", confusables:["Kannada","Tamil","Malayalam","Khmer","Sinhala"], quotes:[{s:"ఓర్పు ఉన్నవాడికి ఓటమి లేదు.",t:"One who has patience knows no defeat."},{s:"విద్య వినయమును ఇస్తుంది.",t:"Education gives humility."}]},
+  { name:"Kannada", family:"Dravidian", region:"South Asia", script:"Kannada", speakers:"~56M", tip:"Kannada script has rounded letters with small 'fish-hook' serifs. Similar to Telugu but rounder with more circular loops at the top.", confusables:["Telugu","Tamil","Malayalam","Khmer","Myanmar (Burmese)"], quotes:[{s:"ಕಲಿಯುವವನು ಎಂದೂ ಸೋಲುವುದಿಲ್ಲ.",t:"One who keeps learning never truly loses."},{s:"ಮಾತು ಬೆಳ್ಳಿ, ಮೌನ ಬಂಗಾರ.",t:"Speech is silver, silence is gold."}]},
+  { name:"Telugu", family:"Dravidian", region:"South Asia", script:"Telugu", speakers:"~96M", tip:"Telugu script is rounder than Kannada. Letters often end in a curling tail — the combination of circles with hanging curves is distinctive.", confusables:["Kannada","Tamil","Malayalam","Khmer","Sinhala"], quotes:[{s:"ఓర్పు ఉన్నవాడికి ఓటమి లేదు.",t:"One who has patience knows no defeat."},{s:"విద్య వినయమును ఇస్తుంది.",t:"Education gives humility."}]},
   { name:"Turkish", family:"Turkic", region:"Middle East / Europe", script:"Latin", speakers:"~88M", tip:"Turkish uses Latin with ç, ş, ğ, ı (dotless i), ö, ü. The dotless 'ı' is a unique giveaway. Words tend to be very long due to agglutination.", confusables:["Azerbaijani","Uzbek","Kazakh","Kyrgyz","Indonesian"], quotes:[{s:"Damlaya damlaya göl olur.",t:"Drop by drop, a lake is formed."},{s:"Bugünün işini yarına bırakma.",t:"Don't leave today's work for tomorrow."},{s:"Sabreden derviş muradına ermiş.",t:"The patient dervish reached his goal."}]},
   { name:"Swahili", family:"Niger-Congo (Bantu)", region:"Africa", script:"Latin", speakers:"~200M", tip:"Swahili uses distinctive noun prefixes: m-, wa-, ki-, vi-. Words like 'hakuna', 'safari', 'ubuntu' are Swahili. No accents or special characters.", confusables:["Zulu","Yoruba","Hausa","Igbo","Somali"], quotes:[{s:"Haraka haraka haina baraka.",t:"Hurry hurry has no blessings."},{s:"Umoja ni nguvu, utengano ni udhaifu.",t:"Unity is strength, division is weakness."},{s:"Mtu ni watu.",t:"A person is people — we are defined by our community."}]},
   { name:"Yoruba", family:"Niger-Congo", region:"Africa", script:"Latin", speakers:"~45M", tip:"Yoruba uses Latin with many tone marks (acute ´, grave `, dot below). The frequent use of ọ and ẹ with subscript dots is a strong identifier.", confusables:["Igbo","Hausa","Swahili","Wolof","Fula"], quotes:[{s:"Ọmọ tí a kò kọ ni yóò ta ilé ẹni jẹ.",t:"A child who is not taught will sell the family home."},{s:"Inú rere làá ti ń ṣe rere.",t:"Goodness comes from a good heart."}]},
@@ -59,8 +78,8 @@ const LANGUAGES = [
   { name:"Armenian", family:"Indo-European (isolate)", region:"Caucasus", script:"Armenian", speakers:"~8M", tip:"Armenian has its own unique alphabet invented in 405 AD. Letters have a medieval angular quality with distinctive shapes like Փ, Ձ, Ղ.", confusables:["Georgian","Greek","Amharic","Hebrew","Coptic"], quotes:[{s:"Ո՛չ ոք կ'ապրի քո կյանքը, քեզ համար.",t:"No one will live your life for you."},{s:"Ժամանակ ոչ ոք չի կարող գնել:",t:"No one can buy time."}]},
   { name:"Finnish", family:"Uralic", region:"Europe", script:"Latin", speakers:"~5M", tip:"Finnish has no articles, double vowels and consonants everywhere (aa, ee, ll, kk), very long words, and common letters ä and ö.", confusables:["Estonian","Hungarian","Turkish","Azerbaijani","Mongolian"], quotes:[{s:"Ei se ole viisas, joka viisaasti ei puhu.",t:"It is not wise who does not speak wisely."},{s:"Työ tekijäänsä kiittää.",t:"Work praises its maker."},{s:"Parempi myöhään kuin ei milloinkaan.",t:"Better late than never."}]},
   { name:"Hungarian", family:"Uralic", region:"Europe", script:"Latin", speakers:"~13M", tip:"Hungarian uses long vowels with double accents: á, é, í, ó, ő, ú, ű. The double-acute ő and ű are unique to Hungarian.", confusables:["Finnish","Estonian","Turkish","Romanian","Czech"], quotes:[{s:"Aki mer, az nyer.",t:"He who dares, wins."},{s:"Lassan járj, tovább érsz.",t:"Go slowly, you'll get further."},{s:"Több szem többet lát.",t:"More eyes see more."}]},
-  { name:"Hmong", family:"Hmong-Mien", region:"SE Asia / diaspora", script:"Latin (Romanized)", speakers:"~4M", tip:"Hmong (RPA) uses familiar Latin letters but ends words with consonants -b, -m, -d, -v, -s, -g, -j that indicate tones (not pronounced as consonants). Very distinctive pattern.", confusables:["Vietnamese","Lao","Thai","Indonesian","Tagalog"], quotes:[{s:"Txoj kev ntev pib ntawm ib kauj ruam.",t:"A long journey begins with one step."},{s:"Tus neeg tsis kawm, yog tus neeg dig muag.",t:"A person who does not learn is a person who is blind."},{s:"Kev sib hlub yog lub zog loj tshaj plaws.",t:"Love is the greatest strength of all."}]},
-  { name:"Quechua", family:"Quechuan", region:"South America (Andes)", script:"Latin", speakers:"~10M", tip:"Quechua uses Latin but with very frequent 'q' and 'k', and apostrophes for ejective consonants (p', t', k'). Words often end in -y, -pi, -kta, -wan suffixes.", confusables:["Guaraní","Nahuatl","Aymara","Maya (Yucatec)","Mapuche"], quotes:[{s:"Llank'aypin kawsay tarikun.",t:"In work, life is found."},{s:"Mana yachasqaqa, yana tukunmi.",t:"Without knowledge, one becomes darkness."},{s:"Aynipin kawsay.",t:"Life is in reciprocity."}]},
+  { name:"Hmong", family:"Hmong-Mien", region:"SE Asia / diaspora", script:"Latin (Romanized)", speakers:"~4M", tip:"Hmong (RPA) ends words with consonants -b, -m, -d, -v, -s, -g, -j that indicate tones (not pronounced). This distinctive pattern appears throughout.", confusables:["Vietnamese","Lao","Thai","Indonesian","Tagalog"], quotes:[{s:"Txoj kev ntev pib ntawm ib kauj ruam.",t:"A long journey begins with one step."},{s:"Tus neeg tsis kawm, yog tus neeg dig muag.",t:"A person who does not learn is a person who is blind."},{s:"Kev sib hlub yog lub zog loj tshaj plaws.",t:"Love is the greatest strength of all."}]},
+  { name:"Quechua", family:"Quechuan", region:"South America (Andes)", script:"Latin", speakers:"~10M", tip:"Quechua uses Latin but with very frequent 'q' and 'k', and apostrophes for ejective consonants (p', t', k'). Words often end in -y, -pi, -kta, -wan.", confusables:["Guaraní","Nahuatl","Aymara","Maya (Yucatec)","Mapuche"], quotes:[{s:"Llank'aypin kawsay tarikun.",t:"In work, life is found."},{s:"Mana yachasqaqa, yana tukunmi.",t:"Without knowledge, one becomes darkness."},{s:"Aynipin kawsay.",t:"Life is in reciprocity."}]},
   { name:"Nahuatl", family:"Uto-Aztecan", region:"Mexico / Central America", script:"Latin", speakers:"~2M", tip:"Nahuatl uses Latin but has very frequent 'tl' endings (a unique sound cluster) and 'tz' combinations. Words like 'tlatoa' (speak) are distinctive.", confusables:["Maya (Yucatec)","Quechua","Guaraní","Hmong","Zapotec"], quotes:[{s:"In tlein amo miqui, yolchicahua.",t:"What does not die, grows stronger."},{s:"Xitlazohtla in motlaltzi.",t:"Love your land."}]},
   { name:"Guaraní", family:"Tupian", region:"South America", script:"Latin", speakers:"~7M", tip:"Guaraní uses Latin with nasalized vowels marked by tilde (ã, ẽ, ĩ, õ, ũ, ỹ) and the glottal stop '. Nasal vowels throughout are very distinctive.", confusables:["Quechua","Nahuatl","Maya (Yucatec)","Hmong","Aymara"], quotes:[{s:"Ha'e oñepyrũ porã haguã oñepyrũ.",t:"To begin well is to end well."},{s:"Ko'ág̃a roiko vaerã.",t:"We must live well now."}]},
   { name:"Maya (Yucatec)", family:"Mayan", region:"Mexico / Central America", script:"Latin", speakers:"~900K", tip:"Yucatec Maya uses apostrophes heavily for glottal stops and ejective consonants. Unusual combinations like ts', k', p' and 'x' pronounced 'sh'.", confusables:["Nahuatl","Quechua","Guaraní","Hmong","Zapotec"], quotes:[{s:"Bix a beel? Ma' to'on kiin.",t:"How is your road? The sun is still ours."},{s:"Mix ba'al ku páajtal ti' le k'iino'.",t:"Nothing is impossible on a given day."}]},
@@ -71,6 +90,15 @@ const LANGUAGES = [
   { name:"Wolof", family:"Niger-Congo", region:"West Africa", script:"Latin", speakers:"~12M", tip:"Wolof uses Latin with consonant combinations like 'mb', 'nd', 'ng', 'nj' at the start of words — unusual in European languages. Prenasalized consonants throughout.", confusables:["Yoruba","Igbo","Hausa","Swahili","Fula"], quotes:[{s:"Ku am kersa, am na nit.",t:"Who has dignity, has humanity."},{s:"Nit, nit ay garabam.",t:"Man is the remedy for man."},{s:"Liggéey moo tax ngoon dem.",t:"Work is what makes the afternoon come — work leads to reward."}]},
   { name:"Tigrinya", family:"Semitic", region:"Africa", script:"Ethiopic", speakers:"~9M", tip:"Tigrinya uses the same Ethiopic (Ge'ez) script as Amharic — circular syllabic characters. Very hard to distinguish from Amharic visually; vocabulary and specific character combinations differ.", confusables:["Amharic","Tigre","Hebrew","Georgian","Armenian"], quotes:[{s:"ዝሓለፈ ዝሓለፈ፤ ወደፊት ዝጸንሕ ዝጸንሕ።",t:"What has passed has passed; what lies ahead awaits."},{s:"ብትዕግስቲ እቲ ዝኸበደ ሽግር ይሓልፍ።",t:"With patience, even the heaviest hardship passes."}]},
 ];
+
+const EASY_LANGS = ["French","Spanish","Portuguese","Italian","German","Dutch","Russian","Arabic","Mandarin Chinese","Japanese","Korean","Hindi","Turkish","Swahili","Greek"];
+const HARD_LANGS = ["Bulgarian","Serbian","Amharic","Tigrinya","Khmer","Myanmar (Burmese)","Nepali","Kannada","Telugu","Urdu","Armenian","Wolof","Hmong","Quechua","Nahuatl","Guaraní","Maya (Yucatec)","Navajo","Hawaiian","Tibetan"];
+
+function getLangPool(level) {
+  if(level==="easy") return LANGUAGES.filter(l=>EASY_LANGS.includes(l.name));
+  if(level==="hard") return LANGUAGES;
+  return LANGUAGES.filter(l=>!HARD_LANGS.includes(l.name));
+}
 
 function shuffle(arr) {
   const a=[...arr];
@@ -148,8 +176,65 @@ function Timer({timeLeft,total=15}) {
   );
 }
 
+function CountdownOverlay({onDone}) {
+  const [phase,setPhase]=useState("flags");
+  const [visible,setVisible]=useState(true);
+  const allFlags=Object.values(LANG_FLAGS);
+  const flagRows=[shuffle([...allFlags]).slice(0,8),shuffle([...allFlags]).slice(0,8),shuffle([...allFlags]).slice(0,8)];
+  useEffect(()=>{
+    const t1=setTimeout(()=>setPhase("go"),1800);
+    const t2=setTimeout(()=>{setVisible(false);onDone();},2500);
+    return()=>{clearTimeout(t1);clearTimeout(t2);};
+  },[]);
+  if(!visible) return null;
+  return (
+    <div style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.85)",zIndex:1000,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",overflow:"hidden"}}>
+      <style>{`
+        @keyframes slideLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+        @keyframes slideRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
+        @keyframes popIn{from{opacity:0;transform:scale(0.5)}to{opacity:1;transform:scale(1)}}
+      `}</style>
+      {phase==="flags"?(
+        <>
+          <div style={{marginBottom:16}}>
+            {flagRows.map((row,ri)=>(
+              <div key={ri} style={{display:"flex",gap:8,marginBottom:8,animation:`${ri%2===0?"slideLeft":"slideRight"} 1.8s linear infinite`}}>
+                {[...row,...row].map((f,i)=><span key={i} style={{fontSize:32,lineHeight:1}}>{f}</span>)}
+              </div>
+            ))}
+          </div>
+          <div style={{color:C.white,fontSize:18,fontWeight:500,letterSpacing:"0.05em",opacity:0.9}}>Get ready...</div>
+        </>
+      ):(
+        <div style={{color:C.coral,fontSize:64,fontWeight:700,letterSpacing:"-2px",animation:"popIn 0.3s cubic-bezier(0.34,1.56,0.64,1)"}}>
+          GO! 🌍
+        </div>
+      )}
+    </div>
+  );
+}
+
+function CorrectPopup({lang,score,onDone}) {
+  const msg=CONGRATS[Math.floor(Math.random()*CONGRATS.length)];
+  const flag=LANG_FLAGS[lang.name]||"🌍";
+  useEffect(()=>{const t=setTimeout(onDone,1400);return()=>clearTimeout(t);},[]);
+  return (
+    <div style={{position:"fixed",inset:0,zIndex:999,display:"flex",alignItems:"center",justifyContent:"center",pointerEvents:"none"}}>
+      <style>{`@keyframes popIn{from{opacity:0;transform:scale(0.5)}to{opacity:1;transform:scale(1)}}`}</style>
+      <div style={{background:C.white,borderRadius:20,padding:"1.5rem 2rem",textAlign:"center",boxShadow:"0 8px 40px rgba(0,0,0,0.18)",animation:"popIn 0.35s cubic-bezier(0.34,1.56,0.64,1)"}}>
+        <div style={{fontSize:52,marginBottom:8}}>{flag}</div>
+        <div style={{fontSize:18,fontWeight:500,color:C.dark,marginBottom:4}}>{msg}</div>
+        <div style={{fontSize:13,color:C.mid}}>{lang.name} · <span style={{color:"#4A9B6F",fontWeight:500}}>+{score} pts</span></div>
+      </div>
+    </div>
+  );
+}
+
 export default function App() {
   const [screen,setScreen]=useState("home");
+  const [showCountdown,setShowCountdown]=useState(false);
+  const [pendingLevel,setPendingLevel]=useState(null);
+  const [showCorrect,setShowCorrect]=useState(null);
   const [questions,setQuestions]=useState([]);
   const [qIndex,setQIndex]=useState(0);
   const [selected,setSelected]=useState(null);
@@ -158,25 +243,33 @@ export default function App() {
   const [phase,setPhase]=useState("question");
   const [timeLeft,setTimeLeft]=useState(15);
   const [streak,setStreak]=useState(0);
+  const [level,setLevel]=useState("medium");
   const [leaderboard,setLeaderboard]=useState([]);
   const timerRef=useRef(null);
 
-  useEffect(()=>{loadLeaderboard();},[]);
+  useEffect(()=>{
+    try{const r=localStorage.getItem("lg_leaderboard");if(r)setLeaderboard(JSON.parse(r));}catch(e){}
+  },[]);
 
-  async function loadLeaderboard() {
-    try{
-      const r=await window.localStorage.getItem("gtl_leaderboard");
-      if(r) setLeaderboard(JSON.parse(r));
-    }catch(e){}
+  function startGame(selectedLevel) {
+    setPendingLevel(selectedLevel);
+    setShowCountdown(true);
   }
 
-  function startGame() {
-    const qs=shuffle(LANGUAGES).slice(0,5).map(lang=>{
+  function actuallyStartGame(selectedLevel) {
+    setLevel(selectedLevel);
+    const pool=getLangPool(selectedLevel);
+    const qs=shuffle(pool).slice(0,5).map(lang=>{
       const q=pickQuote(lang);
       return {lang,options:getOptions(lang,LANGUAGES),sample:q.s,translation:q.t};
     });
     setQuestions(qs);setQIndex(0);setSelected(null);
     setScores([]);setResults([]);setPhase("question");setTimeLeft(15);setStreak(0);setScreen("game");
+  }
+
+  function handleCountdownDone() {
+    setShowCountdown(false);
+    actuallyStartGame(pendingLevel);
   }
 
   useEffect(()=>{
@@ -208,6 +301,7 @@ export default function App() {
     const s=calcScore(base,timeLeft,streak);
     setScores(prev=>[...prev,s]);
     setResults(prev=>[...prev,{lang:q.lang,sample:q.sample,translation:q.translation,guessed:opt,score:s,base,streak:newStreak,timeLeft}]);
+    if(base===10) setShowCorrect({lang:q.lang,score:s});
     setPhase("reveal");
   }
 
@@ -216,101 +310,115 @@ export default function App() {
     else{setQIndex(i=>i+1);setSelected(null);setPhase("question");}
   }
 
-  if(screen==="home") return <Home onStart={startGame} leaderboard={leaderboard}/>;
-  if(screen==="done") return <Done results={results} total={parseFloat(scores.reduce((a,b)=>a+b,0).toFixed(1))} max={questions.length*13} onRestart={()=>setScreen("home")} leaderboard={leaderboard} setLeaderboard={setLeaderboard}/>;
+  if(screen==="home") return (
+    <>
+      {showCountdown&&<CountdownOverlay onDone={handleCountdownDone}/>}
+      <Home onStart={startGame} leaderboard={leaderboard}/>
+    </>
+  );
+  if(screen==="done") return <Done results={results} total={parseFloat(scores.reduce((a,b)=>a+b,0).toFixed(1))} max={questions.length*13} onRestart={()=>setScreen("home")} leaderboard={leaderboard} setLeaderboard={setLeaderboard} level={level}/>;
 
   const q=questions[qIndex];
   const runningScore=parseFloat(scores.reduce((a,b)=>a+b,0).toFixed(1));
   const lastScore=scores[scores.length-1];
 
   return (
-    <div style={{maxWidth:560,margin:"0 auto",padding:"1.25rem 1rem",fontFamily:"sans-serif"}}>
-      <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"0.75rem"}}>
-        <div style={{display:"flex",gap:4}}>
-          {questions.map((_,i)=>(
-            <div key={i} style={{width:24,height:4,borderRadius:99,background:i<qIndex?C.ocean:i===qIndex?C.coral:C.fog}}/>
-          ))}
+    <>
+      {showCorrect&&<CorrectPopup lang={showCorrect.lang} score={showCorrect.score} onDone={()=>setShowCorrect(null)}/>}
+      <div style={{maxWidth:560,margin:"0 auto",padding:"1.25rem 1rem",fontFamily:"sans-serif"}}>
+        <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"0.75rem"}}>
+          <div style={{display:"flex",gap:4}}>
+            {questions.map((_,i)=>(
+              <div key={i} style={{width:24,height:4,borderRadius:99,background:i<qIndex?C.ocean:i===qIndex?C.coral:C.fog}}/>
+            ))}
+          </div>
+          <span style={{fontSize:13,fontWeight:500,color:C.ocean}}>{runningScore} pts</span>
         </div>
-        <span style={{fontSize:13,fontWeight:500,color:C.ocean}}>{runningScore} pts</span>
-      </div>
-      <div style={{marginBottom:"0.75rem"}}><Timer timeLeft={timeLeft}/></div>
-      {streak>=2&&phase==="question"&&(
-        <div style={{background:`${C.coral}18`,border:`1px solid ${C.coral}40`,borderRadius:8,padding:"4px 10px",marginBottom:"0.6rem",fontSize:12,color:C.coral,display:"inline-block"}}>
-          {streak} streak — bonus active!
+        <div style={{marginBottom:"0.75rem"}}><Timer timeLeft={timeLeft}/></div>
+        {streak>=2&&phase==="question"&&(
+          <div style={{background:`${C.coral}18`,border:`1px solid ${C.coral}40`,borderRadius:8,padding:"4px 10px",marginBottom:"0.6rem",fontSize:12,color:C.coral,display:"inline-block"}}>
+            {streak} streak — bonus active!
+          </div>
+        )}
+        <div style={{background:C.fog,borderRadius:16,padding:"1.25rem",marginBottom:"1rem",minHeight:80,display:"flex",alignItems:"center",justifyContent:"center"}}>
+          <p style={{fontSize:18,lineHeight:1.7,margin:0,color:C.dark,fontStyle:"italic",textAlign:"center"}}>"{q.sample}"</p>
         </div>
-      )}
-      <div style={{background:C.fog,borderRadius:16,padding:"1.25rem",marginBottom:"1rem",minHeight:80,display:"flex",alignItems:"center",justifyContent:"center"}}>
-        <p style={{fontSize:18,lineHeight:1.7,margin:0,color:C.dark,fontStyle:"italic",textAlign:"center"}}>"{q.sample}"</p>
-      </div>
-      <p style={{fontSize:11,color:C.mid,marginBottom:"0.5rem",textTransform:"uppercase",letterSpacing:"0.08em"}}>Which language is this?</p>
-      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6,marginBottom:"1rem"}}>
-        {q.options.map(opt=>{
-          let bg=C.white,border=`1.5px solid ${C.fog}`,color=C.dark;
-          if(selected){
-            if(opt.name===q.lang.name){bg=C.ocean;color=C.white;border=`1.5px solid ${C.ocean}`;}
-            else if(opt.name===selected&&selected!==q.lang.name){bg="#FDECEA";color="#A32D2D";border="1.5px solid #E09090";}
-          }
-          return (
-            <button key={opt.name} onClick={()=>handleSelect(opt.name)}
-              style={{background:bg,border,borderRadius:10,padding:"0.6rem 0.85rem",textAlign:"left",cursor:selected?"default":"pointer",fontSize:13,fontWeight:400,color,transition:"all 0.2s",lineHeight:1.3}}>
-              {opt.name}
-            </button>
-          );
-        })}
-      </div>
-      {phase==="reveal"&&(
-        <div style={{background:C.fog,borderRadius:14,padding:"1rem 1.25rem",marginBottom:"0.75rem"}}>
-          <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:8}}>
-            <div>
-              <span style={{fontSize:14,fontWeight:500,color:C.dark}}>
-                {selected===q.lang.name?"Correct!":selected==="__timeout__"?"Time's up!":` It was ${q.lang.name}`}
-              </span>
-              <div style={{fontSize:11,color:C.mid,marginTop:2}}>
-                {lastScore>0&&`+${lastScore} pts`}
-                {results[results.length-1]?.base===10&&results[results.length-1]?.timeLeft>=10?" · speed bonus!":""}
-                {results[results.length-1]?.streak>=2?" · streak bonus!":""}
+        <p style={{fontSize:11,color:C.mid,marginBottom:"0.5rem",textTransform:"uppercase",letterSpacing:"0.08em"}}>Which language is this?</p>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:6,marginBottom:"1rem"}}>
+          {q.options.map(opt=>{
+            let bg=C.white,border=`1.5px solid ${C.fog}`,color=C.dark;
+            if(selected){
+              if(opt.name===q.lang.name){bg=C.ocean;color=C.white;border=`1.5px solid ${C.ocean}`;}
+              else if(opt.name===selected&&selected!==q.lang.name){bg="#FDECEA";color="#A32D2D";border="1.5px solid #E09090";}
+            }
+            return (
+              <button key={opt.name} onClick={()=>handleSelect(opt.name)}
+                style={{background:bg,border,borderRadius:10,padding:"0.6rem 0.85rem",textAlign:"left",cursor:selected?"default":"pointer",fontSize:13,fontWeight:400,color,transition:"all 0.2s",lineHeight:1.3}}>
+                {opt.name}
+              </button>
+            );
+          })}
+        </div>
+        {phase==="reveal"&&(
+          <div style={{background:C.fog,borderRadius:14,padding:"1rem 1.25rem",marginBottom:"0.75rem"}}>
+            <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:8}}>
+              <div>
+                <span style={{fontSize:14,fontWeight:500,color:C.dark}}>
+                  {selected===q.lang.name?"Correct!":selected==="__timeout__"?"Time's up!":`It was ${q.lang.name}`}
+                </span>
+                <div style={{fontSize:11,color:C.mid,marginTop:2}}>
+                  {lastScore>0&&`+${lastScore} pts`}
+                  {results[results.length-1]?.base===10&&results[results.length-1]?.timeLeft>=10?" · speed bonus!":""}
+                  {results[results.length-1]?.streak>=2?" · streak bonus!":""}
+                </div>
               </div>
+              <span style={{fontSize:18,fontWeight:500,color:lastScore>=10?"#4A9B6F":lastScore>=5?C.earth:"#C04040"}}>{lastScore}/13</span>
             </div>
-            <span style={{fontSize:18,fontWeight:500,color:lastScore>=10?"#4A9B6F":lastScore>=5?C.earth:"#C04040"}}>{lastScore}/13</span>
-          </div>
-          <ScoreBar score={lastScore}/>
-          <div style={{margin:"10px 0",padding:"0.75rem 1rem",background:C.white,borderRadius:10,borderLeft:`3px solid ${C.sky}`}}>
-            <p style={{fontSize:13,color:C.dark,margin:"0 0 5px",fontStyle:"italic"}}>"{q.sample}"</p>
-            <p style={{fontSize:12,color:C.mid,margin:0}}>"{q.translation}"</p>
-          </div>
-          {results[results.length-1]?.lang?.tip&&(
-            <div style={{padding:"0.65rem 0.85rem",background:`${C.ocean}12`,borderRadius:10,borderLeft:`3px solid ${C.ocean}`,marginBottom:8}}>
-              <p style={{fontSize:11,color:C.ocean,fontWeight:500,margin:"0 0 3px",textTransform:"uppercase",letterSpacing:"0.06em"}}>How to spot {results[results.length-1].lang.name}</p>
-              <p style={{fontSize:12,color:C.dark,margin:0,lineHeight:1.5}}>{results[results.length-1].lang.tip}</p>
+            <ScoreBar score={lastScore}/>
+            <div style={{margin:"10px 0",padding:"0.75rem 1rem",background:C.white,borderRadius:10,borderLeft:`3px solid ${C.sky}`}}>
+              <p style={{fontSize:13,color:C.dark,margin:"0 0 5px",fontStyle:"italic"}}>"{q.sample}"</p>
+              <p style={{fontSize:12,color:C.mid,margin:0}}>"{q.translation}"</p>
             </div>
-          )}
-          <div style={{display:"flex",gap:8,flexWrap:"wrap",alignItems:"center",marginBottom:8}}>
-            <FamilyTag family={q.lang.family}/>
-            <span style={{fontSize:12,color:C.mid}}>{q.lang.script}</span>
-            <span style={{fontSize:12,color:C.light}}>·</span>
-            <span style={{fontSize:12,color:C.mid}}>{q.lang.region}</span>
-            <span style={{fontSize:12,color:C.light}}>·</span>
-            <span style={{fontSize:12,color:C.mid}}>{q.lang.speakers} speakers</span>
+            {results[results.length-1]?.lang?.tip&&(
+              <div style={{padding:"0.65rem 0.85rem",background:`${C.ocean}12`,borderRadius:10,borderLeft:`3px solid ${C.ocean}`,marginBottom:8}}>
+                <p style={{fontSize:11,color:C.ocean,fontWeight:500,margin:"0 0 3px",textTransform:"uppercase",letterSpacing:"0.06em"}}>How to spot {results[results.length-1].lang.name}</p>
+                <p style={{fontSize:12,color:C.dark,margin:0,lineHeight:1.5}}>{results[results.length-1].lang.tip}</p>
+              </div>
+            )}
+            <div style={{display:"flex",gap:8,flexWrap:"wrap",alignItems:"center",marginBottom:8}}>
+              <FamilyTag family={q.lang.family}/>
+              <span style={{fontSize:12,color:C.mid}}>{q.lang.script}</span>
+              <span style={{fontSize:12,color:C.light}}>·</span>
+              <span style={{fontSize:12,color:C.mid}}>{q.lang.region}</span>
+              <span style={{fontSize:12,color:C.light}}>·</span>
+              <span style={{fontSize:12,color:C.mid}}>{q.lang.speakers} speakers</span>
+            </div>
+            {selected!==q.lang.name&&results[results.length-1]?.base===5&&<p style={{fontSize:12,color:C.earth,margin:"0 0 8px"}}>Same language family — close!</p>}
+            {selected!==q.lang.name&&results[results.length-1]?.base===3&&<p style={{fontSize:12,color:C.sky,margin:"0 0 8px"}}>Same script — you spotted the alphabet!</p>}
+            {selected!==q.lang.name&&results[results.length-1]?.base===2&&<p style={{fontSize:12,color:C.mid,margin:"0 0 8px"}}>Same region — not too far!</p>}
+            <button onClick={next} style={{width:"100%",padding:"0.65rem",borderRadius:99,border:"none",background:C.coral,color:C.white,cursor:"pointer",fontSize:14,fontWeight:500}}>
+              {qIndex+1>=questions.length?"See results":"Next question"}
+            </button>
           </div>
-          {selected!==q.lang.name&&results[results.length-1]?.base===5&&<p style={{fontSize:12,color:C.earth,margin:"0 0 8px"}}>Same language family — close!</p>}
-          {selected!==q.lang.name&&results[results.length-1]?.base===3&&<p style={{fontSize:12,color:C.sky,margin:"0 0 8px"}}>Same script — you spotted the alphabet!</p>}
-          {selected!==q.lang.name&&results[results.length-1]?.base===2&&<p style={{fontSize:12,color:C.mid,margin:"0 0 8px"}}>Same region — not too far!</p>}
-          <button onClick={next} style={{width:"100%",padding:"0.65rem",borderRadius:99,border:"none",background:C.coral,color:C.white,cursor:"pointer",fontSize:14,fontWeight:500}}>
-            {qIndex+1>=questions.length?"See results":"Next question"}
-          </button>
-        </div>
-      )}
-    </div>
+        )}
+      </div>
+    </>
   );
 }
 
 function Home({onStart,leaderboard}) {
+  const [level,setLevel]=useState("medium");
+  const levels=[
+    {id:"easy",label:"Easy",desc:"Common world languages only"},
+    {id:"medium",label:"Medium",desc:"Mix of major & regional"},
+    {id:"hard",label:"Hard",desc:"Includes rare & indigenous"},
+  ];
   return (
     <div style={{maxWidth:420,margin:"0 auto",padding:"2rem 1rem",textAlign:"center",fontFamily:"sans-serif"}}>
       <div style={{width:52,height:52,borderRadius:14,background:C.ocean,margin:"0 auto 1rem",display:"flex",alignItems:"center",justifyContent:"center"}}>
-        <span style={{color:C.white,fontSize:18,fontWeight:500}}>GL</span>
+        <span style={{color:C.white,fontSize:18,fontWeight:500}}>LG</span>
       </div>
-      <h1 style={{fontSize:26,fontWeight:500,margin:"0 0 0.4rem",color:C.dark,letterSpacing:"-0.5px"}}>GuessTheLanguage</h1>
+      <h1 style={{fontSize:26,fontWeight:500,margin:"0 0 0.4rem",color:C.dark,letterSpacing:"-0.5px"}}>LanguageGuessr</h1>
       <p style={{color:C.mid,fontSize:14,marginBottom:"0.75rem",lineHeight:1.6}}>
         How fast can you identify a language?<br/>5 rounds to challenge your friends!
       </p>
@@ -319,7 +427,19 @@ function Home({onStart,leaderboard}) {
         <div style={{marginBottom:4}}>+ up to <span style={{color:C.ocean,fontWeight:500}}>2 pts</span> speed bonus (answer correctly within 5s!)</div>
         <div>+ up to <span style={{color:C.ocean,fontWeight:500}}>1 pt</span> streak bonus (2+ correct in a row)</div>
       </div>
-      <button onClick={onStart} style={{width:"100%",padding:"0.85rem",borderRadius:99,border:"none",background:C.coral,color:C.white,cursor:"pointer",fontSize:16,fontWeight:500,marginBottom:"1rem"}}>
+      <div style={{marginBottom:"1rem",textAlign:"left"}}>
+        <p style={{fontSize:12,color:C.mid,margin:"0 0 6px",textTransform:"uppercase",letterSpacing:"0.06em",fontWeight:500}}>Difficulty</p>
+        <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:6}}>
+          {levels.map(l=>(
+            <button key={l.id} onClick={()=>setLevel(l.id)}
+              style={{padding:"0.6rem 0.5rem",borderRadius:10,border:`1.5px solid ${level===l.id?C.ocean:C.fog}`,background:level===l.id?`${C.ocean}12`:C.white,cursor:"pointer",textAlign:"center"}}>
+              <div style={{fontSize:13,fontWeight:500,color:level===l.id?C.ocean:C.dark}}>{l.label}</div>
+              <div style={{fontSize:10,color:C.mid,marginTop:2,lineHeight:1.3}}>{l.desc}</div>
+            </button>
+          ))}
+        </div>
+      </div>
+      <button onClick={()=>onStart(level)} style={{width:"100%",padding:"0.85rem",borderRadius:99,border:"none",background:C.coral,color:C.white,cursor:"pointer",fontSize:16,fontWeight:500,marginBottom:"1rem"}}>
         Start game
       </button>
       {leaderboard.length>0&&(
@@ -327,7 +447,7 @@ function Home({onStart,leaderboard}) {
           <p style={{fontSize:12,fontWeight:500,color:C.dark,margin:"0 0 0.6rem",textTransform:"uppercase",letterSpacing:"0.06em"}}>Leaderboard</p>
           {leaderboard.slice(0,8).map((e,i)=>(
             <div key={i} style={{display:"flex",justifyContent:"space-between",alignItems:"center",padding:"4px 0",borderBottom:i<Math.min(leaderboard.length,8)-1?`1px solid ${C.light}30`:"none"}}>
-              <span style={{fontSize:13,color:i===0?C.coral:C.dark,fontWeight:i===0?500:400}}>{i+1}. {e.name}</span>
+              <span style={{fontSize:13,color:i===0?C.coral:C.dark,fontWeight:i===0?500:400}}>{i+1}. {e.name} <span style={{fontSize:10,color:C.light}}>({e.level||"medium"})</span></span>
               <span style={{fontSize:13,fontWeight:500,color:C.ocean}}>{e.score}<span style={{fontSize:11,color:C.light}}> pts</span></span>
             </div>
           ))}
@@ -338,20 +458,21 @@ function Home({onStart,leaderboard}) {
   );
 }
 
-function Done({results,total,max,onRestart,leaderboard,setLeaderboard}) {
+function Done({results,total,max,onRestart,leaderboard,setLeaderboard,level}) {
   const [nickname,setNickname]=useState("");
   const [submitted,setSubmitted]=useState(false);
   const pct=Math.round((total/max)*100);
   const label=pct===100?"Polyglot legend":pct>=70?"Language lover":pct>=40?"Decent detective":"Keep exploring!";
-  const shareText=`GuessTheLanguage — ${total}/${max} pts · ${label}\n${results.map((r,i)=>`Q${i+1}: ${r.guessed===r.lang.name?"✓":r.guessed+" → "+r.lang.name} (${r.score}/13)`).join("\n")}`;
+  const gameUrl="https://guessthelanguage-liard.vercel.app/";
+  const shareText=`LanguageGuessr — ${total}/${max} pts · ${label}\n${results.map((r,i)=>`Q${i+1}: ${r.guessed===r.lang.name?"✅":"❌"} (${r.score}/13)`).join("\n")}\nTry to beat me: ${gameUrl}`;
 
   function submitScore() {
     if(!nickname.trim()) return;
-    const entry={name:nickname.trim(),score:total,date:new Date().toLocaleDateString()};
+    const entry={name:nickname.trim(),score:total,level,date:new Date().toLocaleDateString()};
     const board=[...leaderboard,entry].sort((a,b)=>b.score-a.score).slice(0,10);
     setLeaderboard(board);
     setSubmitted(true);
-    try{window.localStorage.setItem("gtl_leaderboard",JSON.stringify(board));}catch(e){}
+    try{localStorage.setItem("lg_leaderboard",JSON.stringify(board));}catch(e){}
   }
 
   return (
@@ -416,14 +537,35 @@ function Done({results,total,max,onRestart,leaderboard,setLeaderboard}) {
           </div>
         ))}
       </div>
-      <div style={{display:"flex",gap:8}}>
+      <div style={{display:"flex",gap:8,marginBottom:8}}>
         <button onClick={onRestart} style={{flex:1,padding:"0.7rem",borderRadius:99,border:`1.5px solid ${C.ocean}`,background:C.white,color:C.ocean,cursor:"pointer",fontSize:14,fontWeight:500}}>
           Play again
         </button>
-        <button onClick={()=>navigator.clipboard.writeText(shareText).catch(()=>{})} style={{flex:1,padding:"0.7rem",borderRadius:99,border:"none",background:C.coral,color:C.white,cursor:"pointer",fontSize:14,fontWeight:500}}>
-          Copy score
-        </button>
+        {navigator.share?(
+          <button onClick={()=>navigator.share({title:"LanguageGuessr",text:shareText}).catch(()=>{})}
+            style={{flex:1,padding:"0.7rem",borderRadius:99,border:"none",background:C.coral,color:C.white,cursor:"pointer",fontSize:14,fontWeight:500}}>
+            Share score ↗
+          </button>
+        ):(
+          <button onClick={()=>navigator.clipboard.writeText(shareText).catch(()=>{})}
+            style={{flex:1,padding:"0.7rem",borderRadius:99,border:"none",background:C.coral,color:C.white,cursor:"pointer",fontSize:14,fontWeight:500}}>
+            Copy score
+          </button>
+        )}
       </div>
+      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr 1fr",gap:6}}>
+        {[
+          {label:"WhatsApp",color:"#25D366",url:`https://wa.me/?text=${encodeURIComponent(shareText)}`},
+          {label:"Telegram",color:"#229ED9",url:`https://t.me/share/url?url=${encodeURIComponent(gameUrl)}&text=${encodeURIComponent(shareText)}`},
+          {label:"X / Twitter",color:"#000000",url:`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}`},
+        ].map(({label,color,url})=>(
+          <a key={label} href={url} target="_blank" rel="noopener noreferrer"
+            style={{display:"block",padding:"0.55rem",borderRadius:8,border:`1.5px solid ${color}30`,background:`${color}10`,color,cursor:"pointer",fontSize:12,fontWeight:500,textAlign:"center",textDecoration:"none"}}>
+            {label}
+          </a>
+        ))}
+      </div>
+      {!navigator.share&&<p style={{fontSize:11,color:C.light,textAlign:"center",marginTop:6}}>iMessage / Messenger: copy score then paste</p>}
     </div>
   );
 }
