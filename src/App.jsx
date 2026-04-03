@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 const C = {
   ocean:"#42708C", sky:"#7EADBF", earth:"#8C6746", coral:"#F25A38",
@@ -300,6 +301,7 @@ export default function App() {
           </button>
         </div>
       )}
+      <Analytics />
     </div>
   );
 }
