@@ -1632,20 +1632,24 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
             </div>
           </>
         ):(
-          <>
-            <h2 style={{fontSize:"15px",fontWeight:600,color:C.dark,margin:"0 0 0.75rem"}}>
-              🌍 Global leaderboard
-            </h2>
-            {leaderboard.slice(0,5).map((e,i)=>{
-              const medals=["🥇","🥈","🥉","4️⃣","5️⃣"];
-              return (
+          {(()=>{
+            const modeBoard=leaderboard.filter(e=>(e.mode||"classic")===mode).slice(0,5);
+            const medals=["🥇","🥈","🥉","4️⃣","5️⃣"];
+            const modeLabel=mode.charAt(0).toUpperCase()+mode.slice(1);
+            return (<>
+              <h2 style={{fontSize:"15px",fontWeight:600,color:C.dark,margin:"0 0 0.75rem"}}>
+                🌍 {modeLabel} leaderboard
+              </h2>
+              {modeBoard.length===0?(
+                <p style={{fontSize:"14px",color:C.muted,margin:0}}>No {modeLabel} scores yet.</p>
+              ):modeBoard.map((e,i)=>(
                 <div key={i} style={{display:"flex",justifyContent:"space-between",alignItems:"center",
-                  padding:"7px 0",borderBottom:i<Math.min(leaderboard.length,5)-1?`1px solid ${C.fogDk}`:"none"}}>
+                  padding:"7px 0",borderBottom:i<modeBoard.length-1?`1px solid ${C.fogDk}`:"none"}}>
                   <div style={{display:"flex",alignItems:"center",gap:8}}>
                     <span aria-hidden="true" style={{fontSize:"18px"}}>{medals[i]}</span>
                     <div>
                       <p style={{fontSize:"15px",color:i===0?C.coral:C.dark,fontWeight:i===0?600:400,margin:"0 0 1px"}}>{e.name}</p>
-                      <p style={{fontSize:"12px",color:C.muted,margin:0}}>{e.mode||"classic"} · {e.date}</p>
+                      <p style={{fontSize:"12px",color:C.muted,margin:0}}>{e.date}</p>
                     </div>
                   </div>
                   <span style={{fontSize:"16px",fontWeight:700,color:C.ocean}}>
@@ -1654,9 +1658,9 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
                     </span>
                   </span>
                 </div>
-              );
-            })}
-          </>
+              ))}
+            </>);
+          })()}
         )}
       </section>
 
