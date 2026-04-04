@@ -313,19 +313,19 @@ const LANGUAGES = [
   { name:"Mandarin Chinese", family:"Sino-Tibetan", region:"East Asia", script:"Chinese (Simplified)", speakers:"~1.1B (L1+L2)",
     tip:"Simplified Chinese uses streamlined characters with fewer strokes. No spaces between words. Characters flow continuously.",
     confusables:["Cantonese","Japanese","Korean"],
-    quotes:[{s:"Qian li zhi xing, shi yu zu xia.",t:"A journey of a thousand miles begins with a single step."},{s:"Ji suo bu yu, wu shi yu ren.",t:"Do not do to others what you do not want done to yourself."}]},
+    quotes:[{s:"千里之行，始于足下。",t:"A journey of a thousand miles begins with a single step."},{s:"己所不欲，勿施于人。",t:"Do not do to others what you do not want done to yourself."}]},
   { name:"Cantonese", family:"Sino-Tibetan", region:"East Asia", script:"Chinese (Traditional)", speakers:"~85M (L1+L2)",
     tip:"Cantonese uses Traditional Chinese with more strokes than Simplified. Look for characters in traditional form with more complex stroke patterns.",
     confusables:["Mandarin Chinese","Japanese","Korean"],
-    quotes:[{s:"Lou yiu zi ma lik, yat gau gin yan sam.",t:"Distance tests a horse's strength. Time reveals a person's heart."}]},
+    quotes:[{s:"路遙知馬力，日久見人心。",t:"Distance tests a horse's strength. Time reveals a person's heart."},{s:"天下無難事，只怕有心人。",t:"Nothing is difficult to a determined person."}]},
   { name:"Japanese", family:"Japonic", region:"East Asia", script:"Japanese", speakers:"~125M (L1+L2)",
     tip:"Japanese mixes three scripts: Hiragana curved round letters, Katakana angular letters, and Kanji Chinese characters. The simultaneous mix of all three is uniquely Japanese.",
     confusables:["Mandarin Chinese","Cantonese","Korean"],
-    quotes:[{s:"Nana korobi ya oki.",t:"Fall seven times, stand up eight."},{s:"Keizoku wa chikara nari.",t:"Continuity is power."}]},
+    quotes:[{s:"七転び八起き。",t:"Fall seven times, stand up eight."},{s:"継続は力なり。",t:"Continuity is power."},{s:"急がば回れ。",t:"More haste, less speed."}]},
   { name:"Korean", family:"Koreanic", region:"East Asia", script:"Korean", speakers:"~82M (L1+L2)",
     tip:"Korean Hangul uses geometric blocks of circles and lines. Each block is a syllable combining consonants and vowels. The round letters are very distinctive.",
     confusables:["Japanese","Mandarin Chinese","Cantonese","Mongolian"],
-    quotes:[{s:"Sijagi bani da.",t:"Starting is half the battle."}]},
+    quotes:[{s:"시작이 반이다.",t:"Starting is half the battle."},{s:"세 살 버릇 여든까지 간다.",t:"Habits formed at three last until eighty."}]},
   { name:"Mongolian", family:"Mongolic", region:"East Asia", script:"Cyrillic", speakers:"~6M (L1+L2)",
     tip:"Mongolian Cyrillic looks like Russian but uses letters not in standard Russian. Words are longer and vocabulary is completely unlike Slavic languages.",
     confusables:["Russian","Bulgarian","Ukrainian","Kazakh","Serbian"],
@@ -982,7 +982,7 @@ function Home({onStart,leaderboard}) {
   },[lbFilter,leaderboard]);
 
   const modes=[
-    {id:"classic",icon:"🔵",label:"Classic",sub:"6 rounds",desc:"2 easy + 2 medium + 2 hard. Score as high as you can."},
+    {id:"classic",icon:"🔵",label:"Classic",sub:"6 rounds",desc:"6 rounds: score as high as you can!"},
     {id:"survival",icon:"🔴",label:"Survival",sub:"How far can you go?",desc:"Answer correctly to keep playing. One wrong answer ends the game."},
     {id:"blitz",icon:"🟡",label:"Blitz",sub:"60 seconds",desc:"Answer as many as you can before the clock runs out."},
   ];
@@ -1103,7 +1103,28 @@ function Home({onStart,leaderboard}) {
   );
 }
 
-// ── CLASSIC MODE (6 questions, 2+2+2) ────────────────────────────────────
+// ── GAME NAV BAR (logo + back button shown during gameplay) ──────────────
+function GameNav({onHome}) {
+  return (
+    <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",
+      padding:"0.75rem 1rem",borderBottom:`1px solid ${C.border}`,
+      background:C.white,position:"sticky",top:0,zIndex:100}}>
+      <button onClick={onHome} aria-label="Go back to home"
+        style={{...btnBase,background:"transparent",border:"none",
+          gap:8,padding:"4px 8px",minHeight:36,color:C.ocean,fontWeight:700,fontSize:"16px"}}>
+        <span aria-hidden="true" style={{width:28,height:28,borderRadius:8,background:C.ocean,
+          display:"flex",alignItems:"center",justifyContent:"center",
+          color:C.white,fontSize:"13px",fontWeight:700,flexShrink:0}}>LG</span>
+        LanguageGuessr
+      </button>
+      <button onClick={onHome} aria-label="Quit and go home"
+        style={{...btnBase,background:"transparent",border:`1px solid ${C.border}`,
+          color:C.mid,fontSize:"13px",padding:"4px 12px",minHeight:32,borderRadius:99}}>
+        ✕ Quit
+      </button>
+    </div>
+  );
+}
 function ClassicGame({onDone}) {
   const TOTAL=6;
   const [questions]=useState(()=>{
@@ -1165,8 +1186,10 @@ function ClassicGame({onDone}) {
   const runningScore=parseFloat(scores.reduce((a,b)=>a+b,0).toFixed(1));
 
   return (
-    <main style={{maxWidth:560,margin:"0 auto",padding:"1.25rem 1rem",fontFamily:"sans-serif",color:C.dark}}>
+    <main style={{maxWidth:560,margin:"0 auto",fontFamily:"sans-serif",color:C.dark}}>
       {showCorrect&&<CorrectPopup lang={showCorrect.lang} score={showCorrect.score} onDone={()=>setShowCorrect(null)}/>}
+      <GameNav onHome={onHome}/>
+      <div style={{padding:"1rem 1rem"}}>
       <header style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"0.75rem"}}>
         <div style={{display:"flex",gap:6}} role="progressbar" aria-valuenow={qIndex} aria-valuemax={TOTAL}
           aria-label={`Question ${qIndex+1} of ${TOTAL}`}>
@@ -1190,12 +1213,13 @@ function ClassicGame({onDone}) {
         phase={phase} lastResult={results[results.length-1]}
         onNext={next} isLast={qIndex+1>=TOTAL}
         showTimer={true} timeLeft={timeLeft}/>
+      </div>
     </main>
   );
 }
 
 // ── SURVIVAL MODE ─────────────────────────────────────────────────────────
-function SurvivalGame({onDone}) {
+function SurvivalGame({onDone, onHome}) {
   const pool=useRef(shuffle(LANGUAGES));
   const poolIdx=useRef(0);
   const [currentQ,setCurrentQ]=useState(()=>{
@@ -1233,9 +1257,15 @@ function SurvivalGame({onDone}) {
     setSelected(opt);
     setScores(p=>[...p,s]);
     setResults(p=>[...p,r]);
-    if(base===10) setShowCorrect({lang:q.lang,score:s});
-    if(base===0){setAlive(false);setPhase("dead");}
-    else{setStreak(base===10?streak+1:0);setPhase("reveal");}
+    if(base===10){
+      setShowCorrect({lang:q.lang,score:s});
+      setStreak(streak+1);
+      setPhase("reveal");
+    } else {
+      // Wrong or timeout — eliminated immediately, go straight to results
+      setAlive(false);
+      onDone([...results,r],[...scores,s],"survival");
+    }
   }
 
   function handleSelect(opt){
@@ -1254,14 +1284,18 @@ function SurvivalGame({onDone}) {
     setSelected(null);setPhase("question");
   }
 
+  const correctCount=results.filter(r=>r.base===10).length;
+
   return (
-    <main style={{maxWidth:560,margin:"0 auto",padding:"1.25rem 1rem",fontFamily:"sans-serif",color:C.dark}}>
+    <main style={{maxWidth:560,margin:"0 auto",fontFamily:"sans-serif",color:C.dark}}>
       {showCorrect&&<CorrectPopup lang={showCorrect.lang} score={showCorrect.score} onDone={()=>setShowCorrect(null)}/>}
+      <GameNav onHome={onHome}/>
+      <div style={{padding:"1rem 1rem"}}>
       <header style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"0.75rem"}}>
         <div style={{display:"flex",alignItems:"center",gap:8}}>
           <span style={{fontSize:"20px"}} aria-hidden="true">🔴</span>
           <span style={{fontSize:"16px",fontWeight:600,color:C.dark}}>Survival</span>
-          <span style={{fontSize:"14px",color:C.mid}}>· {results.length} answered</span>
+          <span style={{fontSize:"14px",color:C.mid}}>· {correctCount} correct</span>
         </div>
         <span style={{fontSize:"14px",fontWeight:600,color:C.ocean}} aria-live="polite">
           {parseFloat(scores.reduce((a,b)=>a+b,0).toFixed(1))} pts
@@ -1279,19 +1313,20 @@ function SurvivalGame({onDone}) {
           marginBottom:"1rem",border:`2px solid ${C.error}`,textAlign:"center"}}>
           <p style={{fontSize:"24px",margin:"0 0 4px"}} aria-hidden="true">💀</p>
           <p style={{fontSize:"18px",fontWeight:700,color:C.error,margin:"0 0 4px"}}>Game over!</p>
-          <p style={{fontSize:"15px",color:C.mid,margin:0}}>You survived {results.length-1} correct answers</p>
+          <p style={{fontSize:"15px",color:C.mid,margin:0}}>You got {correctCount} correct in a row</p>
         </div>
       )}
       <QuestionCard q={currentQ} selected={selected} onSelect={handleSelect}
         phase={phase==="dead"?"reveal":phase} lastResult={results[results.length-1]}
         onNext={next} isLast={!alive}
         showTimer={alive} timeLeft={timeLeft}/>
+      </div>
     </main>
   );
 }
 
 // ── BLITZ MODE (60 seconds) ───────────────────────────────────────────────
-function BlitzGame({onDone}) {
+function BlitzGame({onDone, onHome}) {
   const BLITZ_TIME=60;
   const pool=useRef(shuffle(LANGUAGES));
   const poolIdx=useRef(0);
@@ -1308,14 +1343,24 @@ function BlitzGame({onDone}) {
   const [streak,setStreak]=useState(0);
   const [showCorrect,setShowCorrect]=useState(null);
   const globalTimerRef=useRef(null);
-  const ended=useRef(false);
+  const doneRef=useRef(false);
+  const resultsRef=useRef([]);
+  const scoresRef=useRef([]);
+
+  // Keep refs in sync so the timer callback can access latest state
+  useEffect(()=>{resultsRef.current=results;},[results]);
+  useEffect(()=>{scoresRef.current=scores;},[scores]);
 
   useEffect(()=>{
     globalTimerRef.current=setInterval(()=>{
       setTimeLeft(t=>{
         if(t<=1){
           clearInterval(globalTimerRef.current);
-          if(!ended.current){ended.current=true;}
+          if(!doneRef.current){
+            doneRef.current=true;
+            // Use setTimeout to ensure state updates have flushed
+            setTimeout(()=>onDone(resultsRef.current,scoresRef.current,"blitz"),100);
+          }
           return 0;
         }
         return t-1;
@@ -1324,21 +1369,13 @@ function BlitzGame({onDone}) {
     return()=>clearInterval(globalTimerRef.current);
   },[]);
 
-  // When time hits 0, end game
-  useEffect(()=>{
-    if(timeLeft===0&&!ended.current){
-      ended.current=true;
-      onDone(results,scores,"blitz");
-    }
-  },[timeLeft]);
-
   function handleSelect(opt){
-    if(selected||timeLeft===0) return;
+    if(selected||doneRef.current) return;
     const q=currentQ;
     const base=baseScore(opt,q.lang,LANGUAGES);
     const newStreak=base===10?streak+1:0;
     setStreak(newStreak);
-    const s=calcScore(base,15,streak); // no per-question timer in blitz
+    const s=calcScore(base,15,streak);
     setSelected(opt);
     setScores(p=>[...p,s]);
     setResults(p=>[...p,{lang:q.lang,sample:q.sample,translation:q.translation,guessed:opt,score:s,base,timeLeft:15,streak:newStreak}]);
@@ -1347,7 +1384,7 @@ function BlitzGame({onDone}) {
   }
 
   function next(){
-    if(timeLeft===0){onDone(results,scores,"blitz");return;}
+    if(doneRef.current){onDone(resultsRef.current,scoresRef.current,"blitz");return;}
     poolIdx.current++;
     if(poolIdx.current>=pool.current.length){pool.current=shuffle(LANGUAGES);poolIdx.current=0;}
     const lang=pool.current[poolIdx.current];
@@ -1360,8 +1397,10 @@ function BlitzGame({onDone}) {
   const correct=results.filter(r=>r.base===10).length;
 
   return (
-    <main style={{maxWidth:560,margin:"0 auto",padding:"1.25rem 1rem",fontFamily:"sans-serif",color:C.dark}}>
+    <main style={{maxWidth:560,margin:"0 auto",fontFamily:"sans-serif",color:C.dark}}>
       {showCorrect&&<CorrectPopup lang={showCorrect.lang} score={showCorrect.score} onDone={()=>setShowCorrect(null)}/>}
+      <GameNav onHome={onHome}/>
+      <div style={{padding:"1rem 1rem"}}>
       <header style={{marginBottom:"0.75rem"}}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:8}}>
           <div style={{display:"flex",alignItems:"center",gap:8}}>
@@ -1383,6 +1422,7 @@ function BlitzGame({onDone}) {
         phase={phase} lastResult={results[results.length-1]}
         onNext={next} isLast={timeLeft<=3}
         showTimer={false} timeLeft={15}/>
+      </div>
     </main>
   );
 }
@@ -1395,7 +1435,7 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
   const correct=results.filter(r=>r.base===10).length;
   const pct=Math.round((correct/Math.max(results.length,1))*100);
 
-  const modeLabels={classic:`${correct}/${results.length} correct`,survival:`${results.length-1} survived`,blitz:`${correct} in 60s`};
+  const modeLabels={classic:`${correct}/${results.length} correct`,survival:`${correct} correct in a row`,blitz:`${correct} in 60s`};
   const label=mode==="survival"?(results.length<=3?"Better luck next time":results.length<=8?"Good run!":"Unstoppable!"):
     pct===100?"Polyglot legend":pct>=70?"Language lover":pct>=50?"Decent detective":"Keep exploring!";
 
@@ -1622,11 +1662,11 @@ export default function App() {
       {screen==="home"&&<Home onStart={handleStart} leaderboard={leaderboard}/>}
 
       {screen==="game"&&mode==="classic"&&
-        <ClassicGame onDone={handleDone}/>}
+        <ClassicGame onDone={handleDone} onHome={handleRestart}/>}
       {screen==="game"&&mode==="survival"&&
-        <SurvivalGame onDone={handleDone}/>}
+        <SurvivalGame onDone={handleDone} onHome={handleRestart}/>}
       {screen==="game"&&mode==="blitz"&&
-        <BlitzGame onDone={handleDone}/>}
+        <BlitzGame onDone={handleDone} onHome={handleRestart}/>}
 
       {screen==="done"&&gameResults&&
         <Done results={gameResults} scores={gameScores} mode={mode}
