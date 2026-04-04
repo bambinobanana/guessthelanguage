@@ -52,7 +52,7 @@ const LANG_FLAGS = {
   "Tamil":"🇱🇰","Kannada":"🇮🇳","Telugu":"🇮🇳","Turkish":"🇹🇷","Swahili":"🇰🇪",
   "Yoruba":"🇳🇬","Zulu":"🇿🇦","Greek":"🇬🇷","Georgian":"🇬🇪","Armenian":"🇦🇲",
   "Finnish":"🇫🇮","Hungarian":"🇭🇺","Hmong":"🌏","Quechua":"🇵🇪","Nahuatl":"🇲🇽",
-  "Guarani":"🇵🇾","Maya (Yucatec)":"🇲🇽","Navajo":"🇺🇸","Hawaiian":"🇺🇸","Maori":"🇳🇿",
+  "Guarani":"🇵🇾","Maya (Yucatec)":"🇲🇽","Navajo":"🇺🇸","Hawaiian":"🇺🇸","Māori":"🇳🇿",
   "Tibetan":"🏔️","Wolof":"🇸🇳","Tigrinya":"🇪🇷","Tetum":"🇹🇱","Catalan":"🏳️",
   "Galician":"🏴","Basque":"🏴","Welsh":"🏴","Irish":"🇮🇪","Scottish Gaelic":"🏴",
   "Breton":"🏳️","Maltese":"🇲🇹","Albanian":"🇦🇱","Macedonian":"🇲🇰","Slovenian":"🇸🇮",
@@ -111,17 +111,17 @@ const LANGUAGES = [
     confusables:["Spanish","Portuguese","French","Romanian"],
     quotes:[{s:"La vita e bella quando hai qualcuno con cui condividerla.",t:"Life is beautiful when you have someone to share it with."},{s:"Tutto e bene quel che finisce bene.",t:"All is well that ends well."}]},
   { name:"Romanian", family:"Romance", region:"Europe", script:"Latin", speakers:"~24M (L1+L2)",
-    tip:"Romanian is unique among Romance languages for letters a-breve, s-comma, t-comma. It looks vaguely Italian but has Slavic-influenced spellings.",
+    tip:"Romanian is unique among Romance languages for letters ă, â, î, ș, ț. It looks vaguely Italian but has Slavic-influenced spellings.",
     confusables:["Italian","Spanish","Portuguese","French"],
-    quotes:[{s:"Omul sfinteste locul, nu locul pe om.",t:"The person sanctifies the place, not the place the person."},{s:"Graba strica treaba.",t:"Haste makes waste."}]},
+    quotes:[{s:"Omul sfințește locul, nu locul pe om.",t:"The person sanctifies the place, not the place the person."},{s:"Graba strică treaba.",t:"Haste makes waste."}]},
   { name:"Catalan", family:"Romance", region:"Europe", script:"Latin", speakers:"~10M (L1+L2)",
-    tip:"Catalan looks like a blend of Spanish and French. Key giveaways: the midpoint dot in words, endings like -cio and -ment. No n-tilde unlike Spanish.",
+    tip:"Catalan looks like a blend of Spanish and French. Key giveaways: the midpoint dot · in words like col·legi, endings like -ció and -ment. No ñ unlike Spanish.",
     confusables:["Spanish","Portuguese","French","Italian","Occitan"],
-    quotes:[{s:"Qui no s'arrisca, no pisca.",t:"Nothing ventured, nothing gained."},{s:"Val mes tard que mai.",t:"Better late than never."}]},
+    quotes:[{s:"Qui no s'arrisca, no pisca.",t:"Nothing ventured, nothing gained."},{s:"Val més tard que mai.",t:"Better late than never."}]},
   { name:"Galician", family:"Romance", region:"Europe", script:"Latin", speakers:"~2.4M (L1+L2)",
-    tip:"Galician looks very close to Portuguese with nh and lh digraphs. Unlike Spanish there is no n-tilde. Confusable with both Spanish and Portuguese.",
+    tip:"Galician looks very close to Portuguese with nh and lh digraphs. Unlike Spanish there is no ñ. Confusable with both Spanish and Portuguese.",
     confusables:["Portuguese","Spanish","Catalan","Italian","Occitan"],
-    quotes:[{s:"Quen non arrisca, non gana.",t:"He who does not risk, does not gain."},{s:"A lingua e a alma do pobo.",t:"Language is the soul of the people."}]},
+    quotes:[{s:"Quen non arrisca, non gaña.",t:"He who does not risk, does not gain."},{s:"A lingua é a alma do pobo.",t:"Language is the soul of the people."}]},
   { name:"Occitan", family:"Romance", region:"Europe", script:"Latin", speakers:"~200K (L1+L2)",
     tip:"Occitan looks like a blend of French, Spanish, and Catalan. Look for words ending in -oc and -al. Often confused with Catalan.",
     confusables:["Catalan","French","Spanish","Italian","Galician"],
@@ -191,53 +191,53 @@ const LANGUAGES = [
     confusables:["Russian","Ukrainian","Bulgarian","Macedonian"],
     quotes:[{s:"Khto shukaye, toy znakhodzits.",t:"He who seeks, finds."}]},
   { name:"Slovenian", family:"Slavic", region:"Europe", script:"Latin", speakers:"~2.5M (L1+L2)",
-    tip:"Slovenian uses Latin with c-caron, s-caron, z-caron. It has a unique dual grammatical number. Look for the word je meaning is.",
+    tip:"Slovenian uses Latin with č, š, ž. It has a unique dual grammatical number (separate forms for exactly two of something). Look for the word je meaning is and frequent -ski, -ška endings.",
     confusables:["Croatian","Serbian","Czech","Slovak","Polish"],
-    quotes:[{s:"Kdor isce, ta najde.",t:"He who seeks, finds."}]},
+    quotes:[{s:"Kdor išče, ta najde.",t:"He who seeks, finds."},{s:"Bolje vrabec v roki kot golob na strehi.",t:"Better a sparrow in the hand than a pigeon on the roof."}]},
   { name:"Croatian", family:"Slavic", region:"Europe", script:"Latin", speakers:"~5.5M (L1+L2)",
-    tip:"Croatian uses Latin with c-caron, c-acute, s-caron, z-caron, d-stroke. The letters c-acute and d-stroke distinguish it from Serbian.",
+    tip:"Croatian uses Latin with č, ć, š, ž, đ. The letters ć and đ distinguish it from Serbian. Look for the word nije meaning is not.",
     confusables:["Slovenian","Serbian","Slovak","Czech"],
-    quotes:[{s:"Bolje sprijeciti nego lijeciti.",t:"Better to prevent than to cure."},{s:"Tko trazi, taj i nalazi.",t:"He who seeks, finds."}]},
+    quotes:[{s:"Bolje spriječiti nego liječiti.",t:"Better to prevent than to cure."},{s:"Tko traži, taj i nalazi.",t:"He who seeks, finds."}]},
   { name:"Slovak", family:"Slavic", region:"Europe", script:"Latin", speakers:"~5M (L1+L2)",
-    tip:"Slovak uses Latin with c-caron, s-caron, z-caron and uniquely the letters l-caron soft l. The caron and acute diacritics appear frequently.",
+    tip:"Slovak uses Latin with č, š, ž and uniquely the letter ľ (soft l) and syllabic consonants ŕ, ĺ. The háček and dĺžeň diacritics appear frequently.",
     confusables:["Czech","Slovenian","Polish","Croatian","Ukrainian"],
-    quotes:[{s:"Kde je vola, tam je aj cesta.",t:"Where there is a will, there is a way."},{s:"Trpezlivost ruze prinasa.",t:"Patience brings roses."}]},
+    quotes:[{s:"Kde je vôľa, tam je aj cesta.",t:"Where there is a will, there is a way."},{s:"Trpezlivosť ruže prináša.",t:"Patience brings roses."}]},
   { name:"Polish", family:"Slavic", region:"Europe", script:"Latin", speakers:"~45M (L1+L2)",
-    tip:"Polish uses Latin with many unique letters: a-ogonek, c-acute, e-ogonek, l-stroke, n-acute, o-acute, s-acute, z-acute, z-dot. The l-stroke pronounced like English w is a strong giveaway.",
+    tip:"Polish uses Latin with many unique letters: ą, ć, ę, ł, ń, ó, ś, ź, ż. The ł pronounced like English w is a strong giveaway. Look for sz, cz, rz combinations.",
     confusables:["Czech","Slovak","Belarusian","Lithuanian","Ukrainian"],
-    quotes:[{s:"Nie ma tego zlego, co by na dobre nie wyszlo.",t:"There is no evil that does not turn into something good."},{s:"Czas to pieniadz.",t:"Time is money."}]},
+    quotes:[{s:"Nie ma tego złego, co by na dobre nie wyszło.",t:"There is no evil that does not turn into something good."},{s:"Czas to pieniądz.",t:"Time is money."}]},
   { name:"Czech", family:"Slavic", region:"Europe", script:"Latin", speakers:"~11M (L1+L2)",
-    tip:"Czech uses Latin with c-caron, d-caron, e-caron, n-caron, r-caron, s-caron, t-caron, z-caron. The r-caron is a unique consonant not found in any other language.",
+    tip:"Czech uses Latin with č, ď, ě, ň, ř, š, ť, ž. The ř is a unique consonant not found in any other language — a rolled r with simultaneous zh sound.",
     confusables:["Slovak","Polish","Slovenian","Croatian"],
-    quotes:[{s:"Kdo hleda, ten najde.",t:"He who seeks, finds."},{s:"Bez prace nejsou kolace.",t:"Without work there are no cakes."}]},
+    quotes:[{s:"Kdo hledá, ten najde.",t:"He who seeks, finds."},{s:"Bez práce nejsou koláče.",t:"Without work there are no cakes."}]},
   { name:"Lithuanian", family:"Baltic", region:"Europe", script:"Latin", speakers:"~3M (L1+L2)",
-    tip:"Lithuanian is one of the oldest living Indo-European languages. Look for letters a-ogonek, c-caron, e-ogonek, e-dot, i-ogonek, s-caron, u-ogonek, u-macron, z-caron. Words tend to be long.",
+    tip:"Lithuanian is one of the oldest living Indo-European languages. Look for letters ą, č, ę, ė, į, š, ų, ū, ž. The double vowel ė and the nasal vowels ą, ę, į, ų are distinctive.",
     confusables:["Latvian","Estonian","Polish","Finnish"],
-    quotes:[{s:"Kas iesko, tas randa.",t:"He who seeks, finds."},{s:"Geriau veliau negu niekada.",t:"Better late than never."}]},
+    quotes:[{s:"Kas ieško, tas randa.",t:"He who seeks, finds."},{s:"Geriau vėliau negu niekada.",t:"Better late than never."}]},
   { name:"Latvian", family:"Baltic", region:"Europe", script:"Latin", speakers:"~1.5M (L1+L2)",
-    tip:"Latvian uses macrons for long vowels like a-macron, e-macron, i-macron, u-macron and has c-caron, g-cedilla, k-cedilla, l-cedilla, n-cedilla, s-caron, z-caron. Almost all nouns end in -s or -a.",
+    tip:"Latvian uses macrons for long vowels: ā, ē, ī, ū and has č, ģ, ķ, ļ, ņ, š, ž. The cedilla variants ģ, ķ, ļ, ņ are unique to Latvian. Almost all nouns end in -s or -a.",
     confusables:["Lithuanian","Estonian","Finnish","Slovenian"],
-    quotes:[{s:"Kas mekle, tas atrod.",t:"He who seeks, finds."},{s:"Valoda ir tautas dvesele.",t:"Language is the soul of the nation."}]},
+    quotes:[{s:"Kas meklē, tas atrod.",t:"He who seeks, finds."},{s:"Valoda ir tautas dvēsele.",t:"Language is the soul of the nation."}]},
   { name:"Finnish", family:"Uralic", region:"Europe", script:"Latin", speakers:"~5M (L1+L2)",
-    tip:"Finnish has no articles, double vowels and consonants everywhere like aa, ee, ll, kk, and very long words. The letters a-umlaut and o-umlaut are common.",
+    tip:"Finnish has no articles, double vowels and consonants everywhere: aa, ee, ll, kk. The letters ä and ö are very common. Words like kyllä and ei are distinctively Finnish.",
     confusables:["Estonian","Hungarian","Turkish","Latvian"],
-    quotes:[{s:"Ei se ole viisas, joka viisaasti ei puhu.",t:"It is not wise who does not speak wisely."},{s:"Tyo tekijaansa kiittaa.",t:"Work praises its maker."}]},
+    quotes:[{s:"Ei se ole viisas, joka viisaasti ei puhu.",t:"It is not wise who does not speak wisely."},{s:"Työ tekijäänsä kiittää.",t:"Work praises its maker."}]},
   { name:"Hungarian", family:"Uralic", region:"Europe", script:"Latin", speakers:"~13M (L1+L2)",
-    tip:"Hungarian uses long vowels with double accents: a-acute, e-acute, i-acute, o-acute, o-double-acute, u-acute, u-double-acute. The double-acute o and u are unique to Hungarian.",
+    tip:"Hungarian uses long vowels with double accents: á, é, í, ó, ő, ú, ű. The double-acute ő and ű are unique to Hungarian and found in no other language.",
     confusables:["Finnish","Estonian","Turkish","Romanian","Czech"],
-    quotes:[{s:"Aki mer, az nyer.",t:"He who dares, wins."},{s:"Lassan jarj, tovabb ersz.",t:"Go slowly, you will get further."}]},
+    quotes:[{s:"Aki mer, az nyer.",t:"He who dares, wins."},{s:"Lassan járj, tovább érsz.",t:"Go slowly, you will get further."}]},
   { name:"Estonian", family:"Uralic", region:"Europe", script:"Latin", speakers:"~1.1M (L1+L2)",
-    tip:"Estonian is related to Finnish, not to Latvian or Lithuanian. Look for the unique letter o-tilde, a-umlaut, o-umlaut, u-umlaut. Very long compound words.",
+    tip:"Estonian is related to Finnish, not to Latvian or Lithuanian. Look for the unique letter õ, and ä, ö, ü. Estonian has three vowel lengths and very long compound words.",
     confusables:["Finnish","Latvian","Lithuanian","Hungarian"],
-    quotes:[{s:"Kus viga naed laita, seal taida ise.",t:"Where you see a fault, fix it yourself."}]},
+    quotes:[{s:"Kus viga näed laita, seal täida ise.",t:"Where you see a fault, fix it yourself."},{s:"Töö kiidab tegijat.",t:"Work praises its maker."}]},
   { name:"Welsh", family:"Celtic", region:"Europe", script:"Latin", speakers:"~880K (L1+L2)",
-    tip:"Welsh uses Latin but with striking consonant clusters: dd like th, ll a voiceless lateral, rh, ch, ng. Words like dw in and mae are distinctively Welsh.",
+    tip:"Welsh uses Latin but with striking consonant clusters: dd like th, ll a voiceless lateral, rh, ch, ng. Words like dw i and mae are distinctively Welsh.",
     confusables:["Breton","Irish","Scottish Gaelic"],
-    quotes:[{s:"Nid aur yw popeth melyn.",t:"All that glitters is not gold."},{s:"Heb iaith, heb galon.",t:"Without language, without heart."}]},
+    quotes:[{s:"Nid aur yw popeth melyn.",t:"All that glitters is not gold."},{s:"Heb iaith, heb galon.",t:"Without language, without heart."},{s:"Dyfal donc a dyr y garreg.",t:"Persistent tapping breaks the stone."}]},
   { name:"Irish", family:"Celtic", region:"Europe", script:"Latin", speakers:"~1.8M (L1+L2)",
-    tip:"Irish uses Latin but words change their first letter in mutations. The combination mh and bh are pronounced v. Very unusual spelling-to-sound relationship.",
+    tip:"Irish uses Latin but words change their first letter in mutations: bean becomes mbean or bhean. The combination mh and bh are pronounced v. Very unusual spelling-to-sound relationship.",
     confusables:["Welsh","Scottish Gaelic","Breton"],
-    quotes:[{s:"Is fearr Gaeilge bhriste na Bearla cliste.",t:"Broken Irish is better than clever English."},{s:"Ni neart go cur le cheile.",t:"There is no strength without unity."}]},
+    quotes:[{s:"Is fearr Gaeilge bhriste ná Béarla cliste.",t:"Broken Irish is better than clever English."},{s:"Ní neart go cur le chéile.",t:"There is no strength without unity."}]},
   { name:"Scottish Gaelic", family:"Celtic", region:"Europe", script:"Latin", speakers:"~57K (L1+L2)",
     tip:"Scottish Gaelic looks like Irish but uses grave accents only. Look for tha meaning is which appears constantly, and apostrophes for contractions.",
     confusables:["Irish","Welsh","Breton"],
@@ -251,9 +251,9 @@ const LANGUAGES = [
     confusables:["Armenian","Georgian","Hebrew","Coptic"],
     quotes:[{s:"I archi einai to imisy toy pantos.",t:"The beginning is half of everything."},{s:"Gnothi sauton.",t:"Know thyself."}]},
   { name:"Albanian", family:"Indo-European (isolate)", region:"Europe", script:"Latin", speakers:"~7.5M (L1+L2)",
-    tip:"Albanian is a language isolate in Indo-European. Look for the letter e-umlaut as schwa and digraphs dh, gj, ll, nj, rr, sh, th, xh, zh. Many two-letter combinations unique to Albanian.",
+    tip:"Albanian is a language isolate in Indo-European. Look for the letter ë (schwa) and digraphs dh, gj, ll, nj, rr, sh, th, xh, zh. Many two-letter combinations unique to Albanian.",
     confusables:["Romanian","Serbian","Macedonian","Croatian","Bulgarian"],
-    quotes:[{s:"Ku ka dashuri, ka jete.",t:"Where there is love, there is life."},{s:"Dija eshte fuqia me e madhe.",t:"Knowledge is the greatest power."}]},
+    quotes:[{s:"Ku ka dashuri, ka jetë.",t:"Where there is love, there is life."},{s:"Dija është fuqia më e madhe.",t:"Knowledge is the greatest power."}]},
   { name:"Maltese", family:"Semitic", region:"Europe", script:"Latin", speakers:"~520K (L1+L2)",
     tip:"Maltese is the only Semitic language written in Latin script. It has Arabic roots but heavy Italian and English influence. Look for the unique letters gh with bar, h with bar, and c with dot.",
     confusables:["Arabic","Italian","Hebrew","Catalan"],
@@ -343,9 +343,9 @@ const LANGUAGES = [
     confusables:["Mongolian","Russian","Kazakh","Kyrgyz"],
     quotes:[{s:"Erdem dalai, tengeri khyazaar.",t:"Knowledge is the ocean, the sky is the limit."}]},
   { name:"Vietnamese", family:"Austroasiatic", region:"Southeast Asia", script:"Latin (tonal)", speakers:"~96M (L1+L2)",
-    tip:"Vietnamese uses Latin with an extraordinary number of stacked diacritical marks. Tone marks pile up on letters. No other Latin script language looks like this.",
+    tip:"Vietnamese uses Latin with an extraordinary number of stacked diacritical marks. Tone marks pile up on letters like ộ, ẫ, ướ. No other Latin script language looks like this.",
     confusables:["Hmong","Thai","Tagalog","Malay","Indonesian"],
-    quotes:[{s:"Co cong mai sat, co ngay nen kim.",t:"With enough perseverance iron can be ground into a needle."},{s:"Loi noi khong mat tien mua.",t:"Words cost nothing."}]},
+    quotes:[{s:"Có công mài sắt, có ngày nên kim.",t:"With enough perseverance iron can be ground into a needle."},{s:"Lời nói không mất tiền mua.",t:"Words cost nothing."}]},
   { name:"Thai", family:"Kra-Dai", region:"Southeast Asia", script:"Thai", speakers:"~61M (L1+L2)",
     tip:"Thai has rounded characters with small circles and loops, no spaces between words, and vowels that appear above, below, or around consonants.",
     confusables:["Khmer","Lao","Myanmar (Burmese)","Kannada","Sinhala"],
@@ -467,17 +467,17 @@ const LANGUAGES = [
     confusables:["Odia","Bengali","Myanmar (Burmese)","Khmer","Tibetan"],
     quotes:[{s:"Parha akana alo em akana.",t:"Learning is light, ignorance is darkness."}]},
   { name:"Turkish", family:"Turkic", region:"Middle East / Europe", script:"Latin", speakers:"~88M (L1+L2)",
-    tip:"Turkish uses Latin with c-cedilla, s-cedilla, g-breve, i-dotless, o-umlaut, u-umlaut. The dotless i is a unique giveaway. Words tend to be very long due to agglutination.",
+    tip:"Turkish uses Latin with ç, ş, ğ, ı (dotless i), ö, ü. The dotless ı is a unique giveaway. Words tend to be very long due to agglutination.",
     confusables:["Azerbaijani","Uzbek","Kazakh","Kyrgyz","Indonesian"],
-    quotes:[{s:"Damlaya damlaya gol olur.",t:"Drop by drop a lake is formed."},{s:"Sabreden dervis muradina ermis.",t:"The patient dervish reached his goal."}]},
+    quotes:[{s:"Damlaya damlaya göl olur.",t:"Drop by drop a lake is formed."},{s:"Sabreden derviş muradına ermiş.",t:"The patient dervish reached his goal."}]},
   { name:"Azerbaijani", family:"Turkic", region:"Caucasus / Middle East", script:"Latin", speakers:"~35M (L1+L2)",
-    tip:"Azerbaijani uses Latin with letters including e-schwa, g-breve, i-dotless, o-umlaut, s-cedilla, u-umlaut, c-cedilla. Very similar to Turkish. The schwa letter e distinguishes it from Turkish.",
+    tip:"Azerbaijani uses Latin with letters including ə (schwa), ğ, ı (dotless), ö, ş, ü, ç. Very similar to Turkish. The ə distinguishes it from Turkish.",
     confusables:["Turkish","Uzbek","Kazakh","Kyrgyz"],
-    quotes:[{s:"Sabr et, qizil taparsan.",t:"Be patient, you will find gold."}]},
+    quotes:[{s:"Səbr et, qızıl taparsan.",t:"Be patient, you will find gold."}]},
   { name:"Uzbek", family:"Turkic", region:"Central Asia", script:"Latin", speakers:"~44M (L1+L2)",
-    tip:"Uzbek uses Latin script with letters o-apostrophe and g-apostrophe representing specific Uzbek sounds. These apostrophe-modified letters are uniquely Uzbek.",
+    tip:"Uzbek uses Latin script with letters oʻ and gʻ (with curly apostrophe) representing specific Uzbek sounds. These modified letters are uniquely Uzbek.",
     confusables:["Turkish","Azerbaijani","Kazakh","Kyrgyz"],
-    quotes:[{s:"Ilm nurdir.",t:"Knowledge is light."},{s:"Sabr qilgan murodiga yetgan.",t:"He who is patient reaches his goal."}]},
+    quotes:[{s:"Ilm — nurdir.",t:"Knowledge is light."},{s:"Sabr qilgan — murodiga yetgan.",t:"He who is patient reaches his goal."}]},
   { name:"Kazakh", family:"Turkic", region:"Central Asia", script:"Cyrillic", speakers:"~19M (L1+L2)",
     tip:"Kazakh is currently written in Cyrillic with eight extra letters not in Russian. These distinctive characters make Kazakh recognizable among Cyrillic scripts.",
     confusables:["Kyrgyz","Mongolian","Russian","Uzbek"],
@@ -554,10 +554,10 @@ const LANGUAGES = [
     tip:"Hawaiian has only 13 letters total, 5 vowels and 8 consonants. Words are extremely vowel-heavy with open syllables. The okina apostrophe glottal stop and macron are key markers.",
     confusables:["Maori","Samoan","Tagalog","Malay","Indonesian"],
     quotes:[{s:"Aohe hana nui ke alu ia.",t:"No task is too great when done together."},{s:"I ola no i ka pono.",t:"Righteousness is life."}]},
-  { name:"Maori", family:"Austronesian", region:"Pacific (New Zealand)", script:"Latin", speakers:"~185K (L1+L2)",
-    tip:"Maori uses Latin with macrons on long vowels. Vowel-heavy like Hawaiian. Look for wh pronounced f and ng at word starts.",
+  { name:"Māori", family:"Austronesian", region:"Pacific (New Zealand)", script:"Latin", speakers:"~185K (L1+L2)",
+    tip:"Māori uses Latin with macrons on long vowels (ā, ē, ī, ō, ū). Vowel-heavy like Hawaiian. Look for wh pronounced f and ng at word starts.",
     confusables:["Hawaiian","Samoan","Tagalog","Indonesian","Malay"],
-    quotes:[{s:"He aha te mea nui o te ao? He tangata, he tangata, he tangata.",t:"What is the greatest thing in the world? It is people, it is people, it is people."},{s:"Ehara taku toa i te toa takitahi, engari he toa takitini.",t:"My strength is not that of a single warrior but that of many."}]},
+    quotes:[{s:"He aha te mea nui o te ao? He tāngata, he tāngata, he tāngata.",t:"What is the greatest thing in the world? It is people, it is people, it is people."},{s:"Ehara taku toa i te toa takitahi, engari he toa takitini.",t:"My strength is not that of a single warrior but that of many."}]},
   { name:"Quechua", family:"Quechuan", region:"South America (Andes)", script:"Latin", speakers:"~10M (L1+L2)",
     tip:"Quechua uses Latin but with very frequent q and k, and apostrophes for ejective consonants. Words often end in -y, -pi, -kta, -wan suffixes.",
     confusables:["Aymara","Nahuatl","Guarani","Maya (Yucatec)"],
@@ -617,14 +617,21 @@ function getDifficulty(name) {
   return "medium";
 }
 
-// Build a mixed question set: equal easy/medium/hard rounded to n total
-function buildMixedPool(n) {
-  const easy=shuffle(LANGUAGES.filter(l=>EASY_NAMES.has(l.name)));
-  const medium=shuffle(LANGUAGES.filter(l=>!EASY_NAMES.has(l.name)&&!HARD_NAMES.has(l.name)));
-  const hard=shuffle(LANGUAGES.filter(l=>HARD_NAMES.has(l.name)));
-  const per=Math.floor(n/3);
-  const rem=n-per*3;
-  return shuffle([...easy.slice(0,per),...medium.slice(0,per),...hard.slice(0,per+rem)]);
+// Build survival pool: 10 easy → 10 medium → 10 hard (then repeat hard)
+function buildSurvivalPool() {
+  const easy = shuffle(LANGUAGES.filter(l => EASY_NAMES.has(l.name))).slice(0, 10);
+  const medium = shuffle(LANGUAGES.filter(l => !EASY_NAMES.has(l.name) && !HARD_NAMES.has(l.name))).slice(0, 10);
+  const hard = shuffle(LANGUAGES.filter(l => HARD_NAMES.has(l.name)));
+  return [...easy, ...medium, ...hard];
+}
+  const easy = shuffle(LANGUAGES.filter(l => EASY_NAMES.has(l.name)));
+  const medium = shuffle(LANGUAGES.filter(l => !EASY_NAMES.has(l.name) && !HARD_NAMES.has(l.name)));
+  const hard = shuffle(LANGUAGES.filter(l => HARD_NAMES.has(l.name)));
+  return shuffle([
+    ...easy.slice(0, 2),
+    ...medium.slice(0, 2),
+    ...hard.slice(0, 2),
+  ]);
 }
 
 function getOptions(correct, all) {
@@ -844,7 +851,7 @@ function CorrectPopup({lang,score,onDone}) {
 }
 
 // ── QUESTION CARD (shared between Classic, Survival, Blitz) ──────────────
-function QuestionCard({q, selected, onSelect, phase, lastResult, onNext, isLast, showTimer, timeLeft}) {
+function QuestionCard({q, selected, onSelect, phase, lastResult, onNext, isLast, showTimer, timeLeft, hideTip=false}) {
   const lastScore=lastResult?.score??0;
   return (
     <>
@@ -991,10 +998,9 @@ function Home({onStart,leaderboard}) {
   return (
     <main style={{maxWidth:480,margin:"0 auto",padding:"2rem 1rem",fontFamily:"sans-serif",color:C.dark}}>
       <header style={{textAlign:"center",marginBottom:"1.5rem"}}>
-        <div style={{width:56,height:56,borderRadius:14,background:C.ocean,margin:"0 auto 1rem",
-          display:"flex",alignItems:"center",justifyContent:"center"}} aria-hidden="true">
-          <span style={{color:C.white,fontSize:"20px",fontWeight:700}}>LG</span>
-        </div>
+        <div style={{width:56,height:56,borderRadius:14,margin:"0 auto 1rem",overflow:"hidden"}} aria-hidden="true">
+        <img src="/mainlogo.png" alt="LanguageGuessr logo" style={{width:"100%",height:"100%",objectFit:"cover"}}/>
+      </div>
         <h1 style={{fontSize:"28px",fontWeight:700,margin:"0 0 0.5rem",color:C.dark,letterSpacing:"-0.5px"}}>
           LanguageGuessr
         </h1>
@@ -1003,23 +1009,7 @@ function Home({onStart,leaderboard}) {
         </p>
       </header>
 
-      {/* Scoring info */}
-      <section aria-label="Scoring" style={{background:C.fog,borderRadius:12,padding:"1rem",
-        marginBottom:"1.25rem",border:`1px solid ${C.border}`}}>
-        <h2 style={{fontSize:"13px",fontWeight:600,color:C.mid,margin:"0 0 8px",
-          textTransform:"uppercase",letterSpacing:"0.08em"}}>Scoring</h2>
-        <ul style={{margin:0,padding:0,listStyle:"none",display:"flex",flexDirection:"column",gap:4}}>
-          <li style={{fontSize:"15px",color:C.dark}}>
-            <strong style={{color:C.ocean}}>10 pts</strong> — correct answer
-          </li>
-          <li style={{fontSize:"15px",color:C.dark}}>
-            <strong style={{color:C.ocean}}>+2 pts</strong> — speed bonus (answer within 5s)
-          </li>
-          <li style={{fontSize:"15px",color:C.dark}}>
-            <strong style={{color:C.ocean}}>+1 pt</strong> — streak bonus (2+ correct in a row)
-          </li>
-        </ul>
-      </section>
+
 
       {/* Mode selector */}
       <section aria-label="Game mode" style={{marginBottom:"1.25rem"}}>
@@ -1112,9 +1102,8 @@ function GameNav({onHome}) {
       <button onClick={onHome} aria-label="Go back to home"
         style={{...btnBase,background:"transparent",border:"none",
           gap:8,padding:"4px 8px",minHeight:36,color:C.ocean,fontWeight:700,fontSize:"16px"}}>
-        <span aria-hidden="true" style={{width:28,height:28,borderRadius:8,background:C.ocean,
-          display:"flex",alignItems:"center",justifyContent:"center",
-          color:C.white,fontSize:"13px",fontWeight:700,flexShrink:0}}>LG</span>
+        <img src="/mainlogo.png" alt="LanguageGuessr logo"
+          style={{width:28,height:28,borderRadius:8,objectFit:"cover",flexShrink:0}}/>
         LanguageGuessr
       </button>
       <button onClick={onHome} aria-label="Quit and go home"
@@ -1128,7 +1117,7 @@ function GameNav({onHome}) {
 function ClassicGame({onDone}) {
   const TOTAL=6;
   const [questions]=useState(()=>{
-    const pool=buildMixedPool(TOTAL);
+    const pool=buildMixedPool();
     return pool.map(lang=>{const q=pickQuote(lang);return{lang,options:getOptions(lang,LANGUAGES),sample:q.s,translation:q.t};});
   });
   const [qIndex,setQIndex]=useState(0);
@@ -1220,106 +1209,171 @@ function ClassicGame({onDone}) {
 
 // ── SURVIVAL MODE ─────────────────────────────────────────────────────────
 function SurvivalGame({onDone, onHome}) {
-  const pool=useRef(shuffle(LANGUAGES));
-  const poolIdx=useRef(0);
-  const [currentQ,setCurrentQ]=useState(()=>{
-    const lang=pool.current[0];
-    const q=pickQuote(lang);
-    return {lang,options:getOptions(lang,LANGUAGES),sample:q.s,translation:q.t};
-  });
-  const [selected,setSelected]=useState(null);
-  const [scores,setScores]=useState([]);
-  const [results,setResults]=useState([]);
-  const [phase,setPhase]=useState("question");
-  const [timeLeft,setTimeLeft]=useState(15);
-  const [streak,setStreak]=useState(0);
-  const [showCorrect,setShowCorrect]=useState(null);
-  const [alive,setAlive]=useState(true);
-  const timerRef=useRef(null);
+  const pool = useRef(buildSurvivalPool());
+  const poolIdx = useRef(0);
+
+  function makeQ(lang) {
+    const q = pickQuote(lang);
+    // 4 options only: correct + 3 confusables/random
+    const confuse = (lang.confusables||[]).map(n=>LANGUAGES.find(l=>l.name===n)).filter(Boolean);
+    const confusePick = shuffle(confuse).slice(0, 2);
+    const remaining = shuffle(LANGUAGES.filter(l=>l.name!==lang.name&&!confusePick.find(c=>c.name===l.name)));
+    const options = shuffle([lang, ...confusePick, ...remaining.slice(0, 3-confusePick.length)]).slice(0, 4);
+    return {lang, options, sample:q.s, translation:q.t};
+  }
+
+  const [currentQ, setCurrentQ] = useState(()=>makeQ(pool.current[0]));
+  const [selected, setSelected] = useState(null);
+  const [score, setScore] = useState(0); // just count of correct answers
+  const [results, setResults] = useState([]);
+  const [phase, setPhase] = useState("question");
+  const [timeLeft, setTimeLeft] = useState(15);
+  const [showCorrect, setShowCorrect] = useState(null);
+  const timerRef = useRef(null);
+
+  // Current difficulty label for display
+  const idx = poolIdx.current;
+  const currentDiff = idx < 10 ? "Easy" : idx < 20 ? "Medium" : "Hard";
+  const currentDiffColor = idx < 10 ? C.success : idx < 20 ? C.earth : C.error;
 
   useEffect(()=>{
-    if(phase!=="question"||!alive) return;
+    if(phase !== "question") return;
     setTimeLeft(15);
-    timerRef.current=setInterval(()=>{
+    timerRef.current = setInterval(()=>{
       setTimeLeft(t=>{
-        if(t<=1){clearInterval(timerRef.current);handleEnd("__timeout__");return 0;}
+        if(t<=1){clearInterval(timerRef.current); handleSelect("__timeout__"); return 0;}
         return t-1;
       });
-    },1000);
+    }, 1000);
     return()=>clearInterval(timerRef.current);
-  },[phase,alive,results.length]);
+  }, [phase, results.length]);
 
-  function handleEnd(opt){
-    const q=currentQ;
-    const base=baseScore(opt,q.lang,LANGUAGES);
-    const s=calcScore(base,timeLeft,streak);
-    const r={lang:q.lang,sample:q.sample,translation:q.translation,guessed:opt,score:s,base,timeLeft,streak};
+  function handleSelect(opt) {
+    if(selected || phase==="reveal") return;
+    clearInterval(timerRef.current);
+    const q = currentQ;
+    const correct = opt === q.lang.name;
+    const r = {lang:q.lang, sample:q.sample, translation:q.translation, guessed:opt, score:correct?1:0, base:correct?10:0, timeLeft, streak:0};
     setSelected(opt);
-    setScores(p=>[...p,s]);
-    setResults(p=>[...p,r]);
-    if(base===10){
-      setShowCorrect({lang:q.lang,score:s});
-      setStreak(streak+1);
+    setResults(p=>[...p, r]);
+    if(correct) {
+      setScore(s=>s+1);
+      setShowCorrect({lang:q.lang, score:1});
       setPhase("reveal");
     } else {
-      // Wrong or timeout — eliminated immediately, go straight to results
-      setAlive(false);
-      onDone([...results,r],[...scores,s],"survival");
+      // Eliminated — go straight to results
+      onDone([...results, r], Array(results.length).fill(1).concat([0]), "survival");
     }
   }
 
-  function handleSelect(opt){
-    if(selected||phase!=="question") return;
-    clearInterval(timerRef.current);
-    handleEnd(opt);
-  }
-
-  function next(){
-    if(!alive){onDone(results,scores,"survival");return;}
+  function next() {
     poolIdx.current++;
-    if(poolIdx.current>=pool.current.length){pool.current=shuffle(LANGUAGES);poolIdx.current=0;}
-    const lang=pool.current[poolIdx.current];
-    const q=pickQuote(lang);
-    setCurrentQ({lang,options:getOptions(lang,LANGUAGES),sample:q.s,translation:q.t});
-    setSelected(null);setPhase("question");
+    // If we've exhausted the pool, keep cycling hard languages
+    if(poolIdx.current >= pool.current.length) {
+      const hardLangs = shuffle(LANGUAGES.filter(l=>HARD_NAMES.has(l.name)));
+      pool.current = [...pool.current, ...hardLangs];
+    }
+    const lang = pool.current[poolIdx.current];
+    setCurrentQ(makeQ(lang));
+    setSelected(null);
+    setPhase("question");
   }
 
-  const correctCount=results.filter(r=>r.base===10).length;
+  const correctCount = results.filter(r=>r.base===10).length;
 
   return (
-    <main style={{maxWidth:560,margin:"0 auto",fontFamily:"sans-serif",color:C.dark}}>
+    <main style={{maxWidth:560, margin:"0 auto", fontFamily:"sans-serif", color:C.dark}}>
       {showCorrect&&<CorrectPopup lang={showCorrect.lang} score={showCorrect.score} onDone={()=>setShowCorrect(null)}/>}
       <GameNav onHome={onHome}/>
-      <div style={{padding:"1rem 1rem"}}>
-      <header style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"0.75rem"}}>
-        <div style={{display:"flex",alignItems:"center",gap:8}}>
-          <span style={{fontSize:"20px"}} aria-hidden="true">🔴</span>
-          <span style={{fontSize:"16px",fontWeight:600,color:C.dark}}>Survival</span>
-          <span style={{fontSize:"14px",color:C.mid}}>· {correctCount} correct</span>
+      <div style={{padding:"1rem"}}>
+        <header style={{display:"flex", justifyContent:"space-between", alignItems:"center", marginBottom:"0.75rem"}}>
+          <div style={{display:"flex", alignItems:"center", gap:8}}>
+            <span style={{fontSize:"20px"}} aria-hidden="true">🔴</span>
+            <span style={{fontSize:"16px", fontWeight:600, color:C.dark}}>Survival</span>
+            <span style={{fontSize:"14px", color:C.mid}}>· {correctCount} correct</span>
+          </div>
+          <span style={{fontSize:"13px", fontWeight:600, color:currentDiffColor,
+            background:`${currentDiffColor}18`, borderRadius:99, padding:"2px 10px",
+            border:`1px solid ${currentDiffColor}30`}}>
+            {currentDiff}
+          </span>
+        </header>
+        <div style={{marginBottom:"0.75rem"}}><Timer timeLeft={timeLeft}/></div>
+
+        {/* Quote card */}
+        <div style={{background:C.fog, borderRadius:16, padding:"1.25rem", marginBottom:"1rem",
+          minHeight:80, display:"flex", alignItems:"center", justifyContent:"center",
+          border:`1px solid ${C.border}`}}>
+          <p style={{fontSize:"18px", lineHeight:1.7, margin:0, color:C.dark, fontStyle:"italic",
+            textAlign:"center", maxWidth:"52ch"}}>
+            "{currentQ.sample}"
+          </p>
         </div>
-        <span style={{fontSize:"14px",fontWeight:600,color:C.ocean}} aria-live="polite">
-          {parseFloat(scores.reduce((a,b)=>a+b,0).toFixed(1))} pts
-        </span>
-      </header>
-      {streak>=2&&phase==="question"&&(
-        <p role="status" style={{fontSize:"14px",color:C.coral,fontWeight:600,margin:"0 0 8px",
-          padding:"4px 12px",background:`${C.coral}15`,borderRadius:8,display:"inline-block",
-          border:`1px solid ${C.coral}30`}}>
-          {streak} streak!
+
+        <p style={{fontSize:"14px", color:C.mid, marginBottom:"0.5rem", fontWeight:500,
+          textTransform:"uppercase", letterSpacing:"0.08em"}}>
+          Which language is this?
         </p>
-      )}
-      {phase==="dead"&&(
-        <div role="alert" style={{background:"#FDECEA",borderRadius:12,padding:"1rem",
-          marginBottom:"1rem",border:`2px solid ${C.error}`,textAlign:"center"}}>
-          <p style={{fontSize:"24px",margin:"0 0 4px"}} aria-hidden="true">💀</p>
-          <p style={{fontSize:"18px",fontWeight:700,color:C.error,margin:"0 0 4px"}}>Game over!</p>
-          <p style={{fontSize:"15px",color:C.mid,margin:0}}>You got {correctCount} correct in a row</p>
+
+        {/* 4 options */}
+        <div style={{display:"grid", gridTemplateColumns:"1fr 1fr", gap:8, marginBottom:"1rem"}}>
+          {currentQ.options.map(opt=>{
+            const isCorrect = opt.name===currentQ.lang.name;
+            const isWrong = opt.name===selected && !isCorrect;
+            let bg=C.white, border=`2px solid ${C.border}`, color=C.dark, icon=null;
+            if(selected){
+              if(isCorrect){bg="#EBF7EF"; border=`2px solid ${C.success}`; color=C.success; icon="✓";}
+              else if(isWrong){bg="#FDECEA"; border=`2px solid ${C.error}`; color=C.error; icon="✗";}
+            }
+            return (
+              <button key={opt.name} onClick={()=>handleSelect(opt.name)}
+                disabled={!!selected}
+                aria-pressed={opt.name===selected}
+                style={{...btnBase, background:bg, border, color, padding:"0.6rem 0.85rem",
+                  textAlign:"left", justifyContent:"flex-start", minHeight:"52px",
+                  fontSize:"15px", fontWeight:400, gap:6,
+                  cursor:selected?"default":"pointer",
+                  opacity:selected&&!isCorrect&&!isWrong?0.5:1,
+                  transition:TRANSITION}}>
+                {icon&&<span aria-hidden="true" style={{fontWeight:700, fontSize:"16px"}}>{icon}</span>}
+                {opt.name}
+              </button>
+            );
+          })}
         </div>
-      )}
-      <QuestionCard q={currentQ} selected={selected} onSelect={handleSelect}
-        phase={phase==="dead"?"reveal":phase} lastResult={results[results.length-1]}
-        onNext={next} isLast={!alive}
-        showTimer={alive} timeLeft={timeLeft}/>
+
+        {/* Reveal panel (only on correct) */}
+        {phase==="reveal" && results.length>0 && (
+          <div style={{background:C.fog, borderRadius:14, padding:"1rem 1.25rem",
+            marginBottom:"0.75rem", border:`1px solid ${C.border}`}}>
+            <p style={{fontSize:"16px", fontWeight:600, color:C.success, margin:"0 0 8px"}}>
+              ✓ Correct! Keep going!
+            </p>
+            <div style={{padding:"0.75rem 1rem", background:C.white, borderRadius:10,
+              borderLeft:`4px solid ${C.sky}`, marginBottom:10, border:`1px solid ${C.border}`}}>
+              <p style={{fontSize:"14px", color:C.dark, margin:"0 0 6px", fontStyle:"italic", lineHeight:1.6}}>
+                "{currentQ.sample}"
+              </p>
+              <p style={{fontSize:"13px", color:C.mid, margin:0, lineHeight:1.5}}>"{currentQ.translation}"</p>
+            </div>
+            {currentQ.lang.tip&&(
+              <div style={{padding:"0.65rem 0.85rem", background:`${C.ocean}0F`, borderRadius:10,
+                borderLeft:`4px solid ${C.ocean}`, marginBottom:10, border:`1px solid ${C.ocean}25`}}>
+                <p style={{fontSize:"12px", color:C.ocean, fontWeight:600, margin:"0 0 3px"}}>How to spot {currentQ.lang.name}</p>
+                <p style={{fontSize:"13px", color:C.dark, margin:0, lineHeight:1.5}}>{currentQ.lang.tip}</p>
+              </div>
+            )}
+            <div style={{display:"flex", gap:8, flexWrap:"wrap", alignItems:"center", marginBottom:12}}>
+              <FamilyTag family={currentQ.lang.family}/>
+              <DiffBadge name={currentQ.lang.name}/>
+              <span style={{fontSize:"13px", color:C.mid}}>{currentQ.lang.speakers}</span>
+            </div>
+            <button onClick={next}
+              style={{...primaryBtn, width:"100%", justifyContent:"center"}}>
+              Next question →
+            </button>
+          </div>
+        )}
       </div>
     </main>
   );
@@ -1373,13 +1427,14 @@ function BlitzGame({onDone, onHome}) {
     if(selected||doneRef.current) return;
     const q=currentQ;
     const base=baseScore(opt,q.lang,LANGUAGES);
-    const newStreak=base===10?streak+1:0;
+    const correct = base===10;
+    const newStreak=correct?streak+1:0;
     setStreak(newStreak);
-    const s=calcScore(base,15,streak);
+    const s=correct?1:0; // 1pt correct, 0pt wrong
     setSelected(opt);
     setScores(p=>[...p,s]);
     setResults(p=>[...p,{lang:q.lang,sample:q.sample,translation:q.translation,guessed:opt,score:s,base,timeLeft:15,streak:newStreak}]);
-    if(base===10) setShowCorrect({lang:q.lang,score:s});
+    if(correct) setShowCorrect({lang:q.lang,score:1});
     setPhase("reveal");
   }
 
@@ -1421,7 +1476,7 @@ function BlitzGame({onDone, onHome}) {
       <QuestionCard q={currentQ} selected={selected} onSelect={handleSelect}
         phase={phase} lastResult={results[results.length-1]}
         onNext={next} isLast={timeLeft<=3}
-        showTimer={false} timeLeft={15}/>
+        showTimer={false} timeLeft={15} hideTip={true}/>
       </div>
     </main>
   );
@@ -1431,17 +1486,20 @@ function BlitzGame({onDone, onHome}) {
 function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
   const [nickname,setNickname]=useState("");
   const [submitted,setSubmitted]=useState(false);
-  const total=parseFloat(scores.reduce((a,b)=>a+b,0).toFixed(1));
-  const correct=results.filter(r=>r.base===10).length;
-  const pct=Math.round((correct/Math.max(results.length,1))*100);
-
+  const total = mode==="survival" || mode==="blitz"
+    ? correct
+    : parseFloat(scores.reduce((a,b)=>a+b,0).toFixed(1));
   const modeLabels={classic:`${correct}/${results.length} correct`,survival:`${correct} correct in a row`,blitz:`${correct} in 60s`};
   const label=mode==="survival"?(results.length<=3?"Better luck next time":results.length<=8?"Good run!":"Unstoppable!"):
     pct===100?"Polyglot legend":pct>=70?"Language lover":pct>=50?"Decent detective":"Keep exploring!";
 
   const gameUrl="https://languageguessr.com/";
   const modeEmoji={classic:"🔵",survival:"🔴",blitz:"🟡"};
-  const shareText=`${modeEmoji[mode]||"🌍"} LanguageGuessr (${mode.charAt(0).toUpperCase()+mode.slice(1)})\n\nI scored ${total} pts — ${modeLabels[mode]} ☀️\nTry to beat me: ${gameUrl}\n\n${results.slice(0,6).map((r,i)=>`Q${i+1}: ${r.guessed===r.lang.name?"✅":"❌"} (${r.score}/13)`).join("\n")}`;
+  const survivalShareLines = results.map((r,i)=>`Q${i+1}: ${r.guessed===r.lang.name?"✅":"❌"} ${r.lang.name}`).join("\n");
+  const classicBlitzShareLines = results.slice(0,6).map((r,i)=>`Q${i+1}: ${r.guessed===r.lang.name?"✅":"❌"} (${r.score}/13)`).join("\n");
+  const shareText = mode==="survival"
+    ? `🔴 LanguageGuessr (Survival Mode)\n\nI scored ${total} pts — ${correct} correct in a row ☀️\nTry to beat me: ${gameUrl}\n\n${survivalShareLines}`
+    : `${modeEmoji[mode]||"🌍"} LanguageGuessr (${mode.charAt(0).toUpperCase()+mode.slice(1)} Mode)\n\nI scored ${total} pts ☀️\nTry to beat me: ${gameUrl}\n\n${classicBlitzShareLines}`;
 
   async function submitScore(){
     if(!nickname.trim()) return;
@@ -1472,7 +1530,10 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
           {mode.charAt(0).toUpperCase()+mode.slice(1)} mode · {modeLabels[mode]}
         </p>
         <div style={{fontSize:"52px",fontWeight:700,color:C.ocean,letterSpacing:"-2px",lineHeight:1}}>
-          {total}<span style={{fontSize:"22px",color:C.muted,fontWeight:400}}> pts</span>
+          {mode==="survival" || mode==="blitz"
+            ? <>{total}<span style={{fontSize:"22px",color:C.muted,fontWeight:400}}> correct</span></>
+            : <>{total}<span style={{fontSize:"22px",color:C.muted,fontWeight:400}}> pts</span></>
+          }
         </div>
         <p style={{fontSize:"18px",color:C.mid,margin:"8px 0 12px",fontWeight:500}}>{label}</p>
       </section>
@@ -1545,7 +1606,7 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
                 </div>
                 <span style={{fontSize:"15px",fontWeight:700,
                   color:r.score>=10?C.success:r.score>=5?C.earth:C.muted}}>
-                  {r.score}/13
+                  {mode==="survival"?`${r.score} pts`:`${r.score}/13`}
                 </span>
               </div>
               {/* Quote + translation */}
