@@ -636,11 +636,11 @@ function buildMixedPool() {
   ]);
 }
 
-function getOptions(correct, all) {
+function getOptions(correct, all, max=10) {
   const confuse=(correct.confusables||[]).map(n=>all.find(l=>l.name===n)).filter(Boolean);
-  const confusePick=shuffle(confuse).slice(0,5);
+  const confusePick=shuffle(confuse).slice(0, Math.min(Math.floor(max/2), 5));
   const remaining=shuffle(all.filter(l=>l.name!==correct.name&&!confusePick.find(c=>c.name===l.name)));
-  return shuffle([correct,...confusePick,...remaining.slice(0,9-confusePick.length)]).slice(0,10);
+  return shuffle([correct,...confusePick,...remaining.slice(0,(max-1)-confusePick.length)]).slice(0,max);
 }
 
 function sameScript(a,b) {
@@ -862,7 +862,7 @@ function QuestionCard({q, selected, onSelect, phase, lastResult, onNext, isLast,
       </p>
 
       {/* Options grid */}
-      <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginBottom:"1rem"}}>
+      <div style={{display:"grid",gridTemplateColumns:q.options.length===6?"1fr 1fr 1fr":"1fr 1fr",gap:8,marginBottom:"1rem"}}>
         {q.options.map(opt=>{
           const isCorrect=opt.name===q.lang.name;
           const isWrong=opt.name===selected&&selected!==q.lang.name;
@@ -990,7 +990,7 @@ function Home({onStart,leaderboard}) {
           LanguageGuessr
         </h1>
         <p style={{color:C.mid,fontSize:"16px",lineHeight:1.6,margin:0}}>
-          How fast can you identify a language?<br/>Challenge your friends across 100 languages.
+          How fast can you identify a language?<br/>Challenge your friends across 100 languages!
         </p>
       </header>
 
@@ -1032,7 +1032,7 @@ function Home({onStart,leaderboard}) {
       <section aria-label="Global leaderboard" style={{background:C.fog,borderRadius:12,
         padding:"0.85rem 1rem",border:`1px solid ${C.border}`}}>
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"0.75rem"}}>
-          <h2 style={{fontSize:"14px",fontWeight:600,color:C.dark,margin:0}}>🌍 Global leaderboard</h2>
+          <h2 style={{fontSize:"14px",fontWeight:600,color:C.dark,margin:0}}>🌍 Leaderboard</h2>
           <div style={{display:"flex",gap:4}} role="tablist" aria-label="Filter leaderboard by mode">
             {["classic","survival","blitz"].map(f=>(
               <button key={f} role="tab" aria-selected={lbFilter===f}
@@ -1104,7 +1104,7 @@ function ClassicGame({onDone, onHome}) {
   const TOTAL=6;
   const [questions]=useState(()=>{
     const pool=buildMixedPool();
-    return pool.map(lang=>{const q=pickQuote(lang);return{lang,options:getOptions(lang,LANGUAGES),sample:q.s,translation:q.t};});
+    return pool.map(lang=>{const q=pickQuote(lang);return{lang,options:getOptions(lang,LANGUAGES,6),sample:q.s,translation:q.t};});
   });
   const [qIndex,setQIndex]=useState(0);
   const [selected,setSelected]=useState(null);
@@ -1241,10 +1241,17 @@ function SurvivalGame({onDone, onHome}) {
 
   function makeQ(lang) {
     const q = pickQuote(lang);
-    // 4 options only: correct + 3 confusables/random
-    const confuse = (lang.confusables||[]).map(n=>LANGUAGES.find(l=>l.name===n)).filter(Boolean);
+    const diff = getDifficulty(lang.name);
+    // Pool of distractors matches difficulty: easy→easy only, medium→easy+medium, hard→all
+    const pool = diff==="easy"
+      ? LANGUAGES.filter(l=>EASY_NAMES.has(l.name))
+      : diff==="medium"
+        ? LANGUAGES.filter(l=>EASY_NAMES.has(l.name)||!HARD_NAMES.has(l.name))
+        : LANGUAGES;
+    // Prefer confusables that exist in the pool
+    const confuse = (lang.confusables||[]).map(n=>pool.find(l=>l.name===n)).filter(Boolean);
     const confusePick = shuffle(confuse).slice(0, 2);
-    const remaining = shuffle(LANGUAGES.filter(l=>l.name!==lang.name&&!confusePick.find(c=>c.name===l.name)));
+    const remaining = shuffle(pool.filter(l=>l.name!==lang.name&&!confusePick.find(c=>c.name===l.name)));
     const options = shuffle([lang, ...confusePick, ...remaining.slice(0, 3-confusePick.length)]).slice(0, 4);
     return {lang, options, sample:q.s, translation:q.t};
   }
@@ -1527,13 +1534,19 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
 
   const gameUrl="https://languageguessr.com/";
   const modeEmoji={classic:"🔵",survival:"🔴",blitz:"🟡"};
-  const survivalShareLines = results.map((r,i)=>`Q${i+1}: ${r.guessed===r.lang.name?"✅":"❌"} ${r.lang.name}`).join("\n");
-  const classicBlitzShareLines = results.slice(0,6).map((r,i)=>`Q${i+1}: ${r.guessed===r.lang.name?"✅":"❌"} (${r.score}/13)`).join("\n");
+  const classicTotal = parseFloat(scores.reduce((a,b)=>a+b,0).toFixed(1));
+  const classicMax = results.length * 13;
+  const classicLines = results.map((r,i)=>`Q${i+1}: ${r.base===10?"✅":"❌"} (${r.score}/13 - ${r.lang.name})`).join("\n");
+  const blitzLines = results.map((r,i)=>`Q${i+1}: ${r.base===10?"✅":"❌"} (${r.lang.name})`).join("\n");
+  const survivalLines = results.map((r,i)=>`Q${i+1}: ${r.base===10?"✅":"❌"} (${r.lang.name})`).join("\n");
+  const survivalWord = survivalStreak===1?"language":"languages";
+  const blitzWord = total===1?"language":"languages";
+  const intro = "Can you recognize all the world's languages?";
   const shareText = mode==="survival"
-    ? `🔴 LanguageGuessr (Survival Mode)\n\nI got ${total} correct in a row ☀️\nTry to beat me: ${gameUrl}\n\n${survivalShareLines}`
+    ? `${intro}\n🔴 LanguageGuessr (Survival Mode)\nI found ${survivalStreak} ${survivalWord} in a row ☀️\nTry to beat me: ${gameUrl}\n${survivalLines}`
     : mode==="blitz"
-      ? `🟡 LanguageGuessr (Blitz Mode)\n\nI got ${total} correct in 60s ☀️\nTry to beat me: ${gameUrl}\n\n${classicBlitzShareLines}`
-      : `${modeEmoji[mode]||"🌍"} LanguageGuessr (${mode.charAt(0).toUpperCase()+mode.slice(1)} Mode)\n\nI scored ${total} pts ☀️\nTry to beat me: ${gameUrl}\n\n${classicBlitzShareLines}`;
+      ? `${intro}\n🟡 LanguageGuessr (Blitz Mode)\nI found ${total} ${blitzWord} in 60s ☀️\nTry to beat me: ${gameUrl}\n${blitzLines}`
+      : `${intro}\n🔵 LanguageGuessr (Classic Mode)\nI scored ${classicTotal}/${classicMax} points ☀️\nTry to beat me: ${gameUrl}\n${classicLines}`;
 
   async function submitScore(){
     if(!nickname.trim()) return;
@@ -1704,51 +1717,7 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
 export default function App() {
   const [screen,setScreen]=useState("home");
 
-  // Inject PWA meta tags for home screen icon
-  useEffect(()=>{
-    // Apple touch icon
-    if(!document.querySelector('link[rel="apple-touch-icon"]')){
-      const link=document.createElement('link');
-      link.rel='apple-touch-icon';
-      link.href='/mainlogo.png';
-      document.head.appendChild(link);
-    }
-    // Manifest
-    if(!document.querySelector('link[rel="manifest"]')){
-      const manifest={
-        name:"LanguageGuessr",
-        short_name:"LangGuessr",
-        start_url:"/",
-        display:"standalone",
-        background_color:"#FAFAF8",
-        theme_color:"#42708C",
-        icons:[
-          {src:"/mainlogo.png",sizes:"192x192",type:"image/png"},
-          {src:"/mainlogo.png",sizes:"512x512",type:"image/png"}
-        ]
-      };
-      const blob=new Blob([JSON.stringify(manifest)],{type:"application/manifest+json"});
-      const url=URL.createObjectURL(blob);
-      const link=document.createElement('link');
-      link.rel='manifest';
-      link.href=url;
-      document.head.appendChild(link);
-    }
-    // Theme color meta
-    if(!document.querySelector('meta[name="theme-color"]')){
-      const meta=document.createElement('meta');
-      meta.name='theme-color';
-      meta.content='#42708C';
-      document.head.appendChild(meta);
-    }
-    // Apple mobile web app capable
-    if(!document.querySelector('meta[name="apple-mobile-web-app-capable"]')){
-      const meta=document.createElement('meta');
-      meta.name='apple-mobile-web-app-capable';
-      meta.content='yes';
-      document.head.appendChild(meta);
-    }
-  },[]);
+  // PWA meta tags are handled via index.html + public/manifest.json
   const [mode,setMode]=useState("classic");
   const [showCountdown,setShowCountdown]=useState(false);
   const [pendingMode,setPendingMode]=useState(null);
