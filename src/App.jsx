@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 // ── TOKENS ──────────────────────────────────────────────────────────────────
 const C = {
@@ -1795,6 +1796,8 @@ export default function App() {
       {screen==="done"&&gameResults&&
         <Done results={gameResults} scores={gameScores} mode={mode}
           onRestart={handleRestart} leaderboard={leaderboard} setLeaderboard={setLeaderboard}/>}
+      
+      <Analytics />
     </>
   );
 }
