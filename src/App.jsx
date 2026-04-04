@@ -1574,7 +1574,23 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
             : <>{total}<span style={{fontSize:"22px",color:C.muted,fontWeight:400}}> pts</span></>
           }
         </div>
-        <p style={{fontSize:"18px",color:C.mid,margin:"8px 0 12px",fontWeight:500}}>{label}</p>
+        <p style={{fontSize:"18px",color:C.mid,margin:"8px 0 16px",fontWeight:500}}>{label}</p>
+        <div style={{display:"flex",gap:8,justifyContent:"center"}}>
+          <button onClick={onRestart} style={{...outlineBtn,flex:1,justifyContent:"center",maxWidth:180}}>
+            Play again
+          </button>
+          {typeof navigator!=="undefined"&&navigator.share?(
+            <button onClick={()=>navigator.share({title:"LanguageGuessr",text:shareText}).catch(()=>{})}
+              style={{...primaryBtn,flex:1,justifyContent:"center",maxWidth:180}}>
+              Share score
+            </button>
+          ):(
+            <button onClick={()=>navigator.clipboard.writeText(shareText).catch(()=>{})}
+              style={{...primaryBtn,flex:1,justifyContent:"center",maxWidth:180}}>
+              Copy score
+            </button>
+          )}
+        </div>
       </section>
 
       {/* Leaderboard submit */}
@@ -1680,23 +1696,6 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
         </div>
       </section>
 
-      {/* Actions */}
-      <div style={{display:"flex",gap:8}}>
-        <button onClick={onRestart} style={{...outlineBtn,flex:1,justifyContent:"center"}}>
-          Play again
-        </button>
-        {typeof navigator!=="undefined"&&navigator.share?(
-          <button onClick={()=>navigator.share({title:"LanguageGuessr",text:shareText}).catch(()=>{})}
-            style={{...primaryBtn,flex:1,justifyContent:"center"}}>
-            Share score
-          </button>
-        ):(
-          <button onClick={()=>navigator.clipboard.writeText(shareText).catch(()=>{})}
-            style={{...primaryBtn,flex:1,justifyContent:"center"}}>
-            Copy score
-          </button>
-        )}
-      </div>
     </main>
   );
 }
