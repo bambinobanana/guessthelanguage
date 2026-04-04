@@ -1631,8 +1631,7 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
               </button>
             </div>
           </>
-        ):(
-          {(()=>{
+        ):(()=>{
             const modeBoard=leaderboard.filter(e=>(e.mode||"classic")===mode).slice(0,5);
             const medals=["🥇","🥈","🥉","4️⃣","5️⃣"];
             const modeLabel=mode.charAt(0).toUpperCase()+mode.slice(1);
@@ -1661,7 +1660,6 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
               ))}
             </>);
           })()}
-        )}
       </section>
 
       {/* Per-question results */}
