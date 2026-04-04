@@ -1,0 +1,67 @@
+const { createClient } = require("@supabase/supabase-js");
+
+const supabase = createClient(
+  process.env.SUPABASE_URL,
+  process.env.SUPABASE_ANON_KEY
+);
+
+const CORS = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+  "Access-Control-Allow-Headers": "Content-Type",
+};
+
+module.exports = async function handler(req, res) {
+  if (req.method === "OPTIONS") {
+    return res.status(200).set(CORS).end();
+  }
+  Object.entries(CORS).forEach(([k, v]) => res.setHeader(k, v));
+
+  // GET — fetch leaderboard by level
+  if (req.method === "GET") {
+    try {
+      const level = req.query.level || "all";
+      let query = supabase
+        .from("leaderboard")
+        .select("*")
+        .order("score", { ascending: false })
+        .limit(5);
+      if (level !== "all") query = query.eq("level", level);
+      const { data, error } = await query;
+      if (error) throw error;
+      return res.status(200).json(data || []);
+    } catch (e) {
+      return res.status(500).json({ error: "Failed to fetch leaderboard" });
+    }
+  }
+
+  // POST — submit a new score
+  if (req.method === "POST") {
+    try {
+      const { name, score, level, date } = req.body;
+      if (!name || score === undefined || !level) {
+        return res.status(400).json({ error: "Missing fields" });
+      }
+
+      // Insert new score
+      const { error: insertError } = await supabase
+        .from("leaderboard")
+        .insert([{ name, score, level, date }]);
+      if (insertError) throw insertError;
+
+      // Return updated top 5 for that level
+      const { data, error } = await supabase
+        .from("leaderboard")
+        .select("*")
+        .eq("level", level)
+        .order("score", { ascending: false })
+        .limit(5);
+      if (error) throw error;
+      return res.status(200).json(data || []);
+    } catch (e) {
+      return res.status(500).json({ error: "Failed to save score" });
+    }
+  }
+
+  return res.status(405).json({ error: "Method not allowed" });
+};
