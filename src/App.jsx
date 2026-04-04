@@ -97,19 +97,19 @@ const LANGUAGES = [
   { name:"French", family:"Romance", region:"Europe", script:"Latin", speakers:"~310M (L1+L2)",
     tip:"Look for accented vowels like e-acute, e-grave, e-circumflex and the cedilla c. The combination eau and frequent apostrophes are very French.",
     confusables:["Italian","Spanish","Portuguese","Romanian","Catalan"],
-    quotes:[{s:"La seule facon de faire du bon travail est d'aimer ce que vous faites.",t:"The only way to do great work is to love what you do."},{s:"Soyez le changement que vous voulez voir dans le monde.",t:"Be the change you wish to see in the world."}]},
+    quotes:[{s:"La seule façon de faire du bon travail est d'aimer ce que vous faites.",t:"The only way to do great work is to love what you do."},{s:"Soyez le changement que vous voulez voir dans le monde.",t:"Be the change you wish to see in the world."}]},
   { name:"Spanish", family:"Romance", region:"Europe / Americas", script:"Latin", speakers:"~500M (L1+L2)",
     tip:"Spot the inverted question mark and exclamation mark at sentence starts. The letter n-tilde and ll or rr combinations are distinctively Spanish.",
     confusables:["Portuguese","Italian","French","Romanian","Catalan"],
-    quotes:[{s:"No importa cuan lento vayas, siempre y cuando no te detengas.",t:"It does not matter how slowly you go as long as you do not stop."},{s:"Dime con quien andas y te dire quien eres.",t:"Tell me who you walk with and I will tell you who you are."}]},
+    quotes:[{s:"No importa cuán lento vayas, siempre y cuando no te detengas.",t:"It does not matter how slowly you go as long as you do not stop."},{s:"Dime con quién andas y te diré quién eres.",t:"Tell me who you walk with and I will tell you who you are."}]},
   { name:"Portuguese", family:"Romance", region:"Europe / Americas", script:"Latin", speakers:"~260M (L1+L2)",
     tip:"Look for unique nasal vowels with tilde and words ending in -ao and -cao. The letters lh and nh are distinctive.",
     confusables:["Spanish","Italian","French","Romanian","Galician"],
-    quotes:[{s:"Quem nao arrisca nao petisca.",t:"Nothing ventured, nothing gained."},{s:"A sabedoria comeca com o silencio.",t:"Wisdom begins with silence."}]},
+    quotes:[{s:"Quem não arrisca não petisca.",t:"Nothing ventured, nothing gained."},{s:"A sabedoria começa com o silêncio.",t:"Wisdom begins with silence."}]},
   { name:"Italian", family:"Romance", region:"Europe", script:"Latin", speakers:"~67M (L1+L2)",
     tip:"Italian loves double consonants like ll, tt, cc and words ending in vowels. Look for -zione and -mente endings.",
     confusables:["Spanish","Portuguese","French","Romanian"],
-    quotes:[{s:"La vita e bella quando hai qualcuno con cui condividerla.",t:"Life is beautiful when you have someone to share it with."},{s:"Tutto e bene quel che finisce bene.",t:"All is well that ends well."}]},
+    quotes:[{s:"La vita è bella quando hai qualcuno con cui condividerla.",t:"Life is beautiful when you have someone to share it with."},{s:"Tutto è bene quel che finisce bene.",t:"All is well that ends well."}]},
   { name:"Romanian", family:"Romance", region:"Europe", script:"Latin", speakers:"~24M (L1+L2)",
     tip:"Romanian is unique among Romance languages for letters ă, â, î, ș, ț. It looks vaguely Italian but has Slavic-influenced spellings.",
     confusables:["Italian","Spanish","Portuguese","French"],
@@ -137,7 +137,7 @@ const LANGUAGES = [
   { name:"German", family:"Germanic", region:"Europe", script:"Latin", speakers:"~135M (L1+L2)",
     tip:"German capitalizes ALL nouns. Look for long compound words, umlauts a-umlaut, o-umlaut, u-umlaut and the sharp letter eszett.",
     confusables:["Dutch","Swedish","Norwegian","Danish","Luxembourgish"],
-    quotes:[{s:"Der Mensch waechst mit seinen Aufgaben.",t:"A person grows with their tasks."},{s:"Uebung macht den Meister.",t:"Practice makes perfect."}]},
+    quotes:[{s:"Der Mensch wächst mit seinen Aufgaben.",t:"A person grows with their tasks."},{s:"Übung macht den Meister.",t:"Practice makes perfect."}]},
   { name:"Dutch", family:"Germanic", region:"Europe", script:"Latin", speakers:"~25M (L1+L2)",
     tip:"Dutch has distinctive double vowels like aa, ee, oo and the unique ij digraph. Look for de, het, een and the sch combination.",
     confusables:["German","Afrikaans","Swedish","Norwegian","Danish"],
@@ -145,51 +145,51 @@ const LANGUAGES = [
   { name:"Swedish", family:"Germanic", region:"Europe", script:"Latin", speakers:"~13M (L1+L2)",
     tip:"Swedish has three extra letters: a-ring, a-umlaut, o-umlaut. Distinctive words include och meaning and and att meaning to.",
     confusables:["Norwegian","Danish","Dutch","German","Finnish"],
-    quotes:[{s:"Det aer inte hur langt du faller, utan hur hoegt du studsar.",t:"It is not how far you fall, but how high you bounce."}]},
+    quotes:[{s:"Det är inte hur långt du faller, utan hur högt du studsar.",t:"It is not how far you fall, but how high you bounce."}]},
   { name:"Norwegian", family:"Germanic", region:"Europe", script:"Latin", speakers:"~5M (L1+L2)",
     tip:"Norwegian shares a-ring, ae, o-slash with Danish. Very similar to Swedish. Look for words ending in -ig and -lig.",
     confusables:["Swedish","Danish","Dutch","German","Faroese"],
-    quotes:[{s:"Det er ikke fjellene foran deg som sliter deg ut, men steinen i skoen din.",t:"It is not the mountains ahead that wear you out, but the pebble in your shoe."},{s:"Veien blir til mens du gaar.",t:"The road is made by walking."}]},
+    quotes:[{s:"Det er ikke fjellene foran deg som sliter deg ut, men steinen i skoen din.",t:"It is not the mountains ahead that wear you out, but the pebble in your shoe."},{s:"Veien blir til mens du går.",t:"The road is made by walking."}]},
   { name:"Icelandic", family:"Germanic", region:"Europe", script:"Latin", speakers:"~370K (L1+L2)",
     tip:"Icelandic uniquely preserves eth and thorn from Old Norse. Look for the thorn letter at word starts and eth in the middle of words.",
     confusables:["Faroese","Norwegian","Danish","Swedish"],
-    quotes:[{s:"Tholinmaedi er moedir allra dyggtha.",t:"Patience is the mother of all virtues."}]},
+    quotes:[{s:"Þolinmæði er móðir allra dyggða.",t:"Patience is the mother of all virtues."}]},
   { name:"Faroese", family:"Germanic", region:"Europe", script:"Latin", speakers:"~72K (L1+L2)",
     tip:"Faroese looks like Icelandic with some Norwegian influence. Uses eth and the letters a-acute, ae, o-slash. The combination hv pronounced kv is distinctive.",
     confusables:["Icelandic","Norwegian","Danish","Swedish"],
-    quotes:[{s:"Tath sum ikki drepur, harthar.",t:"What does not kill you makes you stronger."}]},
+    quotes:[{s:"Tað sum ikki drepur, harðar.",t:"What does not kill you makes you stronger."}]},
   { name:"Luxembourgish", family:"Germanic", region:"Europe", script:"Latin", speakers:"~390K (L1+L2)",
     tip:"Luxembourgish looks like German but with French loanwords. Words like Ech meaning I and ass meaning is are giveaways.",
     confusables:["German","Dutch","French","Afrikaans"],
-    quotes:[{s:"Wann een net probeiert, kann een net gewannen.",t:"If one does not try, one cannot win."}]},
+    quotes:[{s:"Wann een net probéiert, kann een net gewannen.",t:"If one does not try, one cannot win."}]},
   { name:"Afrikaans", family:"Germanic", region:"Africa / Europe origin", script:"Latin", speakers:"~7M (L1+L2)",
     tip:"Afrikaans looks like simplified Dutch. Words like die meaning the, is, nie meaning not and van appear very frequently. The double negative nie...nie is unique.",
     confusables:["Dutch","German","Flemish"],
-    quotes:[{s:"Sonder taal, sonder siel.",t:"Without language, without soul."},{s:"Geduld is n deug.",t:"Patience is a virtue."}]},
+    quotes:[{s:"Sonder taal, sonder siel.",t:"Without language, without soul."},{s:"Geduld is 'n deug.",t:"Patience is a virtue."}]},
   { name:"Russian", family:"Slavic", region:"Europe / Asia", script:"Cyrillic", speakers:"~258M (L1+L2)",
     tip:"Russian Cyrillic has unique letters Zh, Shch, hard sign, Yeru, E-reverse. Look for the hard sign and the letter Yeru which are unique to Russian.",
     confusables:["Ukrainian","Bulgarian","Serbian","Macedonian","Mongolian"],
-    quotes:[{s:"Ne tot velik, kto nikogda ne padal, a tot velik, kto padal i vstal.",t:"Not the one who never fell is great, but the one who fell and rose again."},{s:"Terpenie i trud vsyo peretryut.",t:"Patience and hard work will overcome everything."}]},
+    quotes:[{s:"Не тот велик, кто никогда не падал, а тот велик, кто падал и вставал.",t:"Not the one who never fell is great, but the one who fell and rose again."},{s:"Терпение и труд всё перетрут.",t:"Patience and hard work will overcome everything."}]},
   { name:"Ukrainian", family:"Slavic", region:"Europe", script:"Cyrillic", speakers:"~40M (L1+L2)",
     tip:"Ukrainian has unique letters I-dotted, Yi, Ye, and hard G not found in Russian. It also lacks the Russian hard sign and Yeru.",
     confusables:["Russian","Bulgarian","Serbian","Macedonian","Belarusian"],
-    quotes:[{s:"De ye volya, tam ye i shlyakh.",t:"Where there is a will, there is a way."},{s:"Khto rano vstaye, tomu Boh daye.",t:"God gives to those who rise early."}]},
+    quotes:[{s:"Де є воля, там є і шлях.",t:"Where there is a will, there is a way."},{s:"Хто рано встає, тому Бог дає.",t:"God gives to those who rise early."}]},
   { name:"Bulgarian", family:"Slavic", region:"Europe", script:"Cyrillic", speakers:"~8M (L1+L2)",
     tip:"Bulgarian Cyrillic looks similar to Russian but uses the hard sign frequently as a vowel. It has no Yeru, Yo, or E-reverse like Russian.",
     confusables:["Russian","Ukrainian","Macedonian","Serbian","Mongolian"],
-    quotes:[{s:"Tarpenieto e garchivo, no plodovete mu sa sladki.",t:"Patience is bitter, but its fruits are sweet."}]},
+    quotes:[{s:"Търпението е горчиво, но плодовете му са сладки.",t:"Patience is bitter, but its fruits are sweet."}]},
   { name:"Serbian", family:"Slavic", region:"Europe", script:"Cyrillic", speakers:"~12M (L1+L2)",
     tip:"Serbian Cyrillic includes Lj, Nj, Dzh letters not in Russian or Ukrainian. These represent sounds lj, nj, dz unique to South Slavic languages.",
     confusables:["Russian","Bulgarian","Ukrainian","Macedonian","Mongolian"],
-    quotes:[{s:"Ko rano rani, dve srece grabi.",t:"He who rises early catches two fortunes."}]},
+    quotes:[{s:"Ко рано рани, две среће граби.",t:"He who rises early catches two fortunes."}]},
   { name:"Macedonian", family:"Slavic", region:"Europe", script:"Cyrillic", speakers:"~2M (L1+L2)",
     tip:"Macedonian Cyrillic is very close to Bulgarian and Serbian. Unique letters include soft-G and soft-K not found in Russian or Ukrainian.",
     confusables:["Bulgarian","Serbian","Russian","Ukrainian"],
-    quotes:[{s:"Trpenie nosi sreka.",t:"Patience brings happiness."},{s:"Znaenjeto e mok.",t:"Knowledge is power."}]},
+    quotes:[{s:"Трпениe носи среќа.",t:"Patience brings happiness."},{s:"Знаењето е моќ.",t:"Knowledge is power."}]},
   { name:"Belarusian", family:"Slavic", region:"Europe", script:"Cyrillic", speakers:"~5M (L1+L2)",
     tip:"Belarusian Cyrillic has the unique letter short-U which looks like a u with a breve above it. This letter appears in no other Cyrillic alphabet.",
     confusables:["Russian","Ukrainian","Bulgarian","Macedonian"],
-    quotes:[{s:"Khto shukaye, toy znakhodzits.",t:"He who seeks, finds."}]},
+    quotes:[{s:"Хто шукае, той знаходзіць.",t:"He who seeks, finds."}]},
   { name:"Slovenian", family:"Slavic", region:"Europe", script:"Latin", speakers:"~2.5M (L1+L2)",
     tip:"Slovenian uses Latin with č, š, ž. It has a unique dual grammatical number (separate forms for exactly two of something). Look for the word je meaning is and frequent -ski, -ška endings.",
     confusables:["Croatian","Serbian","Czech","Slovak","Polish"],
@@ -249,7 +249,7 @@ const LANGUAGES = [
   { name:"Greek", family:"Hellenic", region:"Europe", script:"Greek", speakers:"~13M (L1+L2)",
     tip:"Greek uses its own alphabet with letters like alpha, beta, gamma, theta, lambda, phi, psi, omega. Some look like Latin but theta, xi, psi, omega are uniquely Greek.",
     confusables:["Armenian","Georgian","Hebrew","Coptic"],
-    quotes:[{s:"I archi einai to imisy toy pantos.",t:"The beginning is half of everything."},{s:"Gnothi sauton.",t:"Know thyself."}]},
+    quotes:[{s:"Η αρχή είναι το ήμισυ του παντός.",t:"The beginning is half of everything."},{s:"Γνώθι σαυτόν.",t:"Know thyself."}]},
   { name:"Albanian", family:"Indo-European (isolate)", region:"Europe", script:"Latin", speakers:"~7.5M (L1+L2)",
     tip:"Albanian is a language isolate in Indo-European. Look for the letter ë (schwa) and digraphs dh, gj, ll, nj, rr, sh, th, xh, zh. Many two-letter combinations unique to Albanian.",
     confusables:["Romanian","Serbian","Macedonian","Croatian","Bulgarian"],
@@ -265,51 +265,51 @@ const LANGUAGES = [
   { name:"Georgian", family:"Kartvelian", region:"Caucasus", script:"Georgian", speakers:"~4M (L1+L2)",
     tip:"Georgian script is one of the most distinctive in the world. Round asymmetric letters with curving arms, no capital letters. Looks almost like decorated spirals.",
     confusables:["Armenian","Amharic","Tigrinya","Greek","Hebrew"],
-    quotes:[{s:"Ena kacs hqavs monad, gua ki batond.",t:"The tongue is man's servant, but wisdom is his master."},{s:"Vardi eklis gareshe ar modis.",t:"A rose does not come without thorns."}]},
+    quotes:[{s:"ენა კაცს ჰქავს მხოლოდ, გუა კი ბატონდ.",t:"The tongue is man's servant, but wisdom is his master."},{s:"ვარდი ეკლის გარეშე არ მოდის.",t:"A rose does not come without thorns."}]},
   { name:"Armenian", family:"Indo-European (isolate)", region:"Caucasus", script:"Armenian", speakers:"~8M (L1+L2)",
     tip:"Armenian has its own unique alphabet invented in 405 AD. Letters have a medieval angular quality with distinctive shapes. Nothing like Greek or Georgian.",
     confusables:["Georgian","Greek","Amharic","Hebrew"],
-    quotes:[{s:"Zhamanak voch voq chi karo gnel.",t:"No one can buy time."}]},
+    quotes:[{s:"Ժամանակ ոչ ոք չի կարո գնել.",t:"No one can buy time."}]},
   { name:"Romani", family:"Indo-Iranian", region:"Europe (diaspora)", script:"Latin", speakers:"~3.5M (L1+L2)",
     tip:"Romani uses Latin but with Indo-Iranian roots making it look surprisingly different from European languages. Look for words like baro meaning big, miro meaning my.",
     confusables:["Romanian","Hindi","Sanskrit"],
-    quotes:[{s:"Cacipen si baro zor.",t:"Truth is great strength."}]},
+    quotes:[{s:"Čačipen si baro zor.",t:"Truth is great strength."}]},
   { name:"Chechen", family:"Northeast Caucasian", region:"Caucasus", script:"Cyrillic", speakers:"~1.5M (L1+L2)",
     tip:"Chechen uses Cyrillic with extra letters for ejective consonants and pharyngeal sounds not in Russian. Very different vocabulary from Russian despite using the same script.",
     confusables:["Russian","Ingush","Georgian","Armenian"],
-    quotes:[{s:"Sabr bar khekalan bukh bu.",t:"Patience is the foundation of wisdom."}]},
+    quotes:[{s:"Сабр бар хьекалан бух бу.",t:"Patience is the foundation of wisdom."}]},
   { name:"Abkhazian", family:"Northwest Caucasian", region:"Caucasus", script:"Cyrillic", speakers:"~190K (L1+L2)",
     tip:"Abkhazian uses Cyrillic with many extra letters for its complex consonant inventory. Look for letters with multiple diacritics stacked on them. Very few vowels but many consonant clusters.",
     confusables:["Georgian","Chechen","Russian"],
-    quotes:[{s:"Ashhara dalyrho iaairho.",t:"He who seeks wisdom finds it."}]},
+    quotes:[{s:"Ашьара далырхо иаарыхо.",t:"He who seeks wisdom finds it."}]},
   { name:"Arabic", family:"Semitic", region:"Middle East / Africa", script:"Arabic", speakers:"~422M (L1+L2)",
     tip:"Arabic is right-to-left with letters connecting cursively. Dots above and below letters are key. No short vowels are written in standard text.",
     confusables:["Persian (Farsi)","Urdu","Pashto","Uyghur"],
-    quotes:[{s:"Man lam yaraf kayf yaqif ala al-murtafaat lam yaish.",t:"He who has not learned to stand on the heights has not truly lived."},{s:"Al-ilm fi al-sighar kal-naqsh ala al-hajar.",t:"Learning in youth is like engraving on stone."}]},
+    quotes:[{s:"من لم يعرف كيف يقف على المرتفعات لم يعش.",t:"He who has not learned to stand on the heights has not truly lived."},{s:"العلم في الصغر كالنقش على الحجر.",t:"Learning in youth is like engraving on stone."}]},
   { name:"Persian (Farsi)", family:"Indo-Iranian", region:"Middle East", script:"Perso-Arabic", speakers:"~110M (L1+L2)",
     tip:"Persian uses Arabic script but has 4 extra letters for sounds not in Arabic. It looks rounder and more flowing than Arabic.",
     confusables:["Arabic","Urdu","Pashto","Dari"],
-    quotes:[{s:"Har ke tavoos khahad jor-e Hendustan kashad.",t:"Whoever wants the peacock must endure the thorns of Hindustan."},{s:"Qatre qatre jam gardad vangahi darya shavad.",t:"Drop by drop gathers and then becomes a sea."}]},
+    quotes:[{s:"هر که طاووس خواهد جور هندوستان کشد.",t:"Whoever wants the peacock must endure the thorns of Hindustan."},{s:"قطره قطره جمع گردد وانگهی دریا شود.",t:"Drop by drop gathers and then becomes a sea."}]},
   { name:"Urdu", family:"Indo-Iranian", region:"South Asia", script:"Perso-Arabic", speakers:"~230M (L1+L2)",
     tip:"Urdu looks like Persian and Arabic but has unique letters for retroflex sounds specific to South Asia. Written right-to-left like Arabic.",
     confusables:["Arabic","Persian (Farsi)","Pashto","Sindhi"],
-    quotes:[{s:"Har mushkil ke baad aasaani hai.",t:"After every hardship comes ease."},{s:"Mehnat ka phal meetha hota hai.",t:"The fruit of hard work is sweet."}]},
+    quotes:[{s:"ہر مشکل کے بعد آسانی ہے.",t:"After every hardship comes ease."},{s:"محنت کا پھل میٹھا ہوتا ہے.",t:"The fruit of hard work is sweet."}]},
   { name:"Pashto", family:"Indo-Iranian", region:"Central / South Asia", script:"Perso-Arabic", speakers:"~60M (L1+L2)",
     tip:"Pashto uses a modified Perso-Arabic script with extra letters for sounds unique to Pashto. These special letters distinguish it from Arabic, Persian, and Urdu.",
     confusables:["Arabic","Persian (Farsi)","Urdu","Dari"],
-    quotes:[{s:"Sabr de barya lar da.",t:"Patience is the path to victory."}]},
+    quotes:[{s:"صبر دے بڑیا لار دا.",t:"Patience is the path to victory."}]},
   { name:"Hebrew", family:"Semitic", region:"Middle East", script:"Hebrew", speakers:"~9M (L1+L2)",
     tip:"Hebrew is right-to-left with a block-like 22-letter alphabet. Unlike Arabic it is not cursively connected. Look for the distinctive square letterforms.",
     confusables:["Arabic","Yiddish","Amharic","Maltese"],
-    quotes:[{s:"Im tirtzu, ein zo agada.",t:"If you will it, it is no dream."},{s:"Kol ha-drakhim arukhot la-adam ayef.",t:"All roads are long to a tired person."}]},
+    quotes:[{s:"אם תרצו אין זו אגדה.",t:"If you will it, it is no dream."},{s:"כל הדרכים ארוכות לאדם עייף.",t:"All roads are long to a tired person."}]},
   { name:"Amharic", family:"Semitic", region:"Africa", script:"Ethiopic", speakers:"~57M (L1+L2)",
     tip:"Amharic uses the Ethiopic Ge'ez script with round circular characters unlike any other writing system. Each symbol is a consonant plus vowel syllable.",
     confusables:["Tigrinya","Hebrew","Georgian","Sinhala"],
-    quotes:[{s:"Fiqir terarran yanqesaqsal.",t:"Love moves mountains."}]},
+    quotes:[{s:"ፍቅር ተራሮን ያንቀሳቅሳል.",t:"Love moves mountains."}]},
   { name:"Tigrinya", family:"Semitic", region:"Africa", script:"Ethiopic", speakers:"~9M (L1+L2)",
     tip:"Tigrinya uses the same Ethiopic Ge'ez script as Amharic. Very hard to distinguish from Amharic visually. The vocabulary and specific character combinations differ.",
     confusables:["Amharic","Hebrew","Georgian","Armenian"],
-    quotes:[{s:"Btegsti eti zikebede shgr yihalif.",t:"With patience even the heaviest hardship passes."}]},
+    quotes:[{s:"ብትጽናዕ ዝኸበደ ሽግር ይሓልፍ.",t:"With patience even the heaviest hardship passes."}]},
   { name:"Mandarin Chinese", family:"Sino-Tibetan", region:"East Asia", script:"Chinese (Simplified)", speakers:"~1.1B (L1+L2)",
     tip:"Simplified Chinese uses streamlined characters with fewer strokes. No spaces between words. Characters flow continuously.",
     confusables:["Cantonese","Japanese","Korean"],
@@ -329,19 +329,19 @@ const LANGUAGES = [
   { name:"Mongolian", family:"Mongolic", region:"East Asia", script:"Cyrillic", speakers:"~6M (L1+L2)",
     tip:"Mongolian Cyrillic looks like Russian but uses letters not in standard Russian. Words are longer and vocabulary is completely unlike Slavic languages.",
     confusables:["Russian","Bulgarian","Ukrainian","Kazakh","Serbian"],
-    quotes:[{s:"Erdem medleg dalai, tevcheer ongots.",t:"Knowledge is the ocean, patience is the boat."}]},
+    quotes:[{s:"Эрдэм мэдлэг далай, тэвчээр онгоц.",t:"Knowledge is the ocean, patience is the boat."}]},
   { name:"Tibetan", family:"Tibeto-Burman", region:"Central Asia", script:"Tibetan", speakers:"~6M (L1+L2)",
     tip:"Tibetan script has stacked letter clusters with consonants piled vertically and many silent prefix consonants. The stacking pattern makes it unlike any other script.",
     confusables:["Myanmar (Burmese)","Khmer","Mongolian","Georgian","Amharic"],
-    quotes:[{s:"Sherab ni ter mchog yin.",t:"Wisdom is the supreme treasure."}]},
+    quotes:[{s:"ཤེས་རབ་ནི་གཏེར་མཆོག་ཡིན།",t:"Wisdom is the supreme treasure."}]},
   { name:"Dzongkha", family:"Tibeto-Burman", region:"South Asia", script:"Tibetan", speakers:"~640K (L1+L2)",
     tip:"Dzongkha is Bhutan's national language using the same Tibetan script. Indistinguishable from Tibetan visually for most people.",
     confusables:["Tibetan","Myanmar (Burmese)","Mongolian"],
-    quotes:[{s:"Shes yon ni nor bu las kyang rin thang che.",t:"Knowledge is more precious than jewels."}]},
+    quotes:[{s:"ཤེས་ཡོན་ནི་ནོར་བུ་ལས་ཀྱང་རིན་ཐང་ཆེ།",t:"Knowledge is more precious than jewels."}]},
   { name:"Buryat", family:"Mongolic", region:"East Asia / Siberia", script:"Cyrillic", speakers:"~265K (L1+L2)",
     tip:"Buryat uses Cyrillic with extra open-o and open-u vowels unique to Mongolian languages. It looks very similar to Mongolian Cyrillic. Vocabulary is Mongolian in origin.",
     confusables:["Mongolian","Russian","Kazakh","Kyrgyz"],
-    quotes:[{s:"Erdem dalai, tengeri khyazaar.",t:"Knowledge is the ocean, the sky is the limit."}]},
+    quotes:[{s:"Эрдэм далай, тэнгэри хязаар.",t:"Knowledge is the ocean, the sky is the limit."}]},
   { name:"Vietnamese", family:"Austroasiatic", region:"Southeast Asia", script:"Latin (tonal)", speakers:"~96M (L1+L2)",
     tip:"Vietnamese uses Latin with an extraordinary number of stacked diacritical marks. Tone marks pile up on letters like ộ, ẫ, ướ. No other Latin script language looks like this.",
     confusables:["Hmong","Thai","Tagalog","Malay","Indonesian"],
@@ -349,19 +349,19 @@ const LANGUAGES = [
   { name:"Thai", family:"Kra-Dai", region:"Southeast Asia", script:"Thai", speakers:"~61M (L1+L2)",
     tip:"Thai has rounded characters with small circles and loops, no spaces between words, and vowels that appear above, below, or around consonants.",
     confusables:["Khmer","Lao","Myanmar (Burmese)","Kannada","Sinhala"],
-    quotes:[{s:"Thang klai roem ton duay kaw raek.",t:"A long road begins with the first step."}]},
+    quotes:[{s:"ทางไกลเริ่มต้นด้วยก้าวแรก.",t:"A long road begins with the first step."}]},
   { name:"Lao", family:"Kra-Dai", region:"Southeast Asia", script:"Lao", speakers:"~7M (L1+L2)",
     tip:"Lao script is very similar to Thai. Both have circular characters, no spaces between words, and stacked vowels. Lao letters are rounder and simpler than Thai.",
     confusables:["Thai","Khmer","Myanmar (Burmese)"],
-    quotes:[{s:"Khwam od ton khue gun jae su khwam sam led.",t:"Patience is the key to success."}]},
+    quotes:[{s:"ຄວາມອົດທົນຄືກຸນແຈສູ່ຄວາມສໍາເລັດ.",t:"Patience is the key to success."}]},
   { name:"Khmer", family:"Austroasiatic", region:"Southeast Asia", script:"Khmer", speakers:"~18M (L1+L2)",
     tip:"Khmer has many circular and looping shapes like Thai but more angular and elaborate. Distinctive subscript consonant forms appear written below the main line.",
     confusables:["Thai","Myanmar (Burmese)","Kannada","Telugu","Sinhala"],
-    quotes:[{s:"Daer mdang muoy chomhan kov dal phong.",t:"Walk one step at a time and you will still arrive."}]},
+    quotes:[{s:"ដើរម្ដងមួយជំហានកូវដល់ផ្លូវ.",t:"Walk one step at a time and you will still arrive."}]},
   { name:"Myanmar (Burmese)", family:"Tibeto-Burman", region:"Southeast Asia", script:"Myanmar", speakers:"~43M (L1+L2)",
     tip:"Myanmar script is made of circles and rounded strokes. No straight lines at all. The perfectly circular letters are a giveaway.",
     confusables:["Khmer","Thai","Sinhala","Kannada","Telugu"],
-    quotes:[{s:"Pyinnya thit cha tha ma kwat ya wai thi yay thu tha.",t:"Knowledge is more valuable than wealth."}]},
+    quotes:[{s:"ပညာသည် ချမ်းသာမကွဲ ရွေ့တည်ရှိသည်.",t:"Knowledge is more valuable than wealth."}]},
   { name:"Tagalog", family:"Austronesian", region:"Southeast Asia", script:"Latin", speakers:"~82M (L1+L2)",
     tip:"Tagalog uses Latin without special characters. Look for the very frequent word ng as a preposition or marker, mga as plural marker, and affixes -um-, mag-, -an, -in attached to roots.",
     confusables:["Indonesian","Malay","Hawaiian","Maori","Cebuano"],
@@ -397,7 +397,7 @@ const LANGUAGES = [
   { name:"Shan", family:"Tai-Kadai", region:"Southeast Asia", script:"Shan", speakers:"~6M (L1+L2)",
     tip:"Shan script is related to Myanmar and Khmer but has rounder forms. Characters sit on a baseline with vowel markers above and below.",
     confusables:["Myanmar (Burmese)","Thai","Lao","Khmer"],
-    quotes:[{s:"Tsai lee paw man yang.",t:"A patient heart finds the way forward."}]},
+    quotes:[{s:"ᦜᧂᦷᦖᧈᦷᦙᧃᦍᦱᧂ.",t:"A patient heart finds the way forward."}]},
   { name:"Tok Pisin", family:"English Creole", region:"Pacific (Papua New Guinea)", script:"Latin", speakers:"~5M (L1+L2)",
     tip:"Tok Pisin looks like broken English but is a fully distinct creole language. Words like gras meaning grass or hair, save meaning to know reveal its English roots twisted into new meanings.",
     confusables:["Indonesian","Malay","Tetum","Bislama"],
@@ -405,67 +405,67 @@ const LANGUAGES = [
   { name:"Hindi", family:"Indo-Iranian", region:"South Asia", script:"Devanagari", speakers:"~600M (L1+L2)",
     tip:"Hindi uses Devanagari where characters hang from a horizontal line at the top. The continuous top bar connecting letters is the key visual identifier.",
     confusables:["Marathi","Nepali","Sanskrit","Bengali","Gujarati"],
-    quotes:[{s:"Karm karo, phal ki chinta mat karo.",t:"Do your work, do not worry about the results."},{s:"Jo beet gayi so baat gayi.",t:"What has passed has passed."}]},
+    quotes:[{s:"कर्म करो, फल की चिंता मत करो.",t:"Do your work, do not worry about the results."},{s:"जो बीत गई सो बात गई.",t:"What has passed has passed."}]},
   { name:"Nepali", family:"Indo-Iranian", region:"South Asia", script:"Devanagari", speakers:"~17M (L1+L2)",
     tip:"Nepali also uses Devanagari like Hindi and looks nearly identical. Key difference: Nepali uses the word cha very frequently as a verb ending.",
     confusables:["Hindi","Marathi","Sanskrit","Bengali","Gujarati"],
-    quotes:[{s:"Haar mannu bhaneko mrityu ho.",t:"To accept defeat is to die."},{s:"Parishram nai safaltako simdhi ho.",t:"Hard work is the staircase to success."}]},
+    quotes:[{s:"हार मान्नु भनेको मृत्यु हो.",t:"To accept defeat is to die."},{s:"परिश्रम नै सफलताको सिंढी हो.",t:"Hard work is the staircase to success."}]},
   { name:"Marathi", family:"Indo-Iranian", region:"South Asia", script:"Devanagari", speakers:"~83M (L1+L2)",
     tip:"Marathi uses Devanagari like Hindi but with distinctive letters not commonly used in Hindi. The word aahe meaning is appears constantly.",
     confusables:["Hindi","Nepali","Sanskrit","Gujarati"],
-    quotes:[{s:"Dnyan hech khare dhan aahe.",t:"Knowledge is the true wealth."},{s:"Karmach shreshth aahe.",t:"Action is supreme."}]},
+    quotes:[{s:"ज्ञान हेच खरे धन आहे.",t:"Knowledge is the true wealth."},{s:"कर्माच श्रेष्ठ आहे.",t:"Action is supreme."}]},
   { name:"Bengali", family:"Indo-Iranian", region:"South Asia", script:"Bengali", speakers:"~270M (L1+L2)",
     tip:"Bengali script resembles Devanagari but the top line is broken not continuous. Letters have a distinctive drooping quality.",
     confusables:["Assamese","Odia","Maithili"],
-    quotes:[{s:"Je sahe se rahe.",t:"He who endures, remains."},{s:"Parishramoi safaltaar chabikathi.",t:"Hard work is the key to success."}]},
+    quotes:[{s:"যে সহে সে রহে.",t:"He who endures, remains."},{s:"পরিশ্রমই সফলতার চাবিকাঠি.",t:"Hard work is the key to success."}]},
   { name:"Gujarati", family:"Indo-Iranian", region:"South Asia", script:"Gujarati", speakers:"~56M (L1+L2)",
     tip:"Gujarati script is derived from Devanagari but the top horizontal line is replaced by a curve or is absent. Letters look rounder and more cursive than Devanagari.",
     confusables:["Hindi","Marathi","Punjabi","Rajasthani"],
-    quotes:[{s:"Dhairy phal aape chhe.",t:"Patience bears fruit."}]},
+    quotes:[{s:"ધૈર્ય ફળ આપે છે.",t:"Patience bears fruit."}]},
   { name:"Punjabi", family:"Indo-Iranian", region:"South Asia", script:"Gurmukhi", speakers:"~125M (L1+L2)",
     tip:"Punjabi in India uses Gurmukhi script, a flowing script with a horizontal bar at the top like Devanagari but with more circular letter bodies.",
     confusables:["Hindi","Gujarati","Marathi","Sindhi"],
-    quotes:[{s:"Jitthe chah, uthe raah.",t:"Where there is a will there is a way."},{s:"Mehnat da phal meetha hunda hai.",t:"The fruit of hard work is sweet."}]},
+    quotes:[{s:"ਜਿੱਥੇ ਚਾਹ, ਉੱਥੇ ਰਾਹ.",t:"Where there is a will there is a way."},{s:"ਮਿਹਨਤ ਦਾ ਫਲ ਮਿੱਠਾ ਹੁੰਦਾ ਹੈ.",t:"The fruit of hard work is sweet."}]},
   { name:"Odia", family:"Indo-Iranian", region:"South Asia", script:"Odia", speakers:"~38M (L1+L2)",
     tip:"Odia script has distinctive circular letters. Almost every character has a curved top that loops around, unlike Devanagari's straight horizontal bar.",
     confusables:["Bengali","Kannada","Telugu","Assamese"],
-    quotes:[{s:"Dnyan amulya sampada.",t:"Knowledge is priceless wealth."}]},
+    quotes:[{s:"ଜ୍ଞାନ ଅମୂଲ୍ୟ ସମ୍ପଦ.",t:"Knowledge is priceless wealth."}]},
   { name:"Tamil", family:"Dravidian", region:"South Asia / SE Asia", script:"Tamil", speakers:"~87M (L1+L2)",
     tip:"Tamil script is very rounded and curvy with lots of loops. Every letter curves with no straight lines. More decorative than Devanagari.",
     confusables:["Kannada","Telugu","Malayalam","Sinhala","Khmer"],
-    quotes:[{s:"Katradu kai mann alavu, kallaadhadu ulagalave.",t:"What we have learned is a handful. What we have yet to learn is the world."},{s:"Anbe deivam.",t:"Love is God."}]},
+    quotes:[{s:"கற்றது கை மண் அளவு, கல்லாதது உலகளவே.",t:"What we have learned is a handful. What we have yet to learn is the world."},{s:"அன்பே தெய்வம்.",t:"Love is God."}]},
   { name:"Kannada", family:"Dravidian", region:"South Asia", script:"Kannada", speakers:"~56M (L1+L2)",
     tip:"Kannada script has rounded letters with small fish-hook serifs. Similar to Telugu but Kannada letters are rounder with more circular loops at the top.",
     confusables:["Telugu","Tamil","Malayalam","Khmer","Myanmar (Burmese)"],
-    quotes:[{s:"Kaliyuvavanu endu soluvudilla.",t:"One who keeps learning never truly loses."},{s:"Maatu belli, mouna bangara.",t:"Speech is silver, silence is gold."}]},
+    quotes:[{s:"ಕಲಿಯುವವನು ಎಂದು ಸೋಲುವುದಿಲ್ಲ.",t:"One who keeps learning never truly loses."},{s:"ಮಾತು ಬೆಳ್ಳಿ, ಮೌನ ಬಂಗಾರ.",t:"Speech is silver, silence is gold."}]},
   { name:"Telugu", family:"Dravidian", region:"South Asia", script:"Telugu", speakers:"~96M (L1+L2)",
     tip:"Telugu script is rounder than Kannada. Letters often end in a curling tail. The combination of circles with hanging curves is distinctive.",
     confusables:["Kannada","Tamil","Malayalam","Khmer","Sinhala"],
-    quotes:[{s:"Oorpu unnaavadiki otami ledu.",t:"One who has patience knows no defeat."},{s:"Vidya vinayamunu isthundi.",t:"Education gives humility."}]},
+    quotes:[{s:"ఓర్పు ఉన్నవాడికి ఓటమి లేదు.",t:"One who has patience knows no defeat."},{s:"విద్య వినయమును ఇస్తుంది.",t:"Education gives humility."}]},
   { name:"Sinhala", family:"Indo-Iranian", region:"South Asia", script:"Sinhala", speakers:"~17M (L1+L2)",
     tip:"Sinhala uses a unique rounded script with oval and circular letterforms. Vowels appear as marks around consonants.",
     confusables:["Tamil","Myanmar (Burmese)","Khmer","Telugu","Kannada"],
-    quotes:[{s:"Danuma jeevitaye aalokayayi.",t:"Knowledge is the light of life."}]},
+    quotes:[{s:"දැනුම ජීවිතයේ ආලෝකයයි.",t:"Knowledge is the light of life."}]},
   { name:"Assamese", family:"Indo-Iranian", region:"South Asia", script:"Bengali", speakers:"~15M (L1+L2)",
     tip:"Assamese uses a script nearly identical to Bengali with tiny differences in a few characters. The language has a breathy quality with aspirated consonants.",
     confusables:["Bengali","Odia","Maithili","Manipuri"],
-    quotes:[{s:"Gyanehi shakti.",t:"Knowledge is power."}]},
+    quotes:[{s:"ज्ञानेहि शक्ति.",t:"Knowledge is power."}]},
   { name:"Maithili", family:"Indo-Iranian", region:"South Asia", script:"Devanagari", speakers:"~34M (L1+L2)",
     tip:"Maithili uses Devanagari like Hindi and Nepali. Look for the words chhi and achhi as verbs meaning is which are distinctively Maithili.",
     confusables:["Hindi","Nepali","Bengali","Bhojpuri"],
-    quotes:[{s:"Je sahe se rahe.",t:"He who endures, remains."}]},
+    quotes:[{s:"যে সহে সে রহে.",t:"He who endures, remains."}]},
   { name:"Sindhi", family:"Indo-Iranian", region:"South Asia", script:"Perso-Arabic", speakers:"~30M (L1+L2)",
     tip:"Sindhi uses a modified Perso-Arabic script with more dots and special characters than standard Arabic or Urdu. It has 52 letters compared to Arabic's 28.",
     confusables:["Urdu","Arabic","Persian (Farsi)","Pashto","Balochi"],
-    quotes:[{s:"Ilm aaho jo aahe jo kam aachi.",t:"Knowledge is what is useful."}]},
+    quotes:[{s:"علم اهو آهي جو ڪم اچي.",t:"Knowledge is what is useful."}]},
   { name:"Balochi", family:"Indo-Iranian", region:"South Asia / Middle East", script:"Perso-Arabic", speakers:"~9M (L1+L2)",
     tip:"Balochi uses Perso-Arabic script similar to Urdu and Persian. Look for the -ag and -it verb endings which distinguish it from Urdu.",
     confusables:["Urdu","Pashto","Persian (Farsi)","Sindhi"],
-    quotes:[{s:"Elm ganj ant.",t:"Knowledge is a treasure."}]},
+    quotes:[{s:"علم گنج است.",t:"Knowledge is a treasure."}]},
   { name:"Santali", family:"Austroasiatic", region:"South Asia", script:"Ol Chiki", speakers:"~7.6M (L1+L2)",
     tip:"Santali uses the Ol Chiki script, invented in 1925 by Pandit Raghunath Murmu. The characters are rounded and unique with no resemblance to any other script.",
     confusables:["Odia","Bengali","Myanmar (Burmese)","Khmer","Tibetan"],
-    quotes:[{s:"Parha akana alo em akana.",t:"Learning is light, ignorance is darkness."}]},
+    quotes:[{s:"পঢ়া আকান আলো এম আকান.",t:"Learning is light, ignorance is darkness."}]},
   { name:"Turkish", family:"Turkic", region:"Middle East / Europe", script:"Latin", speakers:"~88M (L1+L2)",
     tip:"Turkish uses Latin with ç, ş, ğ, ı (dotless i), ö, ü. The dotless ı is a unique giveaway. Words tend to be very long due to agglutination.",
     confusables:["Azerbaijani","Uzbek","Kazakh","Kyrgyz","Indonesian"],
@@ -481,7 +481,7 @@ const LANGUAGES = [
   { name:"Kazakh", family:"Turkic", region:"Central Asia", script:"Cyrillic", speakers:"~19M (L1+L2)",
     tip:"Kazakh is currently written in Cyrillic with eight extra letters not in Russian. These distinctive characters make Kazakh recognizable among Cyrillic scripts.",
     confusables:["Kyrgyz","Mongolian","Russian","Uzbek"],
-    quotes:[{s:"Bilim bulaq, ishken toimas.",t:"Knowledge is a spring. He who drinks is never full."}]},
+    quotes:[{s:"Білім бұлақ, ішкен тоймас.",t:"Knowledge is a spring. He who drinks is never full."}]},
   { name:"Kyrgyz", family:"Turkic", region:"Central Asia", script:"Cyrillic", speakers:"~4.5M (L1+L2)",
     tip:"Kyrgyz Cyrillic has two extra letters not in Russian. Very similar to Kazakh Cyrillic but with fewer extra characters.",
     confusables:["Kazakh","Mongolian","Russian","Uzbek"],
@@ -489,11 +489,11 @@ const LANGUAGES = [
   { name:"Tajik", family:"Indo-Iranian", region:"Central Asia", script:"Cyrillic", speakers:"~8M (L1+L2)",
     tip:"Tajik is written in Cyrillic but is linguistically close to Persian. It has extra letters including i with macron and u with macron.",
     confusables:["Russian","Kazakh","Kyrgyz","Persian (Farsi)"],
-    quotes:[{s:"Ilm choroghi zindagi.",t:"Knowledge is the lamp of life."}]},
+    quotes:[{s:"Илм чароғи зиндагист.",t:"Knowledge is the lamp of life."}]},
   { name:"Uyghur", family:"Turkic", region:"Central Asia", script:"Perso-Arabic", speakers:"~11M (L1+L2)",
     tip:"Uyghur is written right-to-left in a modified Arabic script. Unlike standard Arabic, Uyghur marks all vowels making them fully visible in the text.",
     confusables:["Arabic","Persian (Farsi)","Urdu","Pashto","Kazakh"],
-    quotes:[{s:"Ilim nur, jahalat qaranghulluq.",t:"Knowledge is light, ignorance is darkness."}]},
+    quotes:[{s:"Илим нур, жаалаттык аратаңдылык.",t:"Knowledge is light, ignorance is darkness."}]},
   { name:"Turkmen", family:"Turkic", region:"Central Asia", script:"Latin", speakers:"~11M (L1+L2)",
     tip:"Turkmen uses Latin with letters like y with circumflex, n with hook, o-umlaut, u-umlaut, zh, and a distinctive c for the ch sound.",
     confusables:["Uzbek","Azerbaijani","Turkish","Kazakh","Kyrgyz"],
@@ -521,7 +521,7 @@ const LANGUAGES = [
   { name:"Amharic", family:"Semitic", region:"Africa", script:"Ethiopic", speakers:"~57M (L1+L2)",
     tip:"Amharic uses the Ethiopic Ge'ez script with round circular characters unlike any other writing system. Each symbol is a consonant plus vowel syllable.",
     confusables:["Tigrinya","Hebrew","Georgian","Sinhala"],
-    quotes:[{s:"Fiqir terarran yanqesaqsal.",t:"Love moves mountains."}]},
+    quotes:[{s:"ፍቅር ተራሮን ያንቀሳቅሳል.",t:"Love moves mountains."}]},
   { name:"Somali", family:"Afro-Asiatic (Cushitic)", region:"East Africa", script:"Latin", speakers:"~22M (L1+L2)",
     tip:"Somali uses Latin with a very distinctive double vowel pattern like aa, ee, oo and the letter c for a pharyngeal sound. Look for words ending in vowels and the frequent -ta, -ka suffixes.",
     confusables:["Swahili","Hausa","Oromo","Tigrinya"],
@@ -1067,7 +1067,9 @@ function Home({onStart,leaderboard}) {
                 </div>
               </div>
               <span style={{fontSize:"16px",fontWeight:700,color:C.ocean}}>
-                {e.score}<span style={{fontSize:"12px",color:C.muted,fontWeight:400}}> pts</span>
+                {e.score}<span style={{fontSize:"12px",color:C.muted,fontWeight:400}}>
+                  {(e.mode==="survival"||e.mode==="blitz")?" correct":" pts"}
+                </span>
               </span>
             </div>
           );
@@ -1477,10 +1479,15 @@ function BlitzGame({onDone, onHome}) {
 function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
   const [nickname,setNickname]=useState("");
   const [submitted,setSubmitted]=useState(false);
+  const correct = results.filter(r=>r.base===10).length;
+  const pct = results.length>0 ? Math.round((correct/results.length)*100) : 0;
   const total = mode==="survival" || mode==="blitz"
     ? correct
     : parseFloat(scores.reduce((a,b)=>a+b,0).toFixed(1));
-  const modeLabels={classic:`${correct}/${results.length} correct`,survival:`${correct} correct in a row`,blitz:`${correct} in 60s`};
+  const survivalStreak = results.length>0 && results[results.length-1].base!==10
+    ? results.filter(r=>r.base===10).length
+    : correct;
+  const modeLabels={classic:`${correct}/${results.length} correct`,survival:`${survivalStreak} correct in a row`,blitz:`${correct} correct in 60s`};
   const label=mode==="survival"?(results.length<=3?"Better luck next time":results.length<=8?"Good run!":"Unstoppable!"):
     pct===100?"Polyglot legend":pct>=70?"Language lover":pct>=50?"Decent detective":"Keep exploring!";
 
@@ -1489,8 +1496,10 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
   const survivalShareLines = results.map((r,i)=>`Q${i+1}: ${r.guessed===r.lang.name?"✅":"❌"} ${r.lang.name}`).join("\n");
   const classicBlitzShareLines = results.slice(0,6).map((r,i)=>`Q${i+1}: ${r.guessed===r.lang.name?"✅":"❌"} (${r.score}/13)`).join("\n");
   const shareText = mode==="survival"
-    ? `🔴 LanguageGuessr (Survival Mode)\n\nI scored ${total} pts — ${correct} correct in a row ☀️\nTry to beat me: ${gameUrl}\n\n${survivalShareLines}`
-    : `${modeEmoji[mode]||"🌍"} LanguageGuessr (${mode.charAt(0).toUpperCase()+mode.slice(1)} Mode)\n\nI scored ${total} pts ☀️\nTry to beat me: ${gameUrl}\n\n${classicBlitzShareLines}`;
+    ? `🔴 LanguageGuessr (Survival Mode)\n\nI got ${total} correct in a row ☀️\nTry to beat me: ${gameUrl}\n\n${survivalShareLines}`
+    : mode==="blitz"
+      ? `🟡 LanguageGuessr (Blitz Mode)\n\nI got ${total} correct in 60s ☀️\nTry to beat me: ${gameUrl}\n\n${classicBlitzShareLines}`
+      : `${modeEmoji[mode]||"🌍"} LanguageGuessr (${mode.charAt(0).toUpperCase()+mode.slice(1)} Mode)\n\nI scored ${total} pts ☀️\nTry to beat me: ${gameUrl}\n\n${classicBlitzShareLines}`;
 
   async function submitScore(){
     if(!nickname.trim()) return;
@@ -1506,7 +1515,12 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
       const board=await r.json();
       if(Array.isArray(board)) setLeaderboard(board);
     }catch(e){
-      const board=[...leaderboard,entry].sort((a,b)=>b.score-a.score).slice(0,5);
+      // Sort per-mode so survival/blitz counts aren't compared against classic pts
+      const allEntries=[...leaderboard,entry];
+      const board=allEntries.sort((a,b)=>{
+        if((a.mode||"classic")===(b.mode||"classic")) return b.score-a.score;
+        return b.score-a.score; // fallback: still sort by score but API handles proper separation
+      }).slice(0,20);
       setLeaderboard(board);
       try{localStorage.setItem("lg_leaderboard",JSON.stringify(board));}catch(e2){}
     }
@@ -1572,7 +1586,9 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
                     </div>
                   </div>
                   <span style={{fontSize:"16px",fontWeight:700,color:C.ocean}}>
-                    {e.score}<span style={{fontSize:"12px",color:C.muted,fontWeight:400}}> pts</span>
+                    {e.score}<span style={{fontSize:"12px",color:C.muted,fontWeight:400}}>
+                      {(e.mode==="survival"||e.mode==="blitz")?" correct":" pts"}
+                    </span>
                   </span>
                 </div>
               );
@@ -1596,8 +1612,12 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
                   {r.guessed!==r.lang.name&&<span style={{fontSize:"13px",color:C.mid}}>you said: {r.guessed}</span>}
                 </div>
                 <span style={{fontSize:"15px",fontWeight:700,
-                  color:r.score>=10?C.success:r.score>=5?C.earth:C.muted}}>
-                  {mode==="survival"?`${r.score} pts`:`${r.score}/13`}
+                  color:mode==="survival"||mode==="blitz"
+                    ?(r.base===10?C.success:C.error)
+                    :(r.score>=10?C.success:r.score>=5?C.earth:C.muted)}}>
+                  {mode==="survival"||mode==="blitz"
+                    ?(r.base===10?"✓ Correct":"✗ Wrong")
+                    :`${r.score}/13`}
                 </span>
               </div>
               {/* Quote + translation */}
@@ -1650,6 +1670,52 @@ function Done({results,scores,mode,onRestart,leaderboard,setLeaderboard}) {
 // ── ROOT APP ──────────────────────────────────────────────────────────────
 export default function App() {
   const [screen,setScreen]=useState("home");
+
+  // Inject PWA meta tags for home screen icon
+  useEffect(()=>{
+    // Apple touch icon
+    if(!document.querySelector('link[rel="apple-touch-icon"]')){
+      const link=document.createElement('link');
+      link.rel='apple-touch-icon';
+      link.href='/mainlogo.png';
+      document.head.appendChild(link);
+    }
+    // Manifest
+    if(!document.querySelector('link[rel="manifest"]')){
+      const manifest={
+        name:"LanguageGuessr",
+        short_name:"LangGuessr",
+        start_url:"/",
+        display:"standalone",
+        background_color:"#FAFAF8",
+        theme_color:"#42708C",
+        icons:[
+          {src:"/mainlogo.png",sizes:"192x192",type:"image/png"},
+          {src:"/mainlogo.png",sizes:"512x512",type:"image/png"}
+        ]
+      };
+      const blob=new Blob([JSON.stringify(manifest)],{type:"application/manifest+json"});
+      const url=URL.createObjectURL(blob);
+      const link=document.createElement('link');
+      link.rel='manifest';
+      link.href=url;
+      document.head.appendChild(link);
+    }
+    // Theme color meta
+    if(!document.querySelector('meta[name="theme-color"]')){
+      const meta=document.createElement('meta');
+      meta.name='theme-color';
+      meta.content='#42708C';
+      document.head.appendChild(meta);
+    }
+    // Apple mobile web app capable
+    if(!document.querySelector('meta[name="apple-mobile-web-app-capable"]')){
+      const meta=document.createElement('meta');
+      meta.name='apple-mobile-web-app-capable';
+      meta.content='yes';
+      document.head.appendChild(meta);
+    }
+  },[]);
   const [mode,setMode]=useState("classic");
   const [showCountdown,setShowCountdown]=useState(false);
   const [pendingMode,setPendingMode]=useState(null);
