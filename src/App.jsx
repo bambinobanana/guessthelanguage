@@ -625,6 +625,17 @@ function buildSurvivalPool() {
   return [...easy, ...medium, ...hard];
 }
 
+function buildMixedPool() {
+  const easy = shuffle(LANGUAGES.filter(l => EASY_NAMES.has(l.name)));
+  const medium = shuffle(LANGUAGES.filter(l => !EASY_NAMES.has(l.name) && !HARD_NAMES.has(l.name)));
+  const hard = shuffle(LANGUAGES.filter(l => HARD_NAMES.has(l.name)));
+  return shuffle([
+    ...easy.slice(0, 2),
+    ...medium.slice(0, 2),
+    ...hard.slice(0, 2),
+  ]);
+}
+
 function getOptions(correct, all) {
   const confuse=(correct.confusables||[]).map(n=>all.find(l=>l.name===n)).filter(Boolean);
   const confusePick=shuffle(confuse).slice(0,5);
