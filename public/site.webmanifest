@@ -1,7 +1,7 @@
 {
   "name": "LanguageGuessr",
   "short_name": "LangGuessr",
-  "description": "How fast can you identify a language? 100 languages, challenge your friends!",
+  "description": "How fast can you identify a language? Challenge your friends across 100 languages!",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#FAFAF8",
