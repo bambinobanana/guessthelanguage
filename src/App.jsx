@@ -769,49 +769,36 @@ function BlitzTimer({timeLeft,total=60}) {
 }
 
 function CountdownOverlay({onDone}) {
-  const [phase,setPhase]=useState("flags");
   const [visible,setVisible]=useState(true);
   const allFlags=Object.values(LANG_FLAGS);
   const rows=[shuffle([...allFlags]).slice(0,8),shuffle([...allFlags]).slice(0,8),shuffle([...allFlags]).slice(0,8)];
 
   useEffect(()=>{
     if(REDUCED){setVisible(false);onDone();return;}
-    const t1=setTimeout(()=>setPhase("go"),1800);
-    const t2=setTimeout(()=>{setVisible(false);onDone();},2500);
-    return()=>{clearTimeout(t1);clearTimeout(t2);};
+    const t=setTimeout(()=>{setVisible(false);onDone();},1200);
+    return()=>clearTimeout(t);
   },[]);
 
   if(!visible) return null;
   return (
-    <div role="dialog" aria-label="Game starting" aria-live="assertive"
+    <div role="dialog" aria-label="Game starting"
       style={{position:"fixed",inset:0,background:"rgba(0,0,0,0.88)",zIndex:1000,
         display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",overflow:"hidden"}}>
       <style>{`
         @keyframes slideLeft{from{transform:translateX(0)}to{transform:translateX(-50%)}}
         @keyframes slideRight{from{transform:translateX(-50%)}to{transform:translateX(0)}}
-        @keyframes popIn{from{opacity:0;transform:scale(0.5)}to{opacity:1;transform:scale(1)}}
         button:focus-visible{outline:3px solid #7EADBF;outline-offset:2px;}
         a:focus-visible{outline:3px solid #42708C;outline-offset:2px;}
       `}</style>
-      {phase==="flags"?(
-        <>
-          <div style={{marginBottom:20}} aria-hidden="true">
-            {rows.map((row,ri)=>(
-              <div key={ri} style={{display:"flex",gap:8,marginBottom:8,
-                animation:`${ri%2===0?"slideLeft":"slideRight"} 1.8s linear infinite`}}>
-                {[...row,...row].map((f,i)=><span key={i} style={{fontSize:32,lineHeight:1}}>{f}</span>)}
-              </div>
-            ))}
+      <div style={{marginBottom:20}} aria-hidden="true">
+        {rows.map((row,ri)=>(
+          <div key={ri} style={{display:"flex",gap:8,marginBottom:8,
+            animation:`${ri%2===0?"slideLeft":"slideRight"} 1.8s linear infinite`}}>
+            {[...row,...row].map((f,i)=><span key={i} style={{fontSize:32,lineHeight:1}}>{f}</span>)}
           </div>
-          <p style={{color:C.white,fontSize:"20px",fontWeight:500}}>Get ready...</p>
-        </>
-      ):(
-        <p style={{color:C.coral,fontSize:"72px",fontWeight:700,letterSpacing:"-2px",
-          animation:"popIn 0.3s cubic-bezier(0.34,1.56,0.64,1)",margin:0}}
-          aria-live="assertive">
-          GO! 🌍
-        </p>
-      )}
+        ))}
+      </div>
+      <p style={{color:C.white,fontSize:"20px",fontWeight:500}}>Get ready...</p>
     </div>
   );
 }
@@ -1119,44 +1106,68 @@ function ClassicGame({onDone, onHome}) {
   const timerRef=useRef(null);
   const resultsRef=useRef([]);
   const scoresRef=useRef([]);
-  useEffect(()=>{resultsRef.current=results;},[results]);
-  useEffect(()=>{scoresRef.current=scores;},[scores]);
+  const selectedRef=useRef(null);
+  const qIndexRef=useRef(0);
+  const streakRef=useRef(0);
+  const timeLeftRef=useRef(15);
+  const phaseRef=useRef("question");
+
+  useEffect(()=>{selectedRef.current=selected;},[selected]);
+  useEffect(()=>{qIndexRef.current=qIndex;},[qIndex]);
+  useEffect(()=>{streakRef.current=streak;},[streak]);
+  useEffect(()=>{timeLeftRef.current=timeLeft;},[timeLeft]);
+  useEffect(()=>{phaseRef.current=phase;},[phase]);
 
   useEffect(()=>{
     if(phase!=="question") return;
     setTimeLeft(15);
+    timeLeftRef.current=15;
     timerRef.current=setInterval(()=>{
       setTimeLeft(t=>{
-        if(t<=1){clearInterval(timerRef.current);handleTimeout();return 0;}
-        return t-1;
+        const next=t-1;
+        timeLeftRef.current=next;
+        if(next<=0){
+          clearInterval(timerRef.current);
+          // Use refs to avoid stale closure
+          if(!selectedRef.current && phaseRef.current==="question"){
+            const qi=qIndexRef.current;
+            const q=questions[qi];
+            const newResult={lang:q.lang,sample:q.sample,translation:q.translation,guessed:"time's up",score:0,base:0,timeLeft:0,streak:0};
+            resultsRef.current=[...resultsRef.current,newResult];
+            scoresRef.current=[...scoresRef.current,0];
+            setScores(p=>[...p,0]);
+            setResults(p=>[...p,newResult]);
+            setStreak(0);
+            streakRef.current=0;
+            setSelected("__timeout__");
+            selectedRef.current="__timeout__";
+            setPhase("reveal");
+            phaseRef.current="reveal";
+          }
+          return 0;
+        }
+        return next;
       });
     },1000);
     return()=>clearInterval(timerRef.current);
   },[qIndex,phase]);
 
-  function handleTimeout(){
-    if(selected) return;
-    const q=questions[qIndex];
-    const newResult={lang:q.lang,sample:q.sample,translation:q.translation,guessed:"time's up",score:0,base:0,timeLeft:0,streak:0};
-    resultsRef.current=[...resultsRef.current,newResult];
-    scoresRef.current=[...scoresRef.current,0];
-    setScores(p=>[...p,0]);
-    setResults(p=>[...p,newResult]);
-    setStreak(0);setPhase("reveal");
-  }
-
   function handleSelect(opt){
-    if(selected||phase==="reveal") return;
+    if(selectedRef.current||phaseRef.current==="reveal") return;
     clearInterval(timerRef.current);
-    const q=questions[qIndex];
+    const qi=qIndexRef.current;
+    const q=questions[qi];
     const base=baseScore(opt,q.lang,LANGUAGES);
-    const newStreak=base===10?streak+1:0;
-    setStreak(newStreak);
-    const s=calcScore(base,timeLeft,streak);
-    const newResult={lang:q.lang,sample:q.sample,translation:q.translation,guessed:opt,score:s,base,timeLeft,streak:newStreak};
+    const newStreak=base===10?streakRef.current+1:0;
+    const s=calcScore(base,timeLeftRef.current,streakRef.current);
+    const newResult={lang:q.lang,sample:q.sample,translation:q.translation,guessed:opt,score:s,base,timeLeft:timeLeftRef.current,streak:newStreak};
     resultsRef.current=[...resultsRef.current,newResult];
     scoresRef.current=[...scoresRef.current,s];
+    selectedRef.current=opt;
+    streakRef.current=newStreak;
+    phaseRef.current="reveal";
     setSelected(opt);
+    setStreak(newStreak);
     setScores(p=>[...p,s]);
     setResults(p=>[...p,newResult]);
     if(base===10) setShowCorrect({lang:q.lang,score:s});
@@ -1164,8 +1175,16 @@ function ClassicGame({onDone, onHome}) {
   }
 
   function next(){
-    if(qIndex+1>=TOTAL){onDone(resultsRef.current,scoresRef.current,"classic");}
-    else{setQIndex(i=>i+1);setSelected(null);setPhase("question");}
+    const qi=qIndexRef.current;
+    if(qi+1>=TOTAL){
+      onDone(resultsRef.current,scoresRef.current,"classic");
+    } else {
+      selectedRef.current=null;
+      phaseRef.current="question";
+      setQIndex(qi+1);
+      setSelected(null);
+      setPhase("question");
+    }
   }
 
   const q=questions[qIndex];
@@ -1743,8 +1762,8 @@ export default function App() {
   },[]);
 
   function handleStart(m){
-    setMode(m);
-    setScreen("game");
+    setPendingMode(m);
+    setShowCountdown(true);
   }
 
   function handleCountdownDone(){
@@ -1780,6 +1799,8 @@ export default function App() {
         }
         @media(max-width:400px){body{font-size:15px;}}
       `}</style>
+
+      {showCountdown&&<CountdownOverlay onDone={handleCountdownDone}/>}
 
       {screen==="home"&&<Home onStart={handleStart} leaderboard={leaderboard}/>}
 
