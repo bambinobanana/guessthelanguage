@@ -842,7 +842,7 @@ function CorrectPopup({lang,score,onDone}) {
 }
 
 // ── QUESTION CARD (shared between Classic, Survival, Blitz) ──────────────
-function QuestionCard({q, selected, onSelect, phase, lastResult, onNext, isLast, showTimer, timeLeft, hideTip=false}) {
+function QuestionCard({q, selected, onSelect, phase, lastResult, onNext, isLast, showTimer, timeLeft, hideTip=false, hideMeta=false}) {
   const lastScore=lastResult?.score??0;
   return (
     <>
@@ -902,15 +902,15 @@ function QuestionCard({q, selected, onSelect, phase, lastResult, onNext, isLast,
                 {selected===q.lang.name?"Correct!":selected==="__timeout__"?"Time's up!":
                   `It was ${q.lang.name}`}
               </p>
-              <p style={{fontSize:"13px",color:C.mid,margin:0}}>
+              {!hideMeta&&<p style={{fontSize:"13px",color:C.mid,margin:0}}>
                 {lastScore>0&&`+${lastScore} ${lastScore===1?"pt":"pts"}`}
                 {lastResult.base===10&&lastResult.timeLeft>=10?" · speed bonus":""}
                 {lastResult.streak>=2?" · streak bonus":""}
-              </p>
+              </p>}
             </div>
 
           </div>
-          <ScoreBar score={lastScore}/>
+          {!hideMeta&&<ScoreBar score={lastScore}/>}
 
           {/* Quote + translation */}
           <div style={{margin:"12px 0",padding:"0.75rem 1rem",background:C.white,
@@ -959,7 +959,7 @@ function QuestionCard({q, selected, onSelect, phase, lastResult, onNext, isLast,
 
 // ── HOME ──────────────────────────────────────────────────────────────────
 function Home({onStart,leaderboard}) {
-  const [lbFilter,setLbFilter]=useState("all");
+  const [lbFilter,setLbFilter]=useState("classic");
   const [filteredBoard,setFilteredBoard]=useState([]);
 
   useEffect(()=>{
@@ -969,7 +969,7 @@ function Home({onStart,leaderboard}) {
         const data=await r.json();
         if(Array.isArray(data)) setFilteredBoard(data);
       }catch(e){
-        setFilteredBoard(lbFilter==="all"?leaderboard:leaderboard.filter(e=>(e.mode||"classic")===lbFilter));
+        setFilteredBoard(leaderboard.filter(e=>(e.mode||"classic")===lbFilter));
       }
     }
     loadFiltered();
@@ -1036,7 +1036,7 @@ function Home({onStart,leaderboard}) {
         <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:"0.75rem"}}>
           <h2 style={{fontSize:"14px",fontWeight:600,color:C.dark,margin:0}}>🌍 Global leaderboard</h2>
           <div style={{display:"flex",gap:4}} role="tablist" aria-label="Filter leaderboard by mode">
-            {["all","classic","survival","blitz"].map(f=>(
+            {["classic","survival","blitz"].map(f=>(
               <button key={f} role="tab" aria-selected={lbFilter===f}
                 onClick={()=>setLbFilter(f)}
                 style={{...btnBase,fontSize:"11px",padding:"4px 8px",borderRadius:99,minHeight:28,
@@ -1048,18 +1048,22 @@ function Home({onStart,leaderboard}) {
             ))}
           </div>
         </div>
-        {(filteredBoard.length>0?filteredBoard:leaderboard).slice(0,5).map((e,i)=>{
+        {(()=>{
+          const board = filteredBoard.filter(e=>(e.mode||"classic")===lbFilter).slice(0,5);
+          if(board.length===0) return (
+            <p style={{fontSize:"14px",color:C.muted,textAlign:"center",padding:"0.5rem 0",margin:0}}>No scores yet. Be the first!</p>
+          );
           const medals=["🥇","🥈","🥉","4️⃣","5️⃣"];
-          return (
+          return board.map((e,i)=>(
             <div key={i} style={{display:"flex",justifyContent:"space-between",alignItems:"center",
-              padding:"8px 0",borderBottom:i<4?`1px solid ${C.fogDk}`:"none"}}>
+              padding:"8px 0",borderBottom:i<board.length-1?`1px solid ${C.fogDk}`:"none"}}>
               <div style={{display:"flex",alignItems:"center",gap:10}}>
                 <span aria-hidden="true" style={{fontSize:"18px"}}>{medals[i]}</span>
                 <div>
                   <p style={{fontSize:"15px",color:i===0?C.coral:C.dark,fontWeight:i===0?600:400,margin:"0 0 1px"}}>
                     {e.name}
                   </p>
-                  <p style={{fontSize:"12px",color:C.muted,margin:0}}>{e.mode||"classic"} · {e.date}</p>
+                  <p style={{fontSize:"12px",color:C.muted,margin:0}}>{e.date}</p>
                 </div>
               </div>
               <span style={{fontSize:"16px",fontWeight:700,color:C.ocean}}>
@@ -1068,11 +1072,8 @@ function Home({onStart,leaderboard}) {
                 </span>
               </span>
             </div>
-          );
-        })}
-        {(filteredBoard.length===0&&leaderboard.length===0)&&(
-          <p style={{fontSize:"14px",color:C.muted,textAlign:"center",padding:"0.5rem 0",margin:0}}>No scores yet. Be the first!</p>
-        )}
+          ));
+        })()}
       </section>
 
 
@@ -1116,6 +1117,10 @@ function ClassicGame({onDone, onHome}) {
   const [streak,setStreak]=useState(0);
   const [showCorrect,setShowCorrect]=useState(null);
   const timerRef=useRef(null);
+  const resultsRef=useRef([]);
+  const scoresRef=useRef([]);
+  useEffect(()=>{resultsRef.current=results;},[results]);
+  useEffect(()=>{scoresRef.current=scores;},[scores]);
 
   useEffect(()=>{
     if(phase!=="question") return;
@@ -1132,9 +1137,11 @@ function ClassicGame({onDone, onHome}) {
   function handleTimeout(){
     if(selected) return;
     const q=questions[qIndex];
-    setSelected("__timeout__");
+    const newResult={lang:q.lang,sample:q.sample,translation:q.translation,guessed:"time's up",score:0,base:0,timeLeft:0,streak:0};
+    resultsRef.current=[...resultsRef.current,newResult];
+    scoresRef.current=[...scoresRef.current,0];
     setScores(p=>[...p,0]);
-    setResults(p=>[...p,{lang:q.lang,sample:q.sample,translation:q.translation,guessed:"time's up",score:0,base:0,timeLeft:0,streak:0}]);
+    setResults(p=>[...p,newResult]);
     setStreak(0);setPhase("reveal");
   }
 
@@ -1146,15 +1153,18 @@ function ClassicGame({onDone, onHome}) {
     const newStreak=base===10?streak+1:0;
     setStreak(newStreak);
     const s=calcScore(base,timeLeft,streak);
+    const newResult={lang:q.lang,sample:q.sample,translation:q.translation,guessed:opt,score:s,base,timeLeft,streak:newStreak};
+    resultsRef.current=[...resultsRef.current,newResult];
+    scoresRef.current=[...scoresRef.current,s];
     setSelected(opt);
     setScores(p=>[...p,s]);
-    setResults(p=>[...p,{lang:q.lang,sample:q.sample,translation:q.translation,guessed:opt,score:s,base,timeLeft,streak:newStreak}]);
+    setResults(p=>[...p,newResult]);
     if(base===10) setShowCorrect({lang:q.lang,score:s});
     setPhase("reveal");
   }
 
   function next(){
-    if(qIndex+1>=TOTAL){onDone(results,scores,"classic");}
+    if(qIndex+1>=TOTAL){onDone(resultsRef.current,scoresRef.current,"classic");}
     else{setQIndex(i=>i+1);setSelected(null);setPhase("question");}
   }
 
@@ -1463,7 +1473,7 @@ function BlitzGame({onDone, onHome}) {
       <QuestionCard q={currentQ} selected={selected} onSelect={handleSelect}
         phase={phase} lastResult={results[results.length-1]}
         onNext={next} isLast={timeLeft<=3}
-        showTimer={false} timeLeft={15} hideTip={true}/>
+        showTimer={false} timeLeft={15} hideTip={true} hideMeta={true}/>
       </div>
     </main>
   );
@@ -1733,8 +1743,8 @@ export default function App() {
   },[]);
 
   function handleStart(m){
-    setPendingMode(m);
-    setShowCountdown(true);
+    setMode(m);
+    setScreen("game");
   }
 
   function handleCountdownDone(){
@@ -1770,8 +1780,6 @@ export default function App() {
         }
         @media(max-width:400px){body{font-size:15px;}}
       `}</style>
-
-      {showCountdown&&<CountdownOverlay onDone={handleCountdownDone}/>}
 
       {screen==="home"&&<Home onStart={handleStart} leaderboard={leaderboard}/>}
 
